@@ -1,1 +1,1 @@
-# geeksportscards.github.io
+geeksportscards.com
