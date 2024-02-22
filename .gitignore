@@ -1,0 +1,9 @@
+# ignore .sh .bat .py
+*.sh
+*.bat
+*.py
+
+# ignore directories
+config/
+logs/
+data/
