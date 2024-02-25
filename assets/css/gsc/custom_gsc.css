@@ -1,0 +1,135 @@
+/* Typography */
+
+body, ul, li, p, a, label, input, div {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+}
+
+.text-light { color: #cfd6e1 !important;}
+
+.btn {
+    outline: none;
+    box-shadow: none !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+  }
+
+  .form-control {
+    outline: none;
+    box-shadow: none !important;
+  }
+
+/* Header */
+
+#inputSearch {
+    border-width: 1px !important;
+    /* Adjust the border width as needed */
+    border-color: lightgrey !important;
+  }
+
+#navLink {
+    font-family: "Bebas Neue", sans-serif !important;
+    font-size: 20px !important;
+    color: #1d2731;
+}
+
+#navLink:hover {
+    color: #d9b310; /* Hover color */
+}
+
+.nav-btn {
+    outline: none;
+    box-shadow: none !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    height: 30px !important;
+  }
+
+.nav-input {
+    height: 20px !important;
+}
+
+#navBTN:hover {
+    background-color: #d9b310;; /* Hover color */
+    border-color: #d9b310;
+    color: black;
+}
+
+
+/* Featured Card */
+.gsc-beckett-font {
+    font-family: alliance-bold, sans-serif;
+    color: #54c4c8;
+    text-transform: uppercase !important;
+    text-decoration: none;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+  }
+
+
+
+
+
+
+
+.bordered {
+    background-color: white;
+    border-image-source: url("https://i.stack.imgur.com/s2CAw.png");
+    border-image-slice: 1;
+    border-image-width: 1px;
+    padding: 20px;
+}
+
+  .hot-auction {
+    height: 450px;
+    width: 100%;
+  }
+  
+  /* Just for demo */
+  
+  div {
+    margin-bottom: 10px;
+  }
+
+
+
+
+
+
+/* Footer */
+
+
+#footer a { color: #dcdde1;}
+#footer a:hover { color: #d9b310;}
+#footer ul.footer-link-list li { padding-top: 10px;}
+#footer ul.footer-icons li {
+  width: 2.6em;
+  height: 2.6em;
+  line-height: 2.6em;
+}
+#footer ul.footer-icons li:hover {
+  background-color: #d9b310;
+  transition: .5s;
+}
+#footer ul.footer-icons li:hover i {
+  color: #212934;
+  transition: .5s;
+}
+#footer .border-light { border-color: #2d343f !important;}
+/*
+// Extra small devices (portrait phones, less than 576px)
+// No media query since this is the default in Bootstrap
+*/
+/* Small devices (landscape phones, 576px and up)*/
+.product-wap .h3, .product-wap li, .product-wap i, .product-wap p {
+  font-size: 12px !important;
+}
+.product-wap .product-color-dot {
+  width: 6px;
+  height: 6px;
+}
+
+
+  
