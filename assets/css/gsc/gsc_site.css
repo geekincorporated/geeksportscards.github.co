@@ -1,0 +1,85 @@
+/* Typography */
+
+body, ul, li, p, a, label, input, div {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+}
+
+.text-light { color: #cfd6e1 !important;}
+
+
+/* Top Banner Message */
+
+#top-banner {
+  background-color: #1d2731;
+  height: 45px;
+  justify-content: space-between !important;
+}
+
+#top-banner a {
+  text-decoration: none ;
+}
+
+
+/* Header */
+
+#inputSearch {
+  border-width: 1px !important;
+  /* Adjust the border width as needed */
+  border-color: lightgrey !important;
+}
+
+#navLink {
+  font-family: "Bebas Neue", sans-serif !important;
+  font-size: 20px !important;
+  color: #1d2731;
+}
+
+#navLink:hover {
+  color: #d9b310; /* Hover color */
+}
+
+.nav-btn {
+  outline: none;
+  box-shadow: none !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  height: 28px !important;
+}
+
+.nav-input {
+  height: 20px !important;
+}
+
+#navBTN:hover {
+  background-color: #d9b310;; /* Hover color */
+  border-color: #d9b310;
+  color: black;
+}
+
+/* Heade Logo */
+
+#logo-bracket-right {
+  font-size: 40px;
+  font-weight: 600;
+  color: #1d2731;
+  padding-right: 10px;
+}
+
+#logo-bracket-left {
+  font-size: 40px;
+  font-weight: 600;
+  color: #1d2731;
+  padding-left: 10px;
+}
+#logo-written {
+font-family: "Bebas Neue", sans-serif;
+font-size: 35px;
+color: #1d2731;
+font-weight: 300;
+position: relative;
+bottom: 0;
+font-stretch: ultra-condensed !important;
+}
