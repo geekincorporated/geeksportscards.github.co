@@ -9,11 +9,19 @@ body, ul, li, p, a, label, input, div {
 
 .text-light { color: #cfd6e1 !important;}
 
+.btn {
+  outline: none;
+  box-shadow: none !important;
+  font-size: 10px !important;
+  font-weight: 500 !important;
+  margin-bottom: 5px !important;
+}
+
 
 /* Top Banner Message */
 
 #top-banner {
-  background-color: #1d2731;
+  background-color: #1D2731;
   height: 45px;
   justify-content: space-between !important;
 }
@@ -22,12 +30,22 @@ body, ul, li, p, a, label, input, div {
   text-decoration: none ;
 }
 
-.btn {
-  outline: none;
-  box-shadow: none !important;
-  font-size: 13px !important;
-  font-weight: 500 !important;
+#Banner-Message {
+  font-family: "Bebas Neue", sans-serif !important;
+  color: #d9b310 !important;
+  text-decoration: none !important;
+  font-size: 20px !important;
 }
+
+#logo-written {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 40px;
+  color: #1d2731;
+  font-weight: 300;
+  position: relative;
+  bottom: 0;
+  font-stretch: ultra-condensed !important;
+  }
 
 .form-control {
   outline: none;
@@ -46,6 +64,7 @@ body, ul, li, p, a, label, input, div {
   border-color: lightgrey !important;
   margin-right: 0 !important;
   border-radius: 0 !important;
+  height: 15px !important;
 }
 
 #navLink {
@@ -58,16 +77,19 @@ body, ul, li, p, a, label, input, div {
   color: #d9b310; /* Hover color */
 }
 
-.nav-btn {
+#nav-btn {
   outline: none;
   box-shadow: none !important;
   font-size: 12px !important;
   font-weight: 400 !important;
-  height: 28px !important;
+  height: 30px !important;
 }
 
-.nav-input {
-  height: 20px !important;
+#subscribe-btn {
+  outline: none;
+  box-shadow: none !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
 }
 
 #btn-back-to-top {
@@ -91,40 +113,18 @@ body, ul, li, p, a, label, input, div {
 }
 
 /* Header Logo */
-
-#logo-bracket-right {
-  font-size: 40px;
-  font-weight: 600;
-  color: #1d2731;
-  padding-right: 10px;
-}
-
-#logo-bracket-left {
-  font-size: 40px;
-  font-weight: 600;
-  color: #1d2731;
-  padding-left: 10px;
-}
-#logo-written {
-font-family: "Bebas Neue", sans-serif;
-font-size: 35px;
-color: #1d2731;
-font-weight: 300;
-position: relative;
-bottom: 0;
-font-stretch: ultra-condensed !important;
-}
-
 .bordered {
   background-color: white;
   border-image-source: url("https://i.stack.imgur.com/s2CAw.png");
   border-image-slice: 1;
-  border-image-width: 1px;
-  padding: 20px;
+  border-image-width: 3px;
+  padding: 30px;
 }
 
-
 /* Footer */
+#footer {
+  background-color: #1D2731 !important;
+}
 #footer a { color: #dcdde1;}
 #footer a:hover { color: #d9b310;}
 #footer ul.footer-link-list li { padding-top: 10px;}
@@ -165,3 +165,68 @@ font-stretch: ultra-condensed !important;
   max-width: auto;
   height: 50% !important;
 }
+
+
+/* Default styles for the card */
+.card {
+  border-radius: 0rem;
+  height: auto; /* Default height */
+  width: auto;
+  }
+
+#graded {
+  object-fit: cover;
+  background-color: black !important;
+  height: 290px !important;
+}
+
+#graded img {
+align-items: center;
+}
+
+
+
+
+
+
+
+  /* Adjustments for small screens */
+  @media (max-width: 576px) {
+    .card {
+      height: auto; /* Let the height adjust based on content */
+      width: auto;
+    }
+    .card img {
+      height: 100%; /* Make the image fill the height of the container */
+      width: 100%; /* Ensure the image fills the width of the container */
+      object-fit: scale-down; /* Maintain the aspect ratio and cover the container */
+      border-radius: 0; /* Remove border radius for the image */
+    }
+  }
+
+    /* Adjustments for medium screens */
+    @media (min-width: 577px) and (max-width: 992px) {
+      .card {
+        height: auto; /* Adjust the height for medium screens */
+      }
+      .card img {
+        height: 100%; /* Make the image fill the height of the container */
+        width: 100%; /* Ensure the image fills the width of the container */
+        object-fit: scale-down; /* Maintain the aspect ratio and cover the container */
+      }
+    }
+
+      /* Adjustments for large screens */
+  @media (min-width: 993px) {
+    .card {
+      height: auto; /* Adjust the height for large screens */
+    }
+    .card img {
+      height: 100%; /* Make the image fill the height of the container */
+      width: 100%; /* Ensure the image fills the width of the container */
+      object-fit: scale-down; /* Maintain the aspect ratio and cover the container */
+    }
+  }
+
+
+

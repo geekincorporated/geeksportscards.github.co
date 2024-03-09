@@ -1,5 +1,16 @@
-/// Auction Page Search Forn Handler
+// Index Page Search Form Handler
+document.getElementById('searchForm').addEventListener('submit', function (event) {
+  event.preventDefault();
+  // Get the search input value
+  const searchInput = document.getElementById('inputSearch').value.toLowerCase();
 
+  // Navigate to ebay_auctions.html with the search query as a parameter
+  window.location.href = 'auctions.html?search=' + encodeURIComponent(searchInput);
+});
+
+
+
+// Auction Page Search Form Handler
   document.getElementById('searchForm').addEventListener('submit', function (event) {
     event.preventDefault();
     updateGallery();
@@ -32,7 +43,7 @@
   }
 
 
-//  From Index Search Form Handler 
+//  Auction from Index Search Form Handler 
 
   window.addEventListener('DOMContentLoaded', function () {
     // Get the search query from the URL
@@ -139,19 +150,6 @@
   };
 
 
-
-// Index 2 Auction Search Form Handler
-  document.getElementById('searchForm').addEventListener('submit', function (event) {
-    event.preventDefault();
-    // Get the search input value
-    const searchInput = document.getElementById('inputSearch').value.toLowerCase();
-
-    // Navigate to ebay_auctions.html with the search query as a parameter
-    window.location.href = 'auctions.html?search=' + encodeURIComponent(searchInput);
-  });
-
-
-
 // Scroll Up Button
 let mybutton = document.getElementById("btn-back-to-top");
 
@@ -207,6 +205,8 @@ function backToTop() {
     xhr.send(formData);
   });
 
-    // JavaScript code for initializing tooltips
-    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+
+
+// JavaScript code for initializing tooltips
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+  const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
