@@ -90,14 +90,134 @@
 </button>
 <!--END TOP BUTTON-->
 
-<!--Maintenance Message-->
-<div class="text-center">
-  <br><br><br><br><br><br><br><br><br><br><br><br><br>
-  <span class="fs-1"> Site Under Maintenance</span><br>
-  <span class="fs-1"> Sorry for the inconvenience.</span><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-  
-</div>
-<!--End Maintenance Message-->
+  <!-- Start Feature Card Listing -->
+  <div class="container mb-5">
+    <div class="row">
+      <div class="col-md-8 col-lg-6 order-lg-last d-flex justify-content-end mx-auto">
+          <div class="container" style="background-color: black;">
+            <div class="row">
+              <div class="col">
+                <img class="img-fluid" src="https://i.ebayimg.com/00/s/NjQzWDQzOA==/z/gcgAAOSw2qZlxEcn/$_57.PNG?set_id=880000500F" alt="">
+              </div>
+              <div class="col">
+                <img class="img-fluid" src="https://i.ebayimg.com/00/s/NjQzWDQzMw==/z/-5YAAOSwkNRlxEcn/$_57.PNG?set_id=880000500F" alt="">
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="mx-auto col-md-6 col-lg-6 d-flex align-items-top">
+        <div class="text-align-left">
+          <span class="fs-1"><b>Featured</b> [ Card ]</span><br>
+          <span class="fs-3" style="font-weight: 400;">Michael Jordan (RC)</span><br>
+          <span class="fs-5">1986-87 Fleer Basketball Premier #57</span><br><br>
+          <p style="text-align: justify;">
+            This is card number 57 of 132 from Fleer's now iconic return to the Basketball Card
+            Industry in 1986 after 25-year hiatus. From 1986-1989, Fleer was the only major card
+            company that produced basketball cards and marks what is considered in The Sports
+            Card Collecting Industry to be the beginning of the modern era of Basketball Cards.
+          </p>
+          <div class="card-attributes mb-3">
+            <a type="button" class="btn btn-sm btn-primary"
+            style="font-size: 12px !important; padding: 1;" data-bs-toggle="tooltip" href="https://www.beckett.com/grading/card-lookup?item_type=BGS&item_id=16145821&submit=Submit&submit=Submit" target="_blank"
+            data-bs-placement="top" data-bs-title="Click to see Authority Certification and Subgrades">
+            BGS 7.5 Near Mint +
+            </a>
+            <button type="button" class="btn btn-sm btn-default"
+              style="font-size: 12px !important; padding: 1; border: 1px solid black;" data-bs-toggle="tooltip"
+              data-bs-placement="top" data-bs-title="Base Set">
+              BASE SET
+            </button>
+            <button type="button" class="btn btn-sm btn-warning" style="font-size: 12px !important; padding: 1; color: black;"
+              data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Rookie Card">
+              ROOKIE CARD
+            </button>
+            <button type="button" class="btn btn-sm btn-warning" style="font-size: 12px !important; padding: 1; color: black;"
+              data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Member NBA Hall Of Fame">
+              HALL OF FAME
+            </button>
+          </div>
+          <dd>
+            <span class="fs-6" style="font-weight: 500;">USD $6500.00 [ + $125 shipping and handling ]</span>
+          </dd> 
+          <dl class="row">
+            <dd class="col-sm-9 d-flex align-items-center">
+              <button class="btn btn-primary btn-success btn-sm me-2 w-100" style="font-size: 14px !important;" type="button" id="buyNowDropdown"
+                data-bs-toggle="dropdown" aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="top"
+                title="Select A Purchase Option">
+                BUY NOW
+              </button>
+              <ul class="dropdown-menu dropdown-menu-bottom" aria-labelledby="buyNowDropdown" style="width: 225px; background-color: black;">
+                <li>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                      <input type="hidden" name="cmd" value="_s-xclick" />
+                      <input type="hidden" name="hosted_button_id" value="AAB5TTR67ZPQ4" />
+                      <input type="hidden" name="currency_code" value="USD" />
+                      <div class="d-flex justify-content-center" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Pay On PayPal"> <!-- Center alignment -->
+                        <input type="image" src="assets/img/gsc/buy_paypal2.png" width="35%" alt="PayPal" style="background-color: black;" />
+                      </div>
+                    </form>
+                </li>
+                <hr style="border-color: #d3d3d3; border-width: 1px;">
+                    <a class="btn dropdown-item no-hover-effect" href="https://www.ebay.com/itm/235422590318?itmmeta=01HQS94GC4P768AME99349HXX0&hash=item36d047a56e:g:gcgAAOSw2qZlxEcn?mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339025312&customid=&toolid=10001&mkevt=1"
+                      data-bs-toggle="tooltip" data-bs-placement="auto" data-bs-title="Pay On Ebay" style="background-color: black;" target="_blank">
+                      <img src="assets/img/gsc/buy_ebay2.png" width="30%" alt="eBay" style="background-color: black;">
+                    </a>
+                </li>
+              </ul>
+              <button class="btn btn-primary btn-dark btn-sm me-2 w-100" style="font-size: 14px !important;" type="button" id="makeOfferDropdown"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                MAKE OFFER
+              </button>
+              <form class="dropdown-menu p-2 text-light" style="background-color:black; width: 225px; font-size: 10px;">
+                <input type="hidden" name="Item" value="Your_Item_Value_Here">
+                <input type="hidden" name="DateTime" id="dateTime"> <!-- Hidden date and time field -->
+                <div class="mb-3">
+                  <label for="contactName" class="form-label">Name</label>
+                  <input type="text" class="form-control" id="contactName" placeholder="Your name" required>
+                </div>
+                <div class="mb-3">
+                  <label for="contactEmail" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="contactEmail" placeholder="Your email address" required>
+                </div>
+                <div class="mb-3">
+                  <label for="contactPhone" class="form-label">Phone</label>
+                  <input type="text" class="form-control" id="contactPhone" placeholder="Your phone number" required>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Preferred Contact Method</label>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="contactMethod" id="contactMethodEmail" value="Email" required>
+                    <label class="form-check-label" for="contactMethodEmail">
+                      Email
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="contactMethod" id="contactMethodText" value="Text Message" required>
+                    <label class="form-check-label" for="contactMethodText">
+                      Text
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="contactMethod" id="contactMethodPhone" value="Phone" required>
+                    <label class="form-check-label" for="contactMethodPhone">
+                      Phone
+                    </label>
+                  </div>
+                </div>
+                <div class="input-group mb-3">
+                  <span class="input-group-text">$</span>
+                  <input type="text" class="form-control" id="offerAmount" placeholder="Your offer" required>
+                </div>
+                <button type="submit" class="btn btn-primary justify-content-center w-100">SUBMIT OFFER</button>
+              </form>   
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Stop Feature Card Listing -->
+
 
 
 </div>
