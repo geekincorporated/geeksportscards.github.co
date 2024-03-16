@@ -1,3 +1,5 @@
+
+
 // Index Page Search Form Handler
 document.getElementById('searchForm').addEventListener('submit', function (event) {
   event.preventDefault();
@@ -44,7 +46,6 @@ document.getElementById('searchForm').addEventListener('submit', function (event
 
 
 //  Auction from Index Search Form Handler 
-
   window.addEventListener('DOMContentLoaded', function () {
     // Get the search query from the URL
     const searchQuery = new URLSearchParams(window.location.search).get('search');
@@ -173,40 +174,129 @@ function backToTop() {
 }
 
 
+// Newsletter Subscribe Handler
+document.getElementById("newsletterForm").addEventListener("submit", function (event) {
+  event.preventDefault(); // Prevent default form submission
 
-//Newsletter Submit Form Handler
-  document.getElementById("subscribeForm").addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent default form submission
-
-    // Submit the form via AJAX
-    var form = event.target;
-    var formData = new FormData(form);
-    var xhr = new XMLHttpRequest();
-    xhr.open(form.method, form.action);
-    xhr.onreadystatechange = function () {
+  // Submit the form via AJAX
+  var form = event.target;
+  var formData = new FormData(form);
+  var xhr = new XMLHttpRequest();
+  xhr.open(form.method, form.action);
+  xhr.onreadystatechange = function () {
       if (xhr.readyState === XMLHttpRequest.DONE) {
-        if (xhr.status === 200) {
-          // Subscription successful, show success message
-          var successMessage = document.getElementById("successMessage");
-          successMessage.classList.remove("d-none");
+          if (xhr.status === 200) {
+              // Subscription successful, show success message
+              var successMessage = document.getElementById("newslettersuccessMessage");
+              successMessage.classList.remove("d-none");
 
-          // Clear input field
-          document.getElementById("emailInput").value = "";
+              // Clear input field
+              document.getElementById("newsletterEmail").value = "";
 
-          // Auto close after 5 seconds (5000 milliseconds)
-          setTimeout(function () {
-            successMessage.classList.add("d-none");
-          }, 2000);
-        } else {
-          // Handle other response statuses if needed
-        }
+              // Auto close after 5 seconds (5000 milliseconds)
+              setTimeout(function () {
+                  successMessage.classList.add("d-none");
+              }, 1000); // Changed timeout to 5000 milliseconds
+          } else {
+              // Handle other response statuses if needed
+          }
       }
-    };
-    xhr.send(formData);
-  });
+  };
+  xhr.send(formData);
+});
 
+
+// Make Offer Submit Form Handler
+// Wait for the modal to be fully shown
+$('#makeOfferModel').on('shown.bs.modal', function () {
+  // Add event listener to the "offerAmount" input field
+  document.getElementById('offerAmount').addEventListener('blur', function(event) {
+    // Get the input value
+    let input = event.target.value;
+
+    // Remove non-numeric characters except for periods (.)
+    input = input.replace(/[^\d.]/g, '');
+
+    // Format the value as a currency
+    input = parseFloat(input).toFixed(2);
+
+    // Update the input value
+    event.target.value = input;
+  });
+});
+
+// Function to handle form submission
+function handleFormSubmission(event) {
+  // Prevent default form submission
+  event.preventDefault();
+
+  // Close the current modal
+  $('#makeOfferModel').modal('hide');
+
+  // Submit the form via AJAX
+  var form = document.getElementById("makeofferForm");
+  var formData = new FormData(form);
+  var xhr = new XMLHttpRequest();
+  xhr.open(form.method, form.action);
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        // Submit successful, show success message
+        var successMessage = document.getElementById("makeoffersuccessMessage");
+        successMessage.classList.remove("d-none");
+
+        // Auto close after 2 seconds (2000 milliseconds)
+        setTimeout(function () {
+          successMessage.classList.add("d-none");
+          // Clear the form
+          form.reset();
+          
+          // Open another modal
+          $('#submittedOfferModel').modal('show');
+        }, 2000);
+      } else {
+        // Handle other response statuses if needed
+      }
+    }
+  };
+  xhr.send(formData);
+}
+
+// Attach an event listener to the modal
+var myModal = document.getElementById("makeOfferModel");
+myModal.addEventListener("shown.bs.modal", function () {
+  // When the modal is shown, attach a submit event listener to the form
+  var form = document.getElementById("makeofferForm");
+  form.addEventListener("submit", handleFormSubmission);
+});
+
+
+
+
+
+
+  // Function to get current date and time in MST
+  function getCurrentDateTime() {
+    const now = new Date();
+    const offset = -7; // Offset for MST (Mountain Standard Time) is -7 hours
+    const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+    const mst = new Date(utc + (3600000 * offset));
+    
+    // Formatting date and time
+    const year = mst.getFullYear();
+    const month = String(mst.getMonth() + 1).padStart(2, '0');
+    const day = String(mst.getDate()).padStart(2, '0');
+    const hours = String(mst.getHours()).padStart(2, '0');
+    const minutes = String(mst.getMinutes()).padStart(2, '0');
+    
+    return `${month}-${day}-${year} ${hours}:${minutes}`;
+  }
+  
+  // Set value of hidden date and time field
+  document.getElementById('dateTime').value = getCurrentDateTime();
 
 
 // JavaScript code for initializing tooltips
-  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-  const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+
