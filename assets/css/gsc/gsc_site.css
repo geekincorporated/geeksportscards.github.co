@@ -17,6 +17,15 @@ body, ul, li, p, a, label, input, div {
   margin-bottom: 5px !important;
 }
 
+/* Override Bootstrap's disabled button styles */
+.feature-btn{
+  opacity: 1 !important; /* Keep opacity at 1 to maintain brightness */
+  pointer-events: none !important; /* Allow pointer events */
+  filter: brightness(100%) !important; /* Keep full brightness */
+  /* Optionally, you can also adjust other styles such as background-color */
+  /* background-color: #your-desired-color; */
+}
+
 
 /* Top Banner Message */
 
@@ -58,6 +67,8 @@ body, ul, li, p, a, label, input, div {
   display: flex !important;
 }
 
+
+
 #inputSearch {
   border-width: 1px !important;
   /* Adjust the border width as needed */
@@ -82,14 +93,7 @@ body, ul, li, p, a, label, input, div {
   box-shadow: none !important;
   font-size: 12px !important;
   font-weight: 400 !important;
-  height: 30px !important;
-}
-
-#subscribe-btn {
-  outline: none;
-  box-shadow: none !important;
-  font-size: 12px !important;
-  font-weight: 400 !important;
+  height: 28px !important;
 }
 
 #btn-back-to-top {
@@ -121,6 +125,36 @@ body, ul, li, p, a, label, input, div {
   padding: 30px;
 }
 
+
+
+
+
+
+.popover {
+  border-radius: 0;
+}
+.popover-header {
+  border-radius: 0;
+  display: flex;
+  color: white;
+  font-size: 12px;
+  background-color:#2d343f ;
+  align-items: center;
+  justify-content: center;
+}
+.popover-body {
+  color: black;
+  font-size: 11px;
+}
+
+
+
+
+
+
+
+
+
 /* Footer */
 #footer {
   background-color: #1D2731 !important;
@@ -150,6 +184,7 @@ body, ul, li, p, a, label, input, div {
 .product-wap .h3, .product-wap li, .product-wap i, .product-wap p {
   font-size: 12px !important;
 }
+
 .product-wap .product-color-dot {
   width: 6px;
   height: 6px;
@@ -166,7 +201,6 @@ body, ul, li, p, a, label, input, div {
   height: 50% !important;
 }
 
-
 /* Default styles for the card */
 .card {
   border-radius: 0rem;
@@ -174,52 +208,26 @@ body, ul, li, p, a, label, input, div {
   width: auto;
   }
 
-#graded {
-  object-fit: cover;
-  background-color: black !important;
-  height: 290px !important;
-}
-
-#graded img {
-align-items: center;
-}
 
 
-
-
-
-
-
-  /* Adjustments for small screens */
-  @media (max-width: 576px) {
-    .card {
-      height: auto; /* Let the height adjust based on content */
-      width: auto;
-    }
-    .card img {
-      height: 100%; /* Make the image fill the height of the container */
-      width: 100%; /* Ensure the image fills the width of the container */
-      object-fit: scale-down; /* Maintain the aspect ratio and cover the container */
-      border-radius: 0; /* Remove border radius for the image */
-    }
+/* Adjustments for small screens */
+@media (max-width: 576px) {
+  .card {
+    height: auto; /* Let the height adjust based on content */
+    width: auto;
   }
+  .card img {
+    height: 100%; /* Make the image fill the height of the container */
+    width: 100%; /* Ensure the image fills the width of the container */
+    object-fit: scale-down; /* Maintain the aspect ratio and cover the container */
+    border-radius: 0; /* Remove border radius for the image */
+  }
+}
 
-    /* Adjustments for medium screens */
-    @media (min-width: 577px) and (max-width: 992px) {
-      .card {
-        height: auto; /* Adjust the height for medium screens */
-      }
-      .card img {
-        height: 100%; /* Make the image fill the height of the container */
-        width: 100%; /* Ensure the image fills the width of the container */
-        object-fit: scale-down; /* Maintain the aspect ratio and cover the container */
-      }
-    }
-
-      /* Adjustments for large screens */
-  @media (min-width: 993px) {
+  /* Adjustments for medium screens */
+  @media (min-width: 577px) and (max-width: 992px) {
     .card {
-      height: auto; /* Adjust the height for large screens */
+      height: auto; /* Adjust the height for medium screens */
     }
     .card img {
       height: 100%; /* Make the image fill the height of the container */
@@ -228,5 +236,14 @@ align-items: center;
     }
   }
 
-
-
+    /* Adjustments for large screens */
+@media (min-width: 993px) {
+  .card {
+    height: auto; /* Adjust the height for large screens */
+  }
+  .card img {
+    height: 100%; /* Make the image fill the height of the container */
+    width: 100%; /* Ensure the image fills the width of the container */
+    object-fit: scale-down; /* Maintain the aspect ratio and cover the container */
+  }
+}
