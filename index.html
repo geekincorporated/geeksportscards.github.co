@@ -1,444 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Geek Sports Cards</title>
-<meta name="author" content="GEEKSPORTSCARDS-DOT-COM">
-<meta name="description" content="Sports Cards Collectables and Memorabilia">
-<meta name="keywords" content="geeksportscards-dot-com, Sports Trading Cards, NBA, MLB, NHL, NFL, Fleer, Hoops, 1986, 1986-87, 1987, 1987-88, 1988, 1988-89, 1989, 1989-90, 1990, 1990-91, Set, LOT, Basketball, Football, Baseball, Hockey, Premier, Sticker, Insert, Draft, Rookie Card, RC, HOF, Hall Of Fame, NM, Near-Mint, NM-MT, Near Mint-Mint, MT, Mint, EX-MT, Excellent-Mint, GEM-MT, Gem-Mint, Condition, Slab, Graded, PSA, BSG, CSG, CGC, eBay, Auction, Buy It Now, Memorabilia, Collectables, autographs">
-<!-- Favicon -->
-<link rel="shortcut icon" href="assets/img/gsc/favicon.ico" type="image/x-icon">
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<!-- GSC CSS -->
-<link rel="stylesheet" href="assets/css/gsc/gsc_site.css">
-<link rel="stylesheet" href="assets/css/gsc/gsc_font.css">
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<link rel="stylesheet" href="assets/css/fontawesome.min.css">
-<!-- Google Fonts: Bebas Neue -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Geek Sports Cards</title>
+    <meta name="author" content="GEEKSPORTSCARDS-DOT-COM">
+    <meta name="description" content="Sports Cards Collectables and Memorabilia">
+    <meta name="keywords" content="geeksportscards-dot-com, Sports Trading Cards, NBA, MLB, NHL, NFL, Fleer, Hoops, 1986, 1986-87, 1987, 1987-88, 1988, 1988-89, 1989, 1989-90, 1990, 1990-91, Set, LOT, Basketball, Football, Baseball, Hockey, Premier, Sticker, Insert, Draft, Rookie Card, RC, HOF, Hall Of Fame, NM, Near-Mint, NM-MT, Near Mint-Mint, MT, Mint, EX-MT, Excellent-Mint, GEM-MT, Gem-Mint, Condition, Slab, Graded, PSA, BSG, CSG, CGC, eBay, Auction, Buy It Now, Memorabilia, Collectables, autographs">
+<!-- GSC Favicon -->
+<link href="assets/img/gsc/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+<link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet"/>
+<!--GSC CSS-->
+<link href="assets/css/gsc/gsc_site.css" rel="stylesheet"/>
+<link href="assets/css/gsc/gsc_font.css" rel="stylesheet"/>
+<!--Font Awsome Library-->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"/>
+<link href="assets/css/fontawesome.min.css" rel="stylesheet"/>
+<!--Google Fonts: Bebas Neue-->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&amp;family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap" rel="stylesheet"/>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            position: relative;
+        }
+        .centered-image {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .image-container {
+            display: flex;
+            justify-content: center;
+        }
+        .image-container img {
+            max-width: 100%;
+            margin: 0 10px; /* Adjust the margin as needed */
+        }
+
+    </style>
+
 </head>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-5R11Z2BEKW"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-5R11Z2BEKW');
-</script>
-
 <body>
 
-<!-- TOP BANNER -->
-<nav id="top-banner" class="navbar navbar-expand-lg d-none d-lg-block">
-<div class="container-fluid">
-<div class="w-100 d-flex justify-content-between">
-<!-- Empty div for spacing -->
-<div></div>
-<!-- BANNER MESSAGE -->
-<div>
-<a class="navbar-sm-brand" id="Banner-Message" href="#" target="_blank">WE BUY ALL CARDS BASKETBALL FOOTBALL BASEBALL AND MORE</a>
-</div>
-<!-- END BANNER MESSAGE -->
-<!-- Empty div for spacing -->
-<div></div>
-</div>
-</div>
-</nav>
-<!-- END TOP BANNER -->
+<!--TOP BANNER-->
+<nav id="top-banner" class="navbar navbar-expand-lg d-none d-lg-block mb-1">
+    <div class="container-fluid">
+    <div class="w-100 d-flex justify-content-between">
+    <!--empty div-->
+    <div></div>
+    <!--BANNER MESSAGE-->
+    <div>
+    <a class="navbar-sm-brand" id="Banner-Message" href="#"> WE BUY ALL SPORTS CARDS BASKETBALL BASEBALL FOOTBALL AND MORE</a>
+    </div>
+    <!--END BANNER MESSAGE-->
+    <!--empty div-->
+    <div></div>
+    </div>
+    </div>
+    </nav>
+<!--END TOP BANNER-->
 
-<!-- HEADER -->
-<div class="container">
-<nav class="navbar navbar-expand-lg">
-<div class="container-fluid">
-<a class="navbar-brand align-self-center d-flex justify-content-start" href="index.html">
-<span id="logo-written">Geek Sports Cards</span>
-</a>
-<button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler border-0 btn" data-bs-target="#navbarNavAltMarkup" data-bs-toggle="collapse" type="button">
-<span class="navbar-toggler-icon"></span>
-</button>
-<div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-<div class="navbar-nav">
-<a class="nav-link" id="navLink" href="https://www.ebay.com/sch/i.html?_dkr=1&iconV2Request=true&_blrs=recall_filtering&_ssn=geeksportscards-dot-com&store_name=geeksportscards&_sop=1&_oac=1" target="_blank">Auctions</a>
-<a class="nav-link" id="navLink" href="https://www.ebay.com/sch/i.html?_dkr=1&iconV2Request=true&_blrs=recall_filtering&_ssn=geeksportscards-dot-com&store_name=geeksportscards&_sop=1&_oac=1&LH_BIN=1" target="_blank">Buy Now</a>
-<!-- <a class="nav-link" id="navLink" href="#">FAQs</a> -->
-<!--Empty DIVs-->
-<div></div>
-<form action="auctions.html" class="d-flex pt-2" id="searchForm" method="GET">
-<input aria-label="Search" class="form-control form-control-sm me-1 pl-3" id="inputSearch" name="query" placeholder="search by card player team year or set" size="30" type="search" />
-<button class="btn btn-dark btn-sm disabled" id="navBTN" type="submit">Search</button>
-</form>
+<!--HEADER-->  
+<div class="w-100 bg-dark">                                                                                          
+    <div class="container bg-dark">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+            <a class="navbar-brand align-self-center d-flex justify-content-start" href="index.html">
+            <span id="logo-written1">Geek</span><span id="logo-written2">Sports</span><span id="logo-written1">Cards</span>
+            </a>
+            </div>
+        </nav>
+    </div>
 </div>
-</div>
-</div>
-</nav>
-</div>
-<!-- END HEADER -->
+    <!--END HEADER-->
 
-<!--MAIN CONTAINER-->
-<div class="container">
-
-<!--TOP BUTTON-->
-<button class="btn btn-light btn-floating btn-sm" id="btn-back-to-top" type="button">
-<i class="fab fas fa-arrow-up"></i>
-</button>
-<!--END TOP BUTTON-->
-
-<!-- Modals -->
-<div class="modal fade" id="makeOfferModel" tabindex="-1">
-<div class="modal-dialog modal-dialog-centered">
-<div class="modal-content text-light bg-dark">
-<div class="modal-header" style="margin-top: 10px; padding-top: 10px; padding-bottom: 5px;">
-<dl>
-<dt class="modal-title fs-5" style="color: #d9b310;" id="makeOfferLabel">Make Offer</dt>
-<dd class="fs-6">Michael Jordan (RC)</dd>
-<dd class="fs-6">1986-87 Fleer Basketball Premier #57</dd>
-</dl>
-</div>
-<div class="modal-body">           
-<form action="https://script.google.com/macros/s/AKfycbxucWF0ePWF4IMdnh_BLs9GMfmEFEU_D2YRMlB1yVqBW4-A6Q-kJRKIXvJbatylg5am2g/exec" id="makeofferForm" method="POST">
-<input type="hidden" name="formName" value="makeofferForm">
-<input type="hidden" name="itemSKU" value="1986-Fleer-Basketball-BASE-BGS7.5-57">
-<div class="mb-3">
-<label for="makeOfferName" class="form-label">Name</label>
-<input type="text" class="form-control" id="makeOfferName" name="Name" placeholder="Enter name" required>
-</div>
-<div class="mb-3">
-<label for="makeOfferEmail" class="form-label">Email</label>
-<input type="email" class="form-control" id="makeOfferEmail" name="Email" placeholder="Enter email" required>
-</div>
-<div class="mb-3">
-<label for="makeOfferPhone" class="form-label">Phone</label>
-<input type="tel" class="form-control" id="makeOfferPhone" name="Phone" placeholder="Enter phone number 000-000-0000" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
-</div>
-<div class="mb-3">
-<label class="form-label">Preferred Contact Method</label><br>
-<div class="form-check">
-<input class="form-check-input" type="radio" name="Method" id="makeOfferMethodEmail" value="Email">
-<label class="form-check-label" for="makeOfferMethodEmail">Email</label>
-</div>
-<div class="form-check">
-<input class="form-check-input" type="radio" name="Method" id="makeOfferMethodPhone" value="Phone">
-<label class="form-check-label" for="makeOfferMethodPhone">Phone</label>
-</div>
-<div class="form-check">
-<input class="form-check-input" type="radio" name="Method" id="makeOfferMethodText" value="Text">
-<label class="form-check-label" for="makeOfferMethodText">Text</label>
-</div>
-</div>
-<div class="input-group mb-3">
-<span class="input-group-text">USD $</span>
-<input type="text" class="form-control" id="offerAmount" name="Offer" placeholder="Enter your offer amount" pattern="\d+(\.\d{2})?" required>
-</div>
-<div class="mb-3">
-<label for="makeOfferMessage" class="form-label">Message (Optional)</label>
-<textarea class="form-control" id="makeOfferMessage" name="Message" rows="3" placeholder="Enter your short message"></textarea>
-</div>
-
-<div class="modal-footer">
-<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCEL</button>
-<button id="makeoffer-btn" class="btn btn-primary" type="submit">SUBMIT OFFER</button>
-</div>
-</form>        
-</div>
-</div>
-</div>
-</div>
-
-<div class="modal fade" id="submittedOfferModel" tabindex="-1">
-<div class="modal-dialog modal-dialog-centered">
-<div class="modal-content text-light bg-dark">
-<div class="modal-header">
-<h5 class="modal-title fs-5" style="color: #d9b310;" id="submittedOfferLabel">Offer Received</h5>
-</div>
-<div class="modal-body">
-<p>Your offer was sent successfully!</p>
-<p>We will contact you within the next 24-48 hours.</p>
-</div>
-<div class="modal-footer">
-<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">EXIT</button>
-</div>
-</div>
-</div>
-</div>
-
-<div class="modal fade" id="contactSuccessModel" tabindex="-1">
-<div class="modal-dialog modal-dialog-centered">
-<div class="modal-content text-light bg-dark">
-<div class="modal-header">
-<h5 class="modal-title fs-5" style="color: #d9b310;" id="Label">Successful Submission</h5>
-</div>
-<div class="modal-body">
-<p>We have received your message and will contact you within the next 24-48 hours.</p>
-<p>Thank You!</p>
-</div>
-<div class="modal-footer">
-<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">EXIT</button>
-</div>
-</div>
-</div>
-</div>
-<!-- END Modals -->
-
-
-<!-- Start Feature Card Listing -->
-<div class="container mb-5">
-<div class="row">
-<div class="col-md-8 col-lg-6 order-lg-last d-flex justify-content-end mx-auto">
-<div class="container" style="background-color: black;">
-<div class="row">
-<div class="col">
-<img class="img-fluid" src="https://i.ebayimg.com/00/s/NjQzWDQzOA==/z/gcgAAOSw2qZlxEcn/$_57.PNG?set_id=880000500F" alt="">
-</div>
-<div class="col">
-<img class="img-fluid" src="https://i.ebayimg.com/00/s/NjQzWDQzMw==/z/-5YAAOSwkNRlxEcn/$_57.PNG?set_id=880000500F" alt="">
-</div>
-</div>
-</div>
-</div>
-<div class="mx-auto col-md-6 col-lg-6 d-flex align-items-top">
-<div class="text-align-left">
-<span class="fs-1"><b>Featured</b> [ Card ]</span><br>
-<span class="fs-3" style="font-weight: 400;">Michael Jordan (RC)</span><br>
-<span class="fs-5">1986-87 Fleer Basketball Premier #57</span><br><br>
-<p style="text-align: justify;">
-This is card number 57 of 132 from Fleer's now iconic return to the Basketball Card
-Industry in 1986 after 25-year hiatus. From 1986-1989, Fleer was the only major card
-company that produced basketball cards and marks what is considered in The Sports
-Card Collecting Industry to be the beginning of the modern era of Basketball Cards.
-</p>
-<div class="card-attributes mb-3">
-<a type="button" class="btn btn-sm btn-primary"
-style="font-size: 12px !important; padding: 1;" href="https://www.beckett.com/grading/card-lookup?item_type=BGS&item_id=16145821&submit=Submit&submit=Submit" target="_blank" title="Click to see Authority Certification and Subgrades">
-BGS 7.5 Near Mint +
-</a>
-<button class="btn btn-sm btn-default feature-btn" style="font-size: 12px !important; padding: 2; border: 1px solid black; border-radius: 0%;">
-BASE SET
-</button>
-<button class="btn btn-sm btn-default feature-btn" style="font-size: 12px !important; padding: 2; border: 1px solid black; border-radius: 0%;">
-<!-- <button type="button" class="btn btn-sm btn-warning feature-btn" style="font-size: 12px !important; padding: 2; color: black; border-radius: 0%;"> -->
-ROOKIE CARD
-</button>
-<button class="btn btn-sm btn-default feature-btn" style="font-size: 12px !important; padding: 2; border: 1px solid black; border-radius: 0%;">
-
-<!-- <button type="button" class="btn btn-sm btn-warning feature-btn" style="font-size: 12px !important; padding: 2; color: black; border-radius: 0%;"> -->
-HALL OF FAME
-</button>
-</div>
-<dd>
-<span class="fs-6" style="font-weight: 500;">USD $6500.00 [ + $125 shipping and handling ]</span>
-</dd> 
-<dl class="row">
-<dd class="col-sm-9 d-flex align-items-center">
-<button class="btn btn-primary btn-success btn-sm me-2 w-50" 
-style="font-size: 12px !important;" 
-type="button" 
-id="buyNowDropdown" 
-data-bs-toggle="dropdown"
-title="Select A Purchase Option">
-BUY NOW
-</button>
-<ul class="dropdown-menu dropdown-menu-bottom" 
-aria-labelledby="buyNowDropdown" 
-style="width: 225px; background-color: black;">
-<li>
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-<input type="hidden" name="cmd" value="_s-xclick" />
-<input type="hidden" name="hosted_button_id" value="AAB5TTR67ZPQ4" />
-<input type="hidden" name="currency_code" value="USD" />
-<div class="d-flex justify-content-center">
-<input type="image" src="assets/img/gsc/buy_paypal2.png" width="30%" alt="PayPal" style="background-color: black;" />
-</div>
-</form>
-</li>
-<hr style="border-color: #d3d3d3; border-width: 1px;">
-<li>
-<a class="btn dropdown-item no-hover-effect update-dropdown-content" 
-href="https://www.ebay.com/itm/235422590318?itmmeta=01HQS94GC4P768AME99349HXX0&hash=item36d047a56e:g:gcgAAOSw2qZlxEcn?mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339025312&customid=&toolid=10001&mkevt=1" 
-style="background-color: black;" 
-target="_blank" 
-data-target-selector="#buyNowDropdown" 
-data-title="Select A Purchase Option" 
-data-content="<button type='button' class='btn btn-primary'>Click Me</button>" 
-data-bs-trigger="hover"
-data-bs-html="true">
-<img src="assets/img/gsc/buy_ebay2.png" width="25%" alt="eBay" style="background-color: black;">
-</a>
-</li>
-</ul>      
-<button class="btn btn-primary btn-dark btn-sm me-2 w-50" 
-style="font-size: 12px !important;" 
-type="button" 
-data-bs-toggle="modal" 
-data-bs-target="#makeOfferModel" 
-aria-expanded="false">
-MAKE OFFER
-</button>
-</dd>
-</dl>
-</div>
-</div>
-</div>
-</div>
-<!-- Stop Feature Card Listing -->
-
-
-</div>
-<!--END MAIN CONTAINER-->
-
+    <div class="image-container">
+        <a href="https://www.ebay.com/str/geeksportscards/GRADED-SLABS/_i.html?store_cat=41405496010&_trksid=p4429486.m3561.l161211" target="_blank"><img src="assets/img/gsc/block1.png" alt="Image 1"></a>
+        <a href="https://www.ebay.com/str/geeksportscards/Jordan-Collection/_i.html?store_cat=41408842010&_trksid=p4429486.m3561.l161211" target="_blank"><img src="assets/img/gsc/block2.png" alt="Image 2"></a>
+        <a href="https://www.ebay.com/str/geeksportscards/1986-Fleer-Premier/_i.html?store_cat=41405119010&_trksid=p4429486.m3561.l161211" target="_blank"><img src="assets/img/gsc/block3.png" alt="Image 3"></a>
+    </div>
 <!-- Start Footer -->
 <footer id="footer">
-<div class="container">
-<div class="row">
-<!-- ABOUT US -->
-<div class="col-md-4 pt-5 pb-3">
-<h2 class="fs-4 border-bottom pb-3 border-light logo" style="color: #d9b310;">ABOUT US</h2>
-<ul class="list-unstyled text-light footer-link-list">
-<li class="fs-2">
-[ Geek Sports Cards ]
-</li>
-<li class="gsc-footer-text" style="text-align:left;">
-Geek Sports Cards is an online space dedicated to enthusiasts and collectors of sports cards and memorabilia. We offer a wide range of sports related trading cards and collectables for sale.
-</li>
-<li class="gsc-footer-text">
-<i class="fas fa-map-marker-alt fa-fw"></i>
-Denver, Colorado &amp; Las Vegas, Nevada
-</li>
-<li class="gsc-footer-text">
-<i class="fa fa-phone fa-fw"></i>
-<a class="text-decoration-none gsc-footer-text" href="tel:720-588-3379">(720) 588-3379</a>
-</li>
-<li class="gsc-footer-text">
-<i class="fa fa-envelope fa-fw"></i>
-<a class="text-decoration-none gsc-footer-text" href="mailto:info@geeksportscards.com">info@geeksportscards.com</a>
-</li>
-</ul>
-</div>
-<!-- END ABOUT US -->
-
-<!-- QUICK LINKS -->
-<div class="col-md-4 pt-5 pb-3">
-<h2 class="fs-4 text-light border-bottom pb-3 border-light">QUICK LINKS</h2>
-<div class="row pb-4">
-<div class="col-sm-6">
-<ul class="list-unstyled before-arrow">
-<li>
-<a class="text-decoration-none gsc-footer-text" href="https://www.ebay.com/sch/i.html?_dkr=1&iconV2Request=true&_blrs=recall_filtering&_ssn=geeksportscards-dot-com&store_name=geeksportscards&_sop=1&_oac=1" target="_blank"><i class="fa fa-solid fa-chevron-right fa-xs"></i> Ebay Auctions</a>
-</li>
-<li>
-<a class="text-decoration-none gsc-footer-text" href="https://www.ebay.com/sch/i.html?_dkr=1&iconV2Request=true&_blrs=recall_filtering&_ssn=geeksportscards-dot-com&store_name=geeksportscards&_sop=1&_oac=1&LH_BIN=1" target="_blank"><i class="fa fa-solid fa-chevron-right fa-xs"></i> Ebay Buy Now</a>
-</li>
-<!-- <li>
-<a class="text-decoration-none gsc-footer-text" href="#"><i class="fa fa-solid fa-chevron-right fa-xs"></i> Auctions</a>
-</li>
-<li>
-<a class="text-decoration-none gsc-footer-text" href="#"><i class="fa fa-solid fa-chevron-right fa-xs"></i> Buy It Now</a>
-</li> -->
-</ul>
-</div>
-<!-- <div class="col-sm-6 text-align-left pb-4">
-<ul class="list-unstyled before-arrow">
-<li>
-<a class="text-decoration-none gsc-footer-text" href="#"><i class="fa fa-solid fa-chevron-right fa-xs"></i> link</a>
-</li>
-<li>
-<a class="text-decoration-none gsc-footer-text" href="#"><i class="fa fa-solid fa-chevron-right fa-xs"></i> link</a>
-</li>
-<li>
-<a class="text-decoration-none gsc-footer-text" href="#"><i class="fa fa-solid fa-chevron-right fa-xs"></i> link</a>
-</li>
-<li>
-<a class="text-decoration-none gsc-footer-text" href="#"><i class="fa fa-solid fa-chevron-right fa-xs"></i> link</a>
-</li>
-</ul>
-</div> -->
-</div>
-<h2 class="fs-5 text-light border-bottom pb-1 border-light">STAY CONNECTED</h2>
-<div>
-<ul class="list-inline text-left footer-icons">
-<li class="list-inline-item border border-light rounded-circle text-center">
-<a class="text-light text-decoration-none" href="https://www.ebay.com/usr/geeksportscards-dot-com" target="_blank"><i class="fab fa-ebay fa-lg fa-fw"></i></a>
-</li>
-<li class="list-inline-item border border-light rounded-circle text-center">
-<a class="text-light text-decoration-none" href="https://www.linkedin.com/company/96603901" target="_blank"><i class="fab fa-linkedin fa-lg fa-fw"></i></a>
-</li>
-</ul>
-</div>
-</div>
-<!-- END QUICK LINKS -->
-
-<!-- CONTACT US -->
-<div class="col-md-4 pt-5 pb-3">
-<h2 class="fs-4 text-light border-bottom pb-3 border-light">CONTACT US</h2>
-<div class="mb-3">
-<form action="https://script.google.com/macros/s/AKfycbxucWF0ePWF4IMdnh_BLs9GMfmEFEU_D2YRMlB1yVqBW4-A6Q-kJRKIXvJbatylg5am2g/exec" id="contactForm" method="POST">  
-<input type="hidden" name="formName" value="contactForm">
-<div class="form-check form-check-inline">
-<input class="form-check-input" type="radio" name="Reason" id="contactFormReason1" value="General Question">
-<label class="form-check-label text-light" for="contactFormReason1">General Question</label>
-</div>
-<div class="form-check form-check-inline">
-<input class="form-check-input" type="radio" name="Reason" id="contactFormReason2" value="Order Support">
-<label class="form-check-label text-light" for="contactFormReason2">Order Support</label>
-</div>
-<div class="mb-3">
-<label for="makeOfferName" class="form-label text-light">Name</label>
-<input type="text"  class="form-control bg-dark border-light text-light" id="contactFormName" name="Name" placeholder="Enter name" required>
-</div>
-<div class="mb-3">
-<label for="makeOfferEmail" class="form-label text-light">Email</label>
-<input type="email"  class="form-control bg-dark border-light text-light" id="contactFormEmail" name="Email" placeholder="Enter email" required>
-</div> 
-<div class="form-group mb-3">
-<label for="makeOfferMessage" class="form-label text-light">Message</label>
-<textarea class="form-control bg-dark border-light text-light" id="contactFormMessage" name="Message" rows="3" placeholder="Enter your short message"></textarea>
-</div>
-<div class="d-flex justify-content-end">
-<button id='contactFormSubmit' class="btn" style="background-color: #d9b310; color: black; height: 33px;" type="submit">SUBMIT</button>
-</div>
-</form>
-</div>
-</div>
-<!-- END CONTACT US -->
-</div>
-<!-- END ROW -->
-</div>
-<!-- END CONTAINER -->
-<div class="w-100 bg-dark py-3">
-<div class="container">
-<div class="row pt-2">
-<div class="col-12">
-<p class="text-center text-light" style="font-size: 12px;">Copyright © 2024 Geek Sports Cards | <a class="text-decoration-none" href="#" style="color: #d9b310; font-size: 12px;">Privacy Policy</a> | <a class="text-decoration-none" href="#" style="color: #d9b310; font-size: 12px;">Disclosures</a>
-</p>
-<p class="text-center text-light" style="font-size: 12px;">A Geek Incorporated Company</p>
-</div>
-</div>
-</div>
-</div>
-<!-- FOOTER COPYRIGHT INFO END -->
-</footer>
-<!-- End Footer -->
-
-<!--Begin Scripts Links-->
-
-<!-- Include Bootstrap JavaScript -->
-<script crossorigin="anonymous" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
-</script>
-
-<!-- Include jQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-<!--GSC Scripts File-->
-<script src="assets/js/gsc-scripts.js"></script>
-
-<!--End Scripts Links-->
-
+    <div class="w-100 bg-dark py-3">
+    <div class="container">
+    <div class="row pt-2">
+    <div class="col-12">
+    <p class="text-center text-light" style="font-size: 12px;">Copyright © 2024 Geek Sports Cards
+    </div>
+    </div>
+    </div>
+    </div>
+    <!-- FOOTER COPYRIGHT INFO END -->
+    </footer>
+    <!-- End Footer -->
 </body>
 </html>

@@ -46,15 +46,25 @@ body, ul, li, p, a, label, input, div {
   font-size: 20px !important;
 }
 
-#logo-written {
+#logo-written1 {
   font-family: "Bebas Neue", sans-serif;
   font-size: 40px;
-  color: #1d2731;
+  color: white;
   font-weight: 300;
   position: relative;
   bottom: 0;
   font-stretch: ultra-condensed !important;
   }
+
+  #logo-written2 {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 40px;
+    color: #d9b310;
+    font-weight: 300;
+    position: relative;
+    bottom: 0;
+    font-stretch: ultra-condensed !important;
+    }
 
 .form-control {
   outline: none;
@@ -81,11 +91,11 @@ body, ul, li, p, a, label, input, div {
 #navLink {
   font-family: "Bebas Neue", sans-serif !important;
   font-size: 20px !important;
-  color: #1d2731;
+  color: #d9b310;
 }
 
 #navLink:hover {
-  color: #d9b310; /* Hover color */
+  color: white; /* Hover color */
 }
 
 #nav-btn {
@@ -127,9 +137,6 @@ body, ul, li, p, a, label, input, div {
 
 
 
-
-
-
 .popover {
   border-radius: 0;
 }
@@ -146,13 +153,6 @@ body, ul, li, p, a, label, input, div {
   color: black;
   font-size: 11px;
 }
-
-
-
-
-
-
-
 
 
 /* Footer */
