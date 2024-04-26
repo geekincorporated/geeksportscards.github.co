@@ -1,103 +1,776 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Geek Sports Cards</title>
-    <meta name="author" content="GEEKSPORTSCARDS-DOT-COM">
-    <meta name="description" content="Sports Cards Collectables and Memorabilia">
-    <meta name="keywords" content="geeksportscards-dot-com, Sports Trading Cards, NBA, MLB, NHL, NFL, Fleer, Hoops, 1986, 1986-87, 1987, 1987-88, 1988, 1988-89, 1989, 1989-90, 1990, 1990-91, Set, LOT, Basketball, Football, Baseball, Hockey, Premier, Sticker, Insert, Draft, Rookie Card, RC, HOF, Hall Of Fame, NM, Near-Mint, NM-MT, Near Mint-Mint, MT, Mint, EX-MT, Excellent-Mint, GEM-MT, Gem-Mint, Condition, Slab, Graded, PSA, BSG, CSG, CGC, eBay, Auction, Buy It Now, Memorabilia, Collectables, autographs">
-<!-- GSC Favicon -->
-<link href="assets/img/gsc/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
-<link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet"/>
-<!--GSC CSS-->
-<link href="assets/css/gsc/gsc_site.css" rel="stylesheet"/>
-<link href="assets/css/gsc/gsc_font.css" rel="stylesheet"/>
-<!--Font Awsome Library-->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"/>
-<link href="assets/css/fontawesome.min.css" rel="stylesheet"/>
-<!--Google Fonts: Bebas Neue-->
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&amp;family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap" rel="stylesheet"/>
-    <style>
-        body, html {
-            height: 100%;
-            margin: 0;
-            position: relative;
-        }
-        .centered-image {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        .image-container {
-            display: flex;
-            justify-content: center;
-        }
-        .image-container img {
-            max-width: 100%;
-            margin: 0 10px; /* Adjust the margin as needed */
-        }
+    <title>GEEK SPORTS CARDS - GEEKSPORTSCARDS-DOT-COM</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Include Font Awesome CSS via CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
 
-    </style>
+
+<style>
+/* Style for the "Go to Top" button */
+#goToTopBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 14px;
+  border: none;
+  outline: none;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  padding: 5px;
+}
+
+#goToTopBtn:hover {
+  background-color: #d9b310;
+}
+</style>
+
 
 </head>
+
 <body>
-
-<!--TOP BANNER-->
-<nav id="top-banner" class="navbar navbar-expand-lg d-none d-lg-block mb-1">
-    <div class="container-fluid">
-    <div class="w-100 d-flex justify-content-between">
-    <!--empty div-->
-    <div></div>
-    <!--BANNER MESSAGE-->
-    <div>
-    <a class="navbar-sm-brand" id="Banner-Message" href="#"> WE BUY ALL SPORTS CARDS BASKETBALL BASEBALL FOOTBALL AND MORE</a>
-    </div>
-    <!--END BANNER MESSAGE-->
-    <!--empty div-->
-    <div></div>
-    </div>
-    </div>
-    </nav>
-<!--END TOP BANNER-->
-
-<!--HEADER-->  
-<div class="w-100 bg-dark">                                                                                          
-    <div class="container bg-dark">
-        <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid">
-            <a class="navbar-brand align-self-center d-flex justify-content-start" href="index.html">
-            <span id="logo-written1">Geek</span><span id="logo-written2">Sports</span><span id="logo-written1">Cards</span>
-            </a>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light gsc-bg-dark">
+        <div class="container px-4 px-lg-5">
+            <span class="gsc-navbar-brand1">GEEK<span class="gsc-navbar-brand2">SPORTS</span><span
+                    class="gsc-navbar-brand1"></span>CARDS</span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
+                    <!-- <li class="nav-item"><a class="nav-link" href="#!">About</a></li> -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Buy</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li>
+                                <a class="dropdown-item" href="https://ebay.us/wsKqcT" target="_blank">
+                                    <i class="fab fa-ebay" style="font-size: 34px; vertical-align: middle;"></i>
+                                </a>
+                            </li>
+                            <!-- <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li><a class="dropdown-item" href="#!">Buy Now</a></li>
+                            <li><a class="dropdown-item" href="#!">Auctions</a></li> -->
+                        </ul>
+                    </li>
+                    <!-- <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Sell</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="https://webuyallcards.com"
+                                    target="_blank">WeBuyAllCards.com</a></li>
+                        </ul>
+                    </li> -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Connect With Us</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <!-- <li class="pt-2 pb-3">
+                                <a class="dropdown-item" href="#" target="_blank" style="display: inline;">
+                                    <i class="bi bi-facebook"
+                                        style="color: black; margin-left: 2px; margin-right: 10px; display: inline;"></i>Facebook
+                                    Page
+                                </a>
+                            </li>
+                            <li class="pb-3">
+                                <a class="dropdown-item" href="#" target="_blank" style="display: inline;">
+                                    <i class="bi bi-slack"
+                                        style="color: black; margin-left: 2px; margin-right: 10px; display: inline;"></i>Slack
+                                    Chat
+                                </a>
+                            </li> -->
+                            <li class="pb-3">
+                                <a class="dropdown-item"
+                                    href="https://www.linkedin.com/company/geek-sports-cards-and-memorablia"
+                                    target="_blank" style="display: inline;">
+                                    <i class="bi bi-linkedin"
+                                        style="color: black; margin-left: 2px; margin-right: 10px; display: inline;"></i>LinkedIn
+                                    Page
+                                </a>
+                            </li>
+                            <li class="pb-3">
+                                <a class="dropdown-item" href="mailto:info@geeksportscards.com" target="_blank" style="display: inline;">
+                                    <i class="bi bi-envelope-fill"
+                                        style="color: black; margin-left: 2px; margin-right: 10px; display: inline;"></i>info@geeksportscards.com
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
-        </nav>
-    </div>
-    </div>
-<!--END HEADER-->
+        </div>
+    </nav>
 
-    <div class="image-container">
-        <a href="https://www.ebay.com/str/geeksportscards/GRADED-SLABS/_i.html?store_cat=41405496010&_trksid=p4429486.m3561.l161211" target="_blank"><img src="assets/img/gsc/block1.png" alt="Image 1"></a>
-        <a href="https://www.ebay.com/str/geeksportscards/Jordan-Collection/_i.html?store_cat=41408842010&_trksid=p4429486.m3561.l161211" target="_blank"><img src="assets/img/gsc/block2.png" alt="Image 2"></a>
-        <a href="https://www.ebay.com/str/geeksportscards/1986-Fleer-Premier/_i.html?store_cat=41405119010&_trksid=p4429486.m3561.l161211" target="_blank"><img src="assets/img/gsc/block3.png" alt="Image 3"></a>
-    </div>
-<!-- Start Footer -->
-<footer id="footer">
-    <div class="w-100 bg-dark py-3">
-    <div class="container">
-    <div class="row pt-2">
-    <div class="col-12">
-    <p class="text-center text-light" style="font-size: 12px;">Copyright © 2024 Geek Sports Cards
-    </div>
-    </div>
-    </div>
-    </div>
-    <!-- FOOTER COPYRIGHT INFO END -->
+    <!-- Header-->
+    <!-- <header class="gsc-bg-red py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="text-center text-white">
+                <h1 class="display-4 fw-bolder">Shop in style</h1>
+                <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
+            </div>
+        </div>
+    </header> -->
+
+
+
+
+
+    <!-- Section-->
+
+    <section class="py-5">
+        <div class="container px-4 px-lg-5 mt-5">
+
+
+            <input type="text" id="searchInput" placeholder="Search...">
+            <button onclick="search()">Search</button>
+
+            <div style="margin-bottom: 30px;" id="totalItems"></div>
+
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" id="results"></div>
+
+        </div>
+
+    </section>
+
+    <!-- Start Footer -->
+    <footer id="footer">
+        <div class="container">
+            <div class="row">
+                <!-- ABOUT US -->
+                <div class="col-md-4 pt-5 pb-3">
+                    <h2 class="fs-4 border-bottom pb-3 border-light logo" style="color: #d9b310;">ABOUT US</h2>
+                    <ul class="list-unstyled text-light footer-link-list">
+                        <li class="fs-5">
+                            Ebay Top-Rated Seller
+                        </li>
+                        <li class="gsc-footer-text">
+                            <p>One of eBay's most reputable sellers. Consistently delivering outstanding customer
+                                service.</p>
+                            <p>geeksportscards-dot-com <i class="fa fa-sharp fa-solid fa-star fa-2xs"
+                                    style="color: #63E6BE;"></i><br>
+                                Positive Feedback: 100% (last 12 months)<br>
+                                <small class="text-muted">Updated every 30 days</small>
+                            </p>
+                        </li>
+                        <li class="gsc-footer-text">
+                        <i class="fas fa-map-marker-alt fa-fw"></i>
+                        Denver, Colorado & Las Vegas, Nevada
+                        </li>
+                        <!-- <li class="gsc-footer-text">
+                        <i class="fa fa-phone fa-fw"></i>
+                        <a class="text-decoration-none gsc-footer-text" href="tel:720-588-3379">(720) 588-3379</a>
+                        </li>
+                        <li class="gsc-footer-text">
+                        <i class="fa fa-envelope fa-fw"></i>
+                        <a class="text-decoration-none gsc-footer-text"
+                        href="mailto:info@geeksportscards.com">info@geeksportscards.com</a>
+                        </li> -->
+                    </ul>
+                </div>
+                <!-- END ABOUT US -->
+
+                <!-- QUICK LINKS -->
+                <div class="col-md-4 pt-5 pb-3">
+                    <h2 class="fs-4 text-light border-bottom pb-3 border-light">QUICK LINKS</h2>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <ul class="list-unstyled before-arrow">
+                                <!-- <li>
+                                    <a class="text-decoration-none gsc-footer-text" href="#"><i
+                                            class="fa fa-solid fa-chevron-right fa-xs"></i> FAQs</a>
+                                </li>
+                                <li>
+                                    <a class="text-decoration-none gsc-footer-text" href="#"><i
+                                            class="fa fa-solid fa-chevron-right fa-xs"></i> Shipping Info</a>
+                                </li>
+                                <li>
+                                    <a class="text-decoration-none gsc-footer-text" href="#"><i
+                                            class="fa fa-solid fa-chevron-right fa-xs"></i> Auctions</a>
+                                </li> -->
+                                <li>
+                                    <a class="text-decoration-none gsc-footer-text" href="#"><i
+                                            class="fa fa-solid fa-chevron-right fa-xs"></i> Ebay Store</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- <div class="col-sm-6 text-align-left pb-1">
+                            <ul class="list-unstyled before-arrow">
+                                <li>
+                                    <a class="text-decoration-none gsc-footer-text" href="#"><i
+                                            class="fa fa-solid fa-chevron-right fa-xs"></i> link</a>
+                                </li>
+                                <li>
+                                    <a class="text-decoration-none gsc-footer-text" href="#"><i
+                                            class="fa fa-solid fa-chevron-right fa-xs"></i> link</a>
+                                </li>
+                                <li>
+                                    <a class="text-decoration-none gsc-footer-text" href="#"><i
+                                            class="fa fa-solid fa-chevron-right fa-xs"></i> link</a>
+                                </li>
+                                <li>
+                                    <a class="text-decoration-none gsc-footer-text" href="#"><i
+                                            class="fa fa-solid fa-chevron-right fa-xs"></i> link</a>
+                                </li>
+                            </ul>
+                        </div> -->
+                        <!-- <div class="pb-4">
+                            <span class="text-light fs-5" style="font-family: Bebas Neue;">WeBuyAllCards</span><br>
+                            <span class="text-light fs-5" style="font-family: Bebas Neue;">CardRank</span>
+                        </div> -->
+                    </div>
+                    <!-- <h2 class="fs-5 text-light border-bottom pb-3 border-light">STAY CONNECTED</h2>
+                    <div>
+                        <ul class="list-inline text-left footer-icons">
+                            <li class="list-inline-item border border-light rounded-circle text-center">
+                                <a class="text-light text-decoration-none"
+                                    href="https://www.ebay.com/usr/geeksportscards-dot-com" target="_blank"><i
+                                        class="fab fa-ebay fa-lg fa-fw"></i></a>
+                            </li>
+                            <li class="list-inline-item border border-light rounded-circle text-center">
+                                <a class="text-light text-decoration-none"
+                                    href="https://www.linkedin.com/company/96603901" target="_blank"><i
+                                        class="fab fa-linkedin fa-lg fa-fw"></i></a>
+                            </li>
+
+                            <li class="list-inline-item border border-light rounded-circle text-center">
+                                <a class="text-light text-decoration-none"
+                                    href="https://www.linkedin.com/company/96603901" target="_blank"><i
+                                        class="fab fa-slack fa-lg fa-fw"></i></a>
+                            </li>
+
+                            <li class="list-inline-item border border-light rounded-circle text-center">
+                                <a class="text-light text-decoration-none"
+                                    href="https://www.linkedin.com/company/96603901" target="_blank"><i
+                                        class="fab fa-facebook fa-lg fa-fw"></i></a>
+                            </li>
+
+                            <li class="list-inline-item border border-light rounded-circle text-center">
+                                <a class="text-light text-decoration-none"
+                                    href="https://www.linkedin.com/company/96603901" target="_blank"><i
+                                        class="fab fa-youtube fa-lg fa-fw"></i></a>
+                            </li>
+
+                            <li class="list-inline-item border border-light rounded-circle text-center">
+                                <a class="text-light text-decoration-none"
+                                    href="https://www.linkedin.com/company/96603901" target="_blank"><i
+                                        class="fab fa-tiktok fa-lg fa-fw"></i></a>
+                            </li>
+
+                            <li class="list-inline-item border border-light rounded-circle text-center">
+                                <a class="text-light text-decoration-none"
+                                    href="https://www.linkedin.com/company/96603901" target="_blank"><i
+                                        class="fab fa-instagram fa-lg fa-fw"></i></a>
+                            </li>
+
+                            <li class="list-inline-item border border-light rounded-circle text-center">
+                                <a class="text-light text-decoration-none"
+                                    href="https://www.linkedin.com/company/96603901" target="_blank"><i
+                                        class="fa fa-envelope fa-lg fa-fw"></i></a>
+                            </li>
+
+                        </ul>
+                    </div> -->
+                </div>
+                <!-- END QUICK LINKS -->
+                <!-- CONTACT US -->
+                <div class="col-md-4 pt-5 pb-3">
+                    <h2 class="fs-4 text-light border-bottom pb-3 border-light">STAY CONNECTED</h2>
+                    <div class="mb-3">
+
+                        <div>
+                            <ul class="list-inline text-left footer-icons">
+                                <li class="list-inline-item border border-light rounded-circle text-center">
+                                    <a class="text-light text-decoration-none"
+                                        href="https://www.ebay.com/usr/geeksportscards-dot-com" target="_blank"><i
+                                            class="fab fa-ebay fa-lg fa-fw"></i></a>
+                                </li>
+                                <li class="list-inline-item border border-light rounded-circle text-center">
+                                    <a class="text-light text-decoration-none"
+                                        href="https://www.linkedin.com/company/96603901" target="_blank"><i
+                                            class="fab fa-linkedin fa-lg fa-fw"></i></a>
+                                </li>
+    
+                                <!-- <li class="list-inline-item border border-light rounded-circle text-center">
+                                    <a class="text-light text-decoration-none"
+                                        href="https://www.linkedin.com/company/96603901" target="_blank"><i
+                                            class="fab fa-slack fa-lg fa-fw"></i></a>
+                                </li>
+    
+                                <li class="list-inline-item border border-light rounded-circle text-center">
+                                    <a class="text-light text-decoration-none"
+                                        href="https://www.linkedin.com/company/96603901" target="_blank"><i
+                                            class="fab fa-facebook fa-lg fa-fw"></i></a>
+                                </li>
+    
+                                <li class="list-inline-item border border-light rounded-circle text-center">
+                                    <a class="text-light text-decoration-none"
+                                        href="https://www.linkedin.com/company/96603901" target="_blank"><i
+                                            class="fab fa-youtube fa-lg fa-fw"></i></a>
+                                </li>
+    
+                                <li class="list-inline-item border border-light rounded-circle text-center">
+                                    <a class="text-light text-decoration-none"
+                                        href="https://www.linkedin.com/company/96603901" target="_blank"><i
+                                            class="fab fa-tiktok fa-lg fa-fw"></i></a>
+                                </li>
+    
+                                <li class="list-inline-item border border-light rounded-circle text-center">
+                                    <a class="text-light text-decoration-none"
+                                        href="https://www.linkedin.com/company/96603901" target="_blank"><i
+                                            class="fab fa-instagram fa-lg fa-fw"></i></a>
+                                </li> -->
+    
+                                <li class="list-inline-item border border-light rounded-circle text-center">
+                                    <a class="text-light text-decoration-none"
+                                        href="mailto:info@geeksportscards.com" target="_blank"><i
+                                            class="fa fa-envelope fa-lg fa-fw"></i></a>
+                                </li>
+    
+                            </ul>
+                        </div>
+
+
+                        <!-- <form
+                            action="https://script.google.com/macros/s/AKfycbxucWF0ePWF4IMdnh_BLs9GMfmEFEU_D2YRMlB1yVqBW4-A6Q-kJRKIXvJbatylg5am2g/exec"
+                            id="contactForm" method="POST">
+                            <input type="hidden" name="formName" value="contactForm">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="Reason" id="contactFormReason1"
+                                    value="General Question">
+                                <label class="form-check-label text-light" for="contactFormReason1">General
+                                    Question</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="Reason" id="contactFormReason2"
+                                    value="Order Support">
+                                <label class="form-check-label text-light" for="contactFormReason2">Order
+                                    Support</label>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label text-light">Name</label>
+                                <input type="text" class="form-control bg-dark border-light text-light"
+                                    id="contactFormName" name="Name" placeholder="Enter name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label text-light">Email</label>
+                                <input type="email" class="form-control bg-dark border-light text-light"
+                                    id="contactFormEmail" name="Email" placeholder="Enter email" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="form-label text-light">Message</label>
+                                <textarea class="form-control bg-dark border-light text-light" id="contactFormMessage"
+                                    name="Message" rows="3" placeholder="Enter your short message"></textarea>
+                            </div>
+                            <div class="d-flex justify-content-end">
+                                <button id='contactFormSubmit' class="button"
+                                    style="background-color: #d9b310; color: black;" type="submit">Submit</button>
+                            </div>
+                        </form> -->
+                    </div>
+                </div>
+                <!-- END CONTACT US -->
+            </div>
+            <!-- END ROW -->
+        </div>
+        <!-- END CONTAINER -->
+        <div class="w-100 bg-dark py-3">
+            <div class="container">
+                <div class="row pt-2">
+                    <div class="col-12">
+                        <p class="text-center text-light" style="font-size: 12px;">Copyright © 2024 Geek Sports Cards
+                            <!-- <a class="text-decoration-none" href="#" style="color: #d9b310; font-size: 12px;">Privacy
+                                Policy</a> | <a class="text-decoration-none" href="#"
+                                style="color: #d9b310; font-size: 12px;">Disclosures</a> -->
+                        </p>
+                        <p class="text-center text-light" style="font-size: 12px;">A Geek Incorporated Company</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FOOTER COPYRIGHT INFO END -->
     </footer>
     <!-- End Footer -->
+
+
+    <!-- "Go to Top" button -->
+    <button onclick="goToTop()" id="goToTopBtn" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+
+
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+    <!-- tooltip jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        // Function to show/hide the "Go to Top" button based on scroll position
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            var goToTopBtn = document.getElementById("goToTopBtn");
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                goToTopBtn.style.display = "block";
+            } else {
+                goToTopBtn.style.display = "none";
+            }
+        }
+
+        // Function to scroll to the top when the "Go to Top" button is clicked
+        function goToTop() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+
+    <script>
+        var allItems = [];
+        var currentPage = 1;
+        var itemsPerPage = 12;
+        var totalItems = 0;
+
+        window.onload = function () {
+            loadJSON(function (data) {
+                allItems = Object.values(data);
+                allItems.sort(function (a, b) {
+                    return b["Watch Count"] - a["Watch Count"]; // Sort by Watch Count in descending order
+                });
+                totalItems = allItems.length;
+                loadPage(currentPage);
+            });
+        };
+
+        // Function to load JSON data from a file
+        function loadJSON(callback) {
+            var xobj = new XMLHttpRequest();
+            xobj.overrideMimeType("application/json");
+            xobj.open('GET', 'data/ebay_listings.json', true);
+            xobj.onreadystatechange = function () {
+                if (xobj.readyState == 4 && xobj.status == 200) {
+                    callback(JSON.parse(xobj.responseText).items); // Access items property
+                }
+            };
+            xobj.send(null);
+        }
+
+        // Function to load items for the current page
+        function loadPage(page) {
+            var startIndex = (page - 1) * itemsPerPage;
+            var endIndex = Math.min(startIndex + itemsPerPage, totalItems);
+            var itemsToShow = allItems.slice(startIndex, endIndex);
+            displayItems(itemsToShow, startIndex, endIndex);
+        }
+
+        // Function to display items
+        function displayItems(items, startIndex, endIndex) {
+            var resultsContainer = document.getElementById('results');
+            resultsContainer.innerHTML = '';
+
+            var totalItemsDiv = document.getElementById('totalItems');
+            totalItemsDiv.innerHTML = `Showing ${startIndex + 1} - ${endIndex} of ${totalItems} items`;
+
+            items.forEach(function (item) {
+                if (item["Listing Type"] === "FixedPrice") {
+                    var viewUrl = item["View URL"];
+                    var currentPrice = item["Current Price"].replace('USD', '$').trim();
+                    var pictureUrl = item["Picture URLs"][0];
+                    var condition = item["Condition Display Name"];
+                    var Category = item["Category"];
+                    var bids = item["Bids"];
+                    var watchers = item["Watch Count"];
+                    var playerAthlete = "";
+                    var card = "";
+                    var set = "";
+                    var cardnumber = "";
+                    var cardattributes = "";
+                    var playerattributes = "";
+                    var authority = "";
+                    var grade = "";
+                    var gradecondition = "";
+                    var conditionrange = "";
+                    var ebayEPN = "?mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339025312&customid=&toolid=10001&mkevt=1";
+
+
+
+                    // Find the value in item specifics
+
+                    var itemSpecifics = item["Item Specifics"];
+                    for (var i = 0; i < itemSpecifics.length; i++) {
+                        if (itemSpecifics[i].Name === "Player/Athlete") {
+                            playerAthlete = itemSpecifics[i].Values[0]; // Get the value
+                            break;
+                        }
+                    }
+
+                    var itemSpecifics = item["Item Specifics"];
+                    for (var i = 0; i < itemSpecifics.length; i++) {
+                        if (itemSpecifics[i].Name === "Card") {
+                            card = itemSpecifics[i].Values[0]; // Get the value
+                            break;
+                        }
+                    }
+
+                    var itemSpecifics = item["Item Specifics"];
+                    for (var i = 0; i < itemSpecifics.length; i++) {
+                        if (itemSpecifics[i].Name === "Set") {
+                            set = itemSpecifics[i].Values[0]; // Get the value
+                            break;
+                        }
+                    }
+
+                    var itemSpecifics = item["Item Specifics"];
+                    for (var i = 0; i < itemSpecifics.length; i++) {
+                        if (itemSpecifics[i].Name === "Card Number") {
+                            cardnumber = itemSpecifics[i].Values[0]; // Get the value
+                            break;
+                        }
+                    }
+
+                    var itemSpecifics = item["Item Specifics"];
+                    for (var i = 0; i < itemSpecifics.length; i++) {
+                        if (itemSpecifics[i].Name === "Card Attributes") {
+                            cardattributes = itemSpecifics[i].Values[0]; // Get the value
+                            break;
+                        }
+                    }
+
+                    var itemSpecifics = item["Item Specifics"];
+                    for (var i = 0; i < itemSpecifics.length; i++) {
+                        if (itemSpecifics[i].Name === "Player Attributes") {
+                            playerattributes = itemSpecifics[i].Values[0]; // Get the value
+                            break;
+                        }
+                    }
+
+                    var itemSpecifics = item["Item Specifics"];
+                    for (var i = 0; i < itemSpecifics.length; i++) {
+                        if (itemSpecifics[i].Name === "Professional Grader") {
+                            authority = itemSpecifics[i].Values[0]; // Get the value
+                            break;
+                        }
+                    }
+
+                    var itemSpecifics = item["Item Specifics"];
+                    for (var i = 0; i < itemSpecifics.length; i++) {
+                        if (itemSpecifics[i].Name === "Grade") {
+                            grade = itemSpecifics[i].Values[0]; // Get the value
+                            break;
+                        }
+                    }
+
+                    var itemSpecifics = item["Item Specifics"];
+                    for (var i = 0; i < itemSpecifics.length; i++) {
+                        if (itemSpecifics[i].Name === "Card Condition") {
+                            gradecondition = itemSpecifics[i].Values[0]; // Get the value
+                            break;
+                        }
+                    }
+
+                    var itemSpecifics = item["Item Specifics"];
+                    for (var i = 0; i < itemSpecifics.length; i++) {
+                        if (itemSpecifics[i].Name === "Condition Range") {
+                            conditionrange = itemSpecifics[i].Values[0]; // Get the value
+                            break;
+                        }
+                    }
+
+                    var resultElement = document.createElement('div');
+
+                    if (Category === "Trading Card Sets") {
+                        resultElement.innerHTML = `
+                        <div class="col mb-2">
+                                    <div class="card h-100 d-flex align-items-center justify-content-center">
+                                        <!-- badge-->
+                                        <div class="badge bg-primary text-white position-absolute" style="top: 0.5rem; right: 0.5rem"> Complete Set </div>
+                                    <!-- Product image-->
+                                        <div class="text-center bg-dark" style="padding-bottom:10px; border-top-right-radius: 5px; border-top-left-radius: 5px;">
+                                            <a href="${viewUrl}${ebayEPN}" target="_blank">
+                                                <img class="card-img-top" src="${pictureUrl}" alt="..." style="max-width: 206px; max-height: 276px; padding-top: 10px;">
+                                                <!-- condition badge -->
+                                                <span class="badge badge-dark bg-dark" style="width: 206px; border-radius: 0;">${authority} ${grade} ${gradecondition}</span>
+                                            </a>
+                                        </div>
+                                    <!-- Product details-->
+                                        <div class="card-body w-100">
+                                            <div class="text-center">
+                                                <!-- Player/Athlete -->
+                                                <span class="fw-bolder" style="letter-spacing: 0.25px !important; word-spacing: 0.5px;">${playerAthlete} ${playerattributes}</span><br>
+                                            </div>
+                                            <div class="w-100 h-100 d-flex justify-content-center align-items-center">
+                                                <!-- Set -->
+                                                <span class="fw-bold" style="font-size: 12px; letter-spacing: 0.25px !important; word-spacing: 0.5px;">${set} #${cardnumber} ${cardattributes}</span><br>
+                                            </div>
+                                            <hr>
+                                            <div class="w-100 h-100 d-flex align-items-center justify-content-between">
+                                                <!-- Product price -->
+                                                <span></span>
+                                                <span class="fw-bold">${currentPrice}</span>
+                                                </span><a href="${viewUrl}${ebayEPN}" target="_blank"><i class="fab fa-ebay" style="font-size: 35px;"></i></span></a>
+                                                <span></span>
+                                            </div>
+                                            <hr>
+                                            <div class="w-100 d-flex align-items-center justify-content-between" style="height: 10px;">
+                                                <!-- watch bid auction icon -->
+                                                <span>
+                                                    <!-- ${bids !== "0" ? `<i class="fa fa-gavel fa-rotate-270"></i> ${bids}` : ''} &nbsp;&nbsp;&nbsp; -->
+                                                    ${watchers !== "0" ? `<i class="bi bi-eye-fill" style="font-size: 18px;" data-toggle="tooltip" data-bs-placement="top" title="${watchers} watching"></i>` : ''}
+                                                </span>
+                                                <!-- info circle icon -->
+                                                <span>
+                                                    <!-- <i class="bi bi-info-circle-fill" style="font-size: 15px;"></i> -->
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>`;
+
+                        } else if (condition === "Graded") {
+                        resultElement.innerHTML = `
+                        <div class="col mb-2">
+                                    <div class="card h-100 d-flex align-items-center justify-content-center">
+                                        <!-- badge-->
+                                        <!-- <div class="badge bg-primary text-white position-absolute" style="top: 0.5rem; right: 0.5rem"> </div> -->
+                                        <!-- Product image-->
+                                        <div class="text-center bg-dark" style="padding-bottom:10px; border-top-right-radius: 5px; border-top-left-radius: 5px;">
+                                            <a href="${viewUrl}${ebayEPN}" target="_blank">
+                                                <img class="card-img-top" src="${pictureUrl}" alt="..." style="max-width: 172px; max-height: 276px; padding-top: 10px;">
+                                                <!-- condition badge -->
+                                                <span class="badge badge-dark bg-dark" style="width: 172px; border-radius: 0;">${authority} ${grade} ${gradecondition}</span>
+                                            </a>
+                                        </div>
+                                        <!-- Product details-->
+                                        <div class="card-body w-100">
+                                            <div class="text-center">
+                                                <!-- Player/Athlete -->
+                                                <span class="fw-bolder" style="letter-spacing: 0.25px !important; word-spacing: 0.5px;">${playerAthlete} ${playerattributes}</span><br>
+                                            </div>
+                                            <div class="w-100 h-100 d-flex justify-content-center align-items-center">
+                                                <!-- Set -->
+                                                <span class="fw-bold" style="font-size: 12px; letter-spacing: 0.25px !important; word-spacing: 0.5px;">${set} #${cardnumber} ${cardattributes}</span><br>
+                                            </div>
+                                            <hr>
+                                            <div class="w-100 h-100 d-flex align-items-center justify-content-between">
+                                                <!-- Product price -->
+                                                <span></span>
+                                                <span class="fw-bold">${currentPrice}</span>
+                                                </span><a href="${viewUrl}${ebayEPN}" target="_blank"><i class="fab fa-ebay" style="font-size: 35px;"></i></span></a>
+                                                <span></span>
+                                            </div>
+                                            <hr>
+                                            <div class="w-100 d-flex align-items-center justify-content-between" style="height: 10px;">
+                                                <!-- watch bid auction icon -->
+                                                <span>
+                                                    <!-- ${bids !== "0" ? `<i class="fa fa-gavel fa-rotate-270"></i> ${bids}` : ''} &nbsp;&nbsp;&nbsp; -->
+                                                    ${watchers !== "0" ? `<i class="bi bi-eye-fill" style="font-size: 18px;" data-toggle="tooltip" data-bs-placement="top" title="${watchers} watching"></i>` : ''}
+                                                </span>
+                                                <!-- info circle icon -->
+                                                <span>
+                                                    <!-- <i class="bi bi-info-circle-fill" style="font-size: 15px;"></i> -->
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>`;
+
+                    } else if (condition === "Ungraded") {
+                        resultElement.innerHTML = `
+                                <div class="col mb-2">
+                                    <div class="card h-100 d-flex align-items-center justify-content-center">
+                                        <!-- badge-->
+                                        <!--<div class="badge gsc-bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem"> </div> -->
+                                    <!-- Product image-->
+                                        <div class="text-center bg-dark" style="padding-bottom:10px; border-top-right-radius: 5px; border-top-left-radius: 5px;">
+                                            <a href="${viewUrl}${ebayEPN}" target="_blank">
+                                                <img class="card-img-top" src="${pictureUrl}" alt="..." style="max-width: 206px; max-height: 276px; padding-top: 10px;">
+                                                <!-- condition badge -->
+                                                <span class="badge badge-dark bg-dark" style="width: 206px; border-radius: 0;">RAW ${conditionrange}</span>
+                                            </a>
+                                        </div>
+                                        <!-- Product details-->
+                                        <div class="card-body w-100">
+                                            <div class="text-center">
+                                                <!-- Player/Athlete -->
+                                                <span class="fw-bolder" style="letter-spacing: 0.25px !important; word-spacing: 0.5px;">${playerAthlete} ${playerattributes}</span><br>
+                                            </div>
+                                            <div class="w-100 h-100 d-flex justify-content-center align-items-center">
+                                                <!-- Set -->
+                                                <span class="fw-bold" style="font-size: 12px; letter-spacing: 0.25px !important; word-spacing: 0.5px;">${set} #${cardnumber} ${cardattributes}</span><br>
+                                            </div>
+                                            <hr>
+                                            <div class="w-100 h-100 d-flex align-items-center justify-content-between">
+                                                <!-- Product price -->
+                                                <span></span>
+                                                <span class="fw-bold">${currentPrice}</span>
+                                                </span><a href="${viewUrl}${ebayEPN}" target="_blank"><i class="fab fa-ebay" style="font-size: 35px;"></i></span></a>
+                                                <span></span>
+                                            </div>
+                                            <hr>
+                                            <div class="w-100 d-flex align-items-center justify-content-between" style="height: 10px;">
+                                                <!-- watch bid auction icon -->
+                                                <span>
+                                                    <!-- ${bids !== "0" ? `<i class="fa fa-gavel fa-rotate-270"></i> ${bids}` : ''} &nbsp;&nbsp;&nbsp; -->
+                                                    ${watchers !== "0" ? `<i class="bi bi-eye-fill" style="font-size: 18px;" data-toggle="tooltip" data-bs-placement="top" title="${watchers} watching"></i>` : ''}
+                                                </span>
+                                                <!-- info circle icon -->
+                                                <span>
+                                                    <!-- <i class="bi bi-info-circle-fill" style="font-size: 15px;"></i> -->
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>`;
+                    }
+
+                    resultsContainer.appendChild(resultElement);
+                }
+            });
+        }
+
+        // Function to handle search functionality
+        function search() {
+            var searchTerm = document.getElementById('searchInput').value.toLowerCase();
+
+            if (searchTerm.trim() === '') {
+                currentPage = 1;
+                loadPage(currentPage);
+                return;
+            }
+
+            var filteredData = allItems.filter(function (item) {
+                // Check if item name or description matches search term
+                return item.Title.toLowerCase().includes(searchTerm) ||
+                    item["Item Specifics"].some(specific => specific.Name.toLowerCase().includes(searchTerm) || specific.Values.some(value => value.toLowerCase().includes(searchTerm)));
+            });
+
+            totalItems = filteredData.length;
+            displayItems(filteredData, 0, totalItems);
+        }
+    </script>
+
 </body>
 </html>
