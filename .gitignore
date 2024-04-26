@@ -6,4 +6,3 @@
 # ignore directories
 config/
 logs/
-data/
