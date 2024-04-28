@@ -488,7 +488,7 @@
                         <div class="col mb-2">
                                     <div class="card h-100 d-flex align-items-center justify-content-center">
                                         <!-- badge-->
-                                        ${cardattributes === "(RC)" && playerattributes === "(HOF)"? `<div class="badge bg-warning text-dark position-absolute" style="top: 0.5rem; right: 0.5rem">Rookie Card </div> ` : ''}
+                                        ${cardattributes === "(RC)" ? `<div class="badge bg-warning text-dark position-absolute" style="top: 0.5rem; right: 0.5rem">Rookie Card </div> ` : ''}
                                         ${playerattributes === "(HOF)" && cardattributes !== "(RC)" ? `<div class="badge bg-warning text-dark position-absolute" style="top: 0.5rem; right: 0.5rem">Hall Of Fame</div>` : ''}
                                         <!-- Product image-->
                                         <div class="text-center bg-dark" style="padding-bottom:10px; border-top-right-radius: 5px; border-top-left-radius: 5px;">
