@@ -345,6 +345,7 @@
                     var Category = item["Category"];
                     var bids = item["Bids"];
                     var watchers = item["Watch Count"];
+                    var listingtype = item["Listing Type"];
                     var playerAthlete = "";
                     var card = "";
                     var set = "";
@@ -475,6 +476,9 @@
                                                 </span><a href="${viewUrl}${ebayEPN}" target="_blank"><i class="fab fa-ebay" style="font-size: 35px;"></i></span></a>
                                                 <span></span>
                                             </div>
+                                            <div d-flex align-items-center justify-content-between">
+                                                ${listingtype === "FixedPrice" ? `<span style="color: red; font-weight: 500; font-size: 12px; margin-left: 40px;">Free Shipping</span>` : ''}
+                                            </div>
                                             <hr>
                                             <div class="w-100 d-flex align-items-center justify-content-between" style="height: 10px;">
                                                 <!-- watch bid auction icon -->
@@ -524,6 +528,9 @@
                                                 </span><a href="${viewUrl}${ebayEPN}" target="_blank"><i class="fab fa-ebay" style="font-size: 35px;"></i></span></a>
                                                 <span></span>
                                             </div>
+                                            <div d-flex align-items-center justify-content-between">
+                                                ${listingtype === "FixedPrice" ? `<span style="color: red; font-weight: 500; font-size: 12px; margin-left: 40px;">Free Shipping</span>` : ''}
+                                            </div>
                                             <hr>
                                             <div class="w-100 d-flex align-items-center justify-content-between" style="height: 10px;">
                                                 <!-- watch bid auction icon -->
@@ -572,6 +579,9 @@
                                                 <span class="fw-bold">${currentPrice}</span>
                                                 </span><a href="${viewUrl}${ebayEPN}" target="_blank"><i class="fab fa-ebay" style="font-size: 35px;"></i></span></a>
                                                 <span></span>
+                                            </div>
+                                            <div d-flex align-items-center justify-content-between">
+                                                ${listingtype === "FixedPrice" ? `<span style="color: red; font-weight: 500; font-size: 12px; margin-left: 40px;">Free Shipping</span>` : ''}
                                             </div>
                                             <hr>
                                             <div class="w-100 d-flex align-items-center justify-content-between" style="height: 10px;">
