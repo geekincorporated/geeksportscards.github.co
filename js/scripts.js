@@ -31,11 +31,11 @@ function goToTop() {
 
 // Attach event listeners to radio buttons 
 
-    document.querySelectorAll('input[name="condition"]').forEach(function (radio) {
-        radio.addEventListener('change', function () {
-            search();
-        });
+document.querySelectorAll('input[name="condition"]').forEach(function (radio) {
+    radio.addEventListener('change', function () {
+        search();
     });
+});
 
 
 
@@ -221,7 +221,7 @@ function displayItems(items, startIndex, endIndex) {
                                         <!-- Product price -->
                                         <span></span>
                                         <span class="fw-bold">
-                                            ${currentPrice} <span style="font-size: 10px;" data-toggle="tooltip" data-bs-placement="top" title="Or Best Offer"> OBO</span><br>
+                                        ${currentPrice}<span style="font-size: 10px;" data-toggle="tooltip" data-bs-placement="top" title="Or Best Offer"> OBO</span><br>
                                             ${listingtype === "FixedPrice" ? `<span style="color: red; font-weight: 500; font-size: 12px;">Free Shipping</span>` : ''}
                                         </span>
                                         </span><a href="${viewUrl}${ebayEPN}" target="_blank"><i class="fab fa-ebay" style="font-size: 35px;"></i></span></a>
@@ -253,7 +253,7 @@ function displayItems(items, startIndex, endIndex) {
                                 <!-- Product image-->
                                 <div class="text-center bg-dark" style="padding-bottom:10px; border-top-right-radius: 5px; border-top-left-radius: 5px;">
                                     <a href="${viewUrl}${ebayEPN}" target="_blank">
-                                        <img class="card-img-top" src="${pictureUrl}" alt="..." style="max-width: 172px; max-height: 276px; padding-top: 10px; loading="lazy"">
+                                        <img class="card-img-top" src="${pictureUrl}" alt="..." style="max-width: 172px; max-height: 276px; padding-top: 10px; loading="lazy">
                                         <!-- condition badge -->
                                         <span class="badge badge-dark bg-dark" style="width: 172px; border-radius: 0;">${authority} ${grade} ${gradecondition}</span>
                                     </a>
@@ -403,4 +403,49 @@ function showFilter() {
     resultsfilterContainer.style.display = 'block';
     search();
 }
+
+
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+});
+
+
+document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    var formData = new FormData(this);
+    var payload = {
+        text: 'New form submission:',
+        attachments: [{
+            fallback: 'New form submission:',
+            fields: []
+        }]
+    };
+
+    formData.forEach(function(value, key) {
+        payload.attachments[0].fields.push({
+            title: key,
+            value: value,
+            short: true
+        });
+    });
+
+    fetch('https://hooks.slack.com/services/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', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    })
+    .then(function(response) {
+        if (response.ok) {
+            alert('Form submitted successfully!');
+            document.getElementById('myForm').reset();
+        } else {
+            alert('Error submitting form.');
+        }
+    })
+    .catch(function(error) {
+        console.error('Error:', error);
+    });
+});
 
