@@ -229,9 +229,9 @@ function displayItems(items, startIndex, endIndex) {
                                     <div class="w-100 h-100 d-flex align-items-center justify-content-between">
                                         <!-- Product price -->
                                         <span></span>
-                                        <span class="fw-bold">
-                                        ${currentPrice}<span style="font-size: 10px;" data-toggle="tooltip" data-bs-placement="top" title="Or Best Offer"> OBO</span><br>
-                                        ${listingtype === "FixedPrice" ? `<span style="color: green; font-weight: 500; font-size: 12px;">Free Standard Shipping</span>` : ''}
+                                        <span class="fw-bold">${currentPrice} <br>
+                                        <span style="font-size: 12px; font-weight: 400 !important;"> or Best Offer</span><br>
+                                            ${listingtype === "FixedPrice" ? `<span style="color: green; font-weight: 500; font-size: 12px;">Free Standard Shipping</span>` : ''}
                                         </span>
                                         </span><a href="${viewUrl}${ebayEPN}" target="_blank"><i class="fab fa-ebay" style="font-size: 35px;"></i></span></a>
                                         <span></span>
@@ -282,8 +282,8 @@ function displayItems(items, startIndex, endIndex) {
                                     <div class="w-100 h-100 d-flex align-items-center justify-content-between">
                                         <!-- Product price -->
                                         <span></span>
-                                        <span class="fw-bold">
-                                            ${currentPrice} <span style="font-size: 10px;" data-toggle="tooltip" data-bs-placement="top" title="Or Best Offer"> OBO</span><br>
+                                        <span class="fw-bold">${currentPrice} <br>
+                                        <span style="font-size: 12px; font-weight: 400 !important;"> or Best Offer</span><br>
                                             ${listingtype === "FixedPrice" ? `<span style="color: green; font-weight: 500; font-size: 12px;">Free Standard Shipping</span>` : ''}
                                         </span>
                                         </span><a href="${viewUrl}${ebayEPN}" target="_blank"><i class="fab fa-ebay" style="font-size: 35px;"></i></span></a>
@@ -335,8 +335,8 @@ function displayItems(items, startIndex, endIndex) {
                                     <div class="w-100 h-100 d-flex align-items-center justify-content-between">
                                         <!-- Product price -->
                                         <span></span>
-                                        <span class="fw-bold">
-                                            ${currentPrice} <span style="font-size: 10px;"> OBO</span><br>
+                                        <span class="fw-bold">${currentPrice} <br>
+                                        <span style="font-size: 12px; font-weight: 400 !important;"> or Best Offer</span><br>
                                             ${listingtype === "FixedPrice" ? `<span style="color: green; font-weight: 500; font-size: 12px;">Free Standard Shipping</span>` : ''}
                                         </span>
                                         </span><a href="${viewUrl}${ebayEPN}" target="_blank"><i class="fab fa-ebay" style="font-size: 35px;"></i></span></a>
