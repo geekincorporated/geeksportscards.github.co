@@ -96,6 +96,7 @@ function displayItems(items, startIndex, endIndex) {
             var listingtype = item["Listing Type"];
             var playerAthlete = "";
             var card = "";
+            var year = "";
             var set = "";
             var cardnumber = "";
             var cardattributes = "";
@@ -190,6 +191,14 @@ function displayItems(items, startIndex, endIndex) {
                 }
             }
 
+            var itemSpecifics = item["Item Specifics"];
+            for (var i = 0; i < itemSpecifics.length; i++) {
+                if (itemSpecifics[i].Name === "Year") {
+                    year = itemSpecifics[i].Values[0]; // Get the value
+                    break;
+                }
+            }
+
             var resultElement = document.createElement('div');
 
             if (Category === "Trading Card Sets") {
@@ -248,7 +257,6 @@ function displayItems(items, startIndex, endIndex) {
                 <div class="col mb-2">
                             <div class="card h-100 d-flex align-items-center justify-content-center">
                                 <!-- badge-->
-                                ${cardattributes === "(USAB)" && year === "1991" ? `<div class="badge bg-primary text-light position-absolute" style="top: 0.5rem; right: 0.5rem">USA Dream Team</div> ` : ''}
                                 ${cardattributes === "(RC)" ? `<div class="badge bg-warning text-dark position-absolute" style="top: 0.5rem; right: 0.5rem">Rookie Card </div> ` : ''}
                                 ${playerattributes === "(HOF)" && cardattributes !== "(RC)" ? `<div class="badge bg-warning text-dark position-absolute" style="top: 0.5rem; right: 1.5rem">Hall Of Fame</div>` : ''}
                                 <!-- Product image-->
@@ -412,42 +420,4 @@ $(function () {
 });
 
 
-document.getElementById('contactForm').addEventListener('submit', function (event) {
-    event.preventDefault();
-    var formData = new FormData(this);
-    var payload = {
-        text: 'New form submission:',
-        attachments: [{
-            fallback: 'New form submission:',
-            fields: []
-        }]
-    };
-
-    formData.forEach(function (value, key) {
-        payload.attachments[0].fields.push({
-            title: key,
-            value: value,
-            short: true
-        });
-    });
-
-    fetch('https://hooks.slack.com/services/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', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
-    })
-        .then(function (response) {
-            if (response.ok) {
-                alert('Form submitted successfully!');
-                document.getElementById('myForm').reset();
-            } else {
-                alert('Error submitting form.');
-            }
-        })
-        .catch(function (error) {
-            console.error('Error:', error);
-        });
-});
 
