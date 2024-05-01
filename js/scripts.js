@@ -257,6 +257,7 @@ function displayItems(items, startIndex, endIndex) {
                 <div class="col mb-2">
                             <div class="card h-100 d-flex align-items-center justify-content-center">
                                 <!-- badge-->
+                                ${cardattributes === "(USAB)" && year === "1991" ? `<div class="badge bg-primary text-light position-absolute" style="top: 0.5rem; right: 0.5rem">'92 USA Dream Team</div> ` : ''}
                                 ${cardattributes === "(RC)" ? `<div class="badge bg-warning text-dark position-absolute" style="top: 0.5rem; right: 0.5rem">Rookie Card </div> ` : ''}
                                 ${playerattributes === "(HOF)" && cardattributes !== "(RC)" ? `<div class="badge bg-warning text-dark position-absolute" style="top: 0.5rem; right: 1.5rem">Hall Of Fame</div>` : ''}
                                 <!-- Product image-->
@@ -309,7 +310,7 @@ function displayItems(items, startIndex, endIndex) {
                 <div class="col mb-2">
                             <div class="card h-100 d-flex align-items-center justify-content-center">
                                 <!-- badge-->
-                                ${cardattributes === "(USAB)" && year === "1991" ? `<div class="badge bg-primary text-light position-absolute" style="top: 0.5rem; right: 0.5rem">USA Dream Team</div> ` : ''}
+                                ${cardattributes === "(USAB)" && year === "1991" ? `<div class="badge bg-primary text-light position-absolute" style="top: 0.5rem; right: 0.5rem">'92 USA Dream Team</div> ` : ''}
                                 ${cardattributes === "(RC)" ? `<div class="badge bg-warning text-dark position-absolute" style="top: 0.5rem; right: 0.5rem">Rookie Card </div> ` : ''}
                                 ${playerattributes === "(HOF)" && cardattributes !== "(RC)" && cardattributes !== "(USAB)" ? `<div class="badge bg-warning text-dark position-absolute" style="top: 0.5rem; right: 1.5rem">Hall Of Fame</div>` : ''}
                                 <!-- Product image-->
