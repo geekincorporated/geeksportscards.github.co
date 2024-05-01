@@ -231,7 +231,7 @@ function displayItems(items, startIndex, endIndex) {
                                         <span></span>
                                         <span class="fw-bold">
                                         ${currentPrice}<span style="font-size: 10px;" data-toggle="tooltip" data-bs-placement="top" title="Or Best Offer"> OBO</span><br>
-                                            ${listingtype === "FixedPrice" ? `<span style="color: red; font-weight: 500; font-size: 12px;">Free Shipping</span>` : ''}
+                                        ${listingtype === "FixedPrice" ? `<span style="color: green; font-weight: 500; font-size: 12px;">Free Standard Shipping</span>` : ''}
                                         </span>
                                         </span><a href="${viewUrl}${ebayEPN}" target="_blank"><i class="fab fa-ebay" style="font-size: 35px;"></i></span></a>
                                         <span></span>
@@ -284,7 +284,7 @@ function displayItems(items, startIndex, endIndex) {
                                         <span></span>
                                         <span class="fw-bold">
                                             ${currentPrice} <span style="font-size: 10px;" data-toggle="tooltip" data-bs-placement="top" title="Or Best Offer"> OBO</span><br>
-                                            ${listingtype === "FixedPrice" ? `<span style="color: red; font-weight: 500; font-size: 12px;">Free Shipping</span>` : ''}
+                                            ${listingtype === "FixedPrice" ? `<span style="color: green; font-weight: 500; font-size: 12px;">Free Standard Shipping</span>` : ''}
                                         </span>
                                         </span><a href="${viewUrl}${ebayEPN}" target="_blank"><i class="fab fa-ebay" style="font-size: 35px;"></i></span></a>
                                         <span></span>
@@ -337,7 +337,7 @@ function displayItems(items, startIndex, endIndex) {
                                         <span></span>
                                         <span class="fw-bold">
                                             ${currentPrice} <span style="font-size: 10px;"> OBO</span><br>
-                                            ${listingtype === "FixedPrice" ? `<span style="color: red; font-weight: 500; font-size: 12px;">Free Shipping</span>` : ''}
+                                            ${listingtype === "FixedPrice" ? `<span style="color: green; font-weight: 500; font-size: 12px;">Free Standard Shipping</span>` : ''}
                                         </span>
                                         </span><a href="${viewUrl}${ebayEPN}" target="_blank"><i class="fab fa-ebay" style="font-size: 35px;"></i></span></a>
                                         <span></span>
