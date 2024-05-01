@@ -248,6 +248,7 @@ function displayItems(items, startIndex, endIndex) {
                 <div class="col mb-2">
                             <div class="card h-100 d-flex align-items-center justify-content-center">
                                 <!-- badge-->
+                                ${cardattributes === "(USAB)" && year === "1991" ? `<div class="badge bg-primary text-light position-absolute" style="top: 0.5rem; right: 0.5rem">USA Dream Team</div> ` : ''}
                                 ${cardattributes === "(RC)" ? `<div class="badge bg-warning text-dark position-absolute" style="top: 0.5rem; right: 0.5rem">Rookie Card </div> ` : ''}
                                 ${playerattributes === "(HOF)" && cardattributes !== "(RC)" ? `<div class="badge bg-warning text-dark position-absolute" style="top: 0.5rem; right: 1.5rem">Hall Of Fame</div>` : ''}
                                 <!-- Product image-->
@@ -300,8 +301,9 @@ function displayItems(items, startIndex, endIndex) {
                 <div class="col mb-2">
                             <div class="card h-100 d-flex align-items-center justify-content-center">
                                 <!-- badge-->
+                                ${cardattributes === "(USAB)" && year === "1991" ? `<div class="badge bg-primary text-light position-absolute" style="top: 0.5rem; right: 0.5rem">USA Dream Team</div> ` : ''}
                                 ${cardattributes === "(RC)" ? `<div class="badge bg-warning text-dark position-absolute" style="top: 0.5rem; right: 0.5rem">Rookie Card </div> ` : ''}
-                                ${playerattributes === "(HOF)" && cardattributes !== "(RC)" ? `<div class="badge bg-warning text-dark position-absolute" style="top: 0.5rem; right: 1.5rem">Hall Of Fame</div>` : ''}
+                                ${playerattributes === "(HOF)" && cardattributes !== "(RC)" && cardattributes !== "(USAB)" ? `<div class="badge bg-warning text-dark position-absolute" style="top: 0.5rem; right: 1.5rem">Hall Of Fame</div>` : ''}
                                 <!-- Product image-->
                                 <div class="text-center bg-dark" style="padding-bottom:10px; border-top-right-radius: 5px; border-top-left-radius: 5px;">
                                     <a href="${viewUrl}${ebayEPN}" target="_blank">
@@ -410,7 +412,7 @@ $(function () {
 });
 
 
-document.getElementById('contactForm').addEventListener('submit', function(event) {
+document.getElementById('contactForm').addEventListener('submit', function (event) {
     event.preventDefault();
     var formData = new FormData(this);
     var payload = {
@@ -421,7 +423,7 @@ document.getElementById('contactForm').addEventListener('submit', function(event
         }]
     };
 
-    formData.forEach(function(value, key) {
+    formData.forEach(function (value, key) {
         payload.attachments[0].fields.push({
             title: key,
             value: value,
@@ -436,16 +438,16 @@ document.getElementById('contactForm').addEventListener('submit', function(event
         },
         body: JSON.stringify(payload)
     })
-    .then(function(response) {
-        if (response.ok) {
-            alert('Form submitted successfully!');
-            document.getElementById('myForm').reset();
-        } else {
-            alert('Error submitting form.');
-        }
-    })
-    .catch(function(error) {
-        console.error('Error:', error);
-    });
+        .then(function (response) {
+            if (response.ok) {
+                alert('Form submitted successfully!');
+                document.getElementById('myForm').reset();
+            } else {
+                alert('Error submitting form.');
+            }
+        })
+        .catch(function (error) {
+            console.error('Error:', error);
+        });
 });
 
