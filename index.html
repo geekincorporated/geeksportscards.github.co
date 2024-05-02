@@ -131,9 +131,11 @@
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
 
-            <input id="searchInput" type="text" placeholder="Search..." onclick="clearInput()"
-                onkeydown="checkEnter(event)">
-            <button onclick="search(); showFilter()">Search</button>
+            <div class="search-container w-100">
+                <input id="searchInput" type="text" placeholder="Search..." onclick="clearInput()" onkeydown="checkEnter(event)">
+                <button onclick="search(); showFilter()">Search</button>
+            </div>
+
             <div style="margin-bottom: 10px; margin-top: 30px;" id="totalItems"></div>
             <div id="resultsfilterContainer" style="margin-bottom: 20px; display: none;">
                 <!-- Add radio buttons for filtering -->
@@ -141,11 +143,7 @@
                 <input type="radio" name="condition" value="Ungraded"> RAW
                 <input type="radio" name="condition" value="Graded"> GRADED
             </div>
-
             <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-2 row-cols-xl-4 justify-content-center" id="results">
-                <div class="card-group">
-
-                </div>
             </div>
         </div>
     </section>

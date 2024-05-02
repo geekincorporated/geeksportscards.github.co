@@ -203,7 +203,7 @@ function displayItems(items, startIndex, endIndex) {
 
             if (Category === "Trading Card Sets") {
                 resultElement.innerHTML = `
-                <div class="col mb-2">
+                <div class="col mb-5">
                 <div class="card h-100 d-flex align-items-stretch justify-content-center">
                     <!-- top badge-->
                     <div class="badge bg-primary text-white position-absolute" style="top: 0.5rem; right: 1.5rem">
@@ -258,7 +258,7 @@ function displayItems(items, startIndex, endIndex) {
                         </span>
                         <!-- info circle icon -->
                         <span>
-                            <!-- <i class="bi bi-info-circle-fill" style="font-size: 15px;"></i> -->
+                            <i class="bi bi-info-circle-fill" style="font-size: 15px;"></i>
                         </span>
                     </div>
                 </div>
@@ -267,7 +267,7 @@ function displayItems(items, startIndex, endIndex) {
 
             } else if (condition === "Graded") {
                 resultElement.innerHTML = `
-                <div class="col mb-2">
+                <div class="col mb-5">
                 <div class="card h-100 d-flex align-items-stretch justify-content-center">
                     <!-- top badge-->
                     <!-- attributes badge-->
@@ -323,7 +323,7 @@ function displayItems(items, startIndex, endIndex) {
                         </span>
                         <!-- info circle icon -->
                         <span>
-                            <!-- <i class="bi bi-info-circle-fill" style="font-size: 15px;"></i> -->
+                            <i class="bi bi-info-circle-fill" style="font-size: 15px;"></i>
                         </span>
                     </div>
                 </div>
@@ -332,7 +332,7 @@ function displayItems(items, startIndex, endIndex) {
 
             } else if (condition === "Ungraded") {
                 resultElement.innerHTML = `
-                <div class="col mb-2">
+                <div class="col mb-5">
                 <div class="card h-100 d-flex align-items-stretch justify-content-center">
                 <!-- attributes badge-->
                 ${cardattributes.includes("(USAB)") && year === "1991" ? `<div class="badge bg-primary text-light position-absolute" style="top: 0.5rem; right: 0.5rem">'92 USA Dream Team</div> ` : ''}
@@ -406,6 +406,16 @@ function clearInput() {
     document.getElementById('searchInput').value = '';
 }
 
+// JavaScript for handling dropdown menu items
+document.querySelectorAll('.dropdown-menu a').forEach(item => {
+    item.addEventListener('click', event => {
+        event.preventDefault();
+        var searchConcept = item.getAttribute('href').substring(1);
+        document.getElementById('search_concept').innerText = searchConcept;
+        document.getElementById('search_param').value = searchConcept;
+    });
+});
+
 // Function to handle Enter key press
 function checkEnter(event) {
     if (event.keyCode === 13) {
@@ -441,9 +451,6 @@ function search() {
     displayItems(filteredData, 0, totalItems);
 }
 
-
-
-
 // Function to show filter and perform search
 function showFilter() {
     var resultsfilterContainer = document.getElementById('resultsfilterContainer');
@@ -451,10 +458,8 @@ function showFilter() {
     search();
 }
 
-
 $(function () {
     $('[data-toggle="tooltip"]').tooltip();
 });
-
 
 

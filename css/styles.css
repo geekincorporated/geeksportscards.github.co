@@ -10869,15 +10869,48 @@ textarea.form-control-lg {
   text-decoration: none !important;
 }
 
-.searchcontainer{
-  margin-top:5%;
-}
 /* Style to create scroll bar in dropdown */ 
 .scrollable-dropdown{
     height: auto;
     max-height:320px;  /* Increase / Decrease value as per your need */
     overflow-x: hidden;
 }
+
+.search-container {
+  text-align: center;
+  margin-top: 20px; /* Adjust the margin as needed */
+  display: flex; /* Use flexbox for alignment */
+  align-items: center;
+  justify-content: center; /* Center content horizontally */
+}
+
+#searchInput {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  padding: 10px 10px; /* Adjust padding for better appearance */
+  border: 1px solid #ccc; /* Add border for better visibility */
+  height: 35px;
+  margin-right: 0px; /* Adjust margin between input and button */
+  width: 525px;
+}
+
+button {
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 0px 20px; /* Adjust padding for better appearance */
+  border: none; /* Remove default button border */
+  background-color: #1d2731; /* Button background color */
+  color: white; /* Button text color */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  transition: background-color 0.3s; /* Smooth transition for background color */
+  height: 35px;
+}
+
+
 
  
 /* Footer */
@@ -10909,5 +10942,3 @@ textarea.form-control-lg {
 .product-wap .h3, .product-wap li, .product-wap i, .product-wap p {
   font-size: 12px !important;
 }
-
-
