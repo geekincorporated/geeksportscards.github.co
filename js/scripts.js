@@ -204,160 +204,195 @@ function displayItems(items, startIndex, endIndex) {
             if (Category === "Trading Card Sets") {
                 resultElement.innerHTML = `
                 <div class="col mb-2">
-                            <div class="card h-100 d-flex align-items-center justify-content-center">
-                                <!-- badge-->
-                                <div class="badge bg-primary text-white position-absolute" style="top: 0.5rem; right: 1.5rem"> Complete Set </div>
-                            <!-- Product image-->
-                                <div class="text-center bg-dark" style="padding-bottom:10px; border-top-right-radius: 5px; border-top-left-radius: 5px;">
-                                    <a href="${viewUrl}${ebayEPN}" target="_blank">
-                                        <img class="card-img-top" src="${pictureUrl}" alt="..." style="max-width: 206px; max-height: 276px; padding-top: 10px; loading="lazy"">
-                                        <!-- condition badge -->
-                                        <span class="badge badge-dark bg-dark" style="width: 206px; border-radius: 0;">${authority} ${grade} ${gradecondition}</span>
-                                    </a>
-                                </div>
-                            <!-- Product details-->
-                                <div class="card-body w-100">
-                                    <div class="text-center">
-                                        <!-- Player/Athlete -->
-                                        <span class="fw-bolder" style="letter-spacing: 0.25px !important; word-spacing: 0.5px;">${playerAthlete} ${playerattributes}</span><br>
-                                    </div>
-                                    <div class="w-100 h-100 d-flex justify-content-center align-items-center">
-                                        <!-- Set -->
-                                        <span class="fw-bold" style="font-size: 12px; letter-spacing: 0.25px !important; word-spacing: 0.5px;">${set} #${cardnumber} ${cardattributes}</span><br>
-                                    </div>
-                                    <hr>
-                                    <div class="w-100 h-100 d-flex align-items-center justify-content-between">
-                                        <!-- Product price -->
-                                        <span></span>
-                                        <span class="fw-bold">${currentPrice} <br>
-                                        <span style="font-size: 12px; font-weight: 400 !important;"> or Best Offer</span><br>
-                                            ${listingtype === "FixedPrice" ? `<span style="color: green; font-weight: 500; font-size: 12px;">Free Standard Shipping</span>` : ''}
-                                        </span>
-                                        </span><a href="${viewUrl}${ebayEPN}" target="_blank"><i class="fab fa-ebay" style="font-size: 35px;"></i></span></a>
-                                        <span></span>
-                                    </div>
-                                    <hr>
-                                    <div class="w-100 d-flex align-items-center justify-content-between" style="height: 10px;">
-                                        <!-- watch bid auction icon -->
-                                        <span>
-                                            <!-- ${bids !== "0" ? `<i class="fa fa-gavel fa-rotate-270"></i> ${bids}` : ''} &nbsp;&nbsp;&nbsp; -->
-                                            ${watchers !== "0" ? `<i class="bi bi-eye-fill" style="font-size: 18px;" data-toggle="tooltip" data-bs-placement="top" title="${watchers} watching"></i>` : ''}
-                                        </span>
-                                        <!-- info circle icon -->
-                                        <span>
-                                            <!-- <i class="bi bi-info-circle-fill" style="font-size: 15px;"></i> -->
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>`;
+                <div class="card h-100 d-flex align-items-stretch justify-content-center">
+                    <!-- top badge-->
+                    <div class="badge bg-primary text-white position-absolute" style="top: 0.5rem; right: 1.5rem">
+                        Complete Set
+                    </div>
+                    <!-- Product image-->
+                    <div class="text-center bg-dark"
+                        style="height: 310px; padding-bottom:10px; border-top-right-radius: 5px; border-top-left-radius: 5px;">
+                        <a href="${viewUrl}${ebayEPN}" target="_blank">
+                            <img class="card-img-top" src="${pictureUrl}" alt="..."
+                                style="max-width: 206px; max-height: 276px; padding-top: 10px; loading=" lazy"">
+                            <!-- condition badge -->
+                            <span class="badge badge-dark bg-dark" style="width: 206px; border-radius: 0;">${authority}
+                                ${grade} ${gradecondition}</span>
+                        </a>
+                    </div>
+                    <!-- Product details-->
+                    <div class="card-body w-100 align-items-center justify-content-center text-center" style="height: 120px;">
+                    <!-- Player/Athlete -->
+                    <span class="fw-bolder" style="letter-spacing: 0.25px !important; word-spacing: 0.5px; display: inline-block; text-align: left !important;">
+                        ${playerAthlete} ${playerattributes}
+                    </span>
+                    <br>
+                    <!-- Set -->
+                    <span class="fw-bold" style="font-size: 12px; letter-spacing: 0.25px !important; word-spacing: 0.5px;">
+                        <span style="display: inline-block; text-align: left !important;">
+                            ${set} #${cardnumber} ${cardattributes}
+                        </span>
+                    </span>
+                </div>
+                    <hr>
+                    <!-- Product price -->
+                    <div class="w-100 d-flex align-items-center justify-content-between" style="padding-bottom: 10px;">
+                        <span></span>
+                        <span class="fw-bold">${currentPrice} <br>
+                            <span style="font-size: 12px; font-weight: 400 !important;"> or Best Offer</span><br>
+                            ${listingtype === "FixedPrice" ? `<span
+                                style="color: green; font-weight: 500; font-size: 12px;">Free Standard
+                                Shipping</span>` : ''}
+                        </span>
+                        </span><a href="${viewUrl}${ebayEPN}" target="_blank"><i class="fab fa-ebay"
+                                style="font-size: 35px;"></i></span></a>
+                        <span></span>
+                    </div>
+                    <div class="card-footer w-100 d-flex align-items-center justify-content-between" style="height: 25px;">
+                        <!-- watch bid auction icon -->
+                        <span>
+                            <!-- ${bids !== "0" ? `<i class="fa fa-gavel fa-rotate-270"></i> ${bids}` : ''} &nbsp;&nbsp;&nbsp; -->
+                            ${watchers !== "0" ? `<i class="bi bi-eye-fill" style="font-size: 18px;"
+                                data-toggle="tooltip" data-bs-placement="top" title="${watchers} watching"></i>` :
+                        ''}
+                        </span>
+                        <!-- info circle icon -->
+                        <span>
+                            <!-- <i class="bi bi-info-circle-fill" style="font-size: 15px;"></i> -->
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>`;
 
             } else if (condition === "Graded") {
                 resultElement.innerHTML = `
                 <div class="col mb-2">
-                            <div class="card h-100 d-flex align-items-center justify-content-center">
-                            <!-- attributes badge-->
-                            ${cardattributes.includes("(USAB)") && year === "1991" ? `<div class="badge bg-primary text-light position-absolute" style="top: 0.5rem; right: 0.5rem">'92 USA Dream Team</div> ` : ''}
-                            ${cardattributes === "(RC)" ? `<div class="badge bg-warning text-dark position-absolute" style="top: 0.5rem; right: 0.5rem">Rookie Card </div> ` : ''}
-                            ${playerattributes === "(HOF)" && !cardattributes.includes("(USAB)") && cardattributes !== "(RC)" ? `<div class="badge bg-warning text-dark position-absolute" style="top: 0.5rem; right: 1.5rem">Hall Of Fame</div>` : ''}
-                                <!-- Product image-->
-                                <div class="text-center bg-dark" style="padding-bottom:10px; border-top-right-radius: 5px; border-top-left-radius: 5px;">
-                                    <a href="${viewUrl}${ebayEPN}" target="_blank">
-                                        <img class="card-img-top" src="${pictureUrl}" alt="..." style="max-width: 172px; max-height: 276px; padding-top: 10px; loading="lazy">
-                                        <!-- condition badge -->
-                                        <span class="badge badge-dark bg-dark" style="width: 172px; border-radius: 0;">${authority} ${grade} ${gradecondition}</span>
-                                    </a>
-                                </div>
-                                <!-- Product details-->
-                                <div class="card-body w-100">
-                                    <div class="text-center">
-                                        <!-- Player/Athlete -->
-                                        <span class="fw-bolder" style="letter-spacing: 0.25px !important; word-spacing: 0.5px;">${playerAthlete} ${playerattributes}</span><br>
-                                    </div>
-                                    <div class="w-100 h-100 d-flex justify-content-center align-items-center">
-                                        <!-- Set -->
-                                        <span class="fw-bold" style="font-size: 12px; letter-spacing: 0.25px !important; word-spacing: 0.5px;">${set} #${cardnumber} ${cardattributes}</span><br>
-                                    </div>
-                                    <hr>
-                                    <div class="w-100 h-100 d-flex align-items-center justify-content-between">
-                                        <!-- Product price -->
-                                        <span></span>
-                                        <span class="fw-bold">${currentPrice} <br>
-                                        <span style="font-size: 12px; font-weight: 400 !important;"> or Best Offer</span><br>
-                                            ${listingtype === "FixedPrice" ? `<span style="color: green; font-weight: 500; font-size: 12px;">Free Standard Shipping</span>` : ''}
-                                        </span>
-                                        </span><a href="${viewUrl}${ebayEPN}" target="_blank"><i class="fab fa-ebay" style="font-size: 35px;"></i></span></a>
-                                        <span></span>
-                                    </div>
-                                    <hr>
-                                    <div class="w-100 d-flex align-items-center justify-content-between" style="height: 10px;">
-                                        <!-- watch bid auction icon -->
-                                        <span>
-                                            <!-- ${bids !== "0" ? `<i class="fa fa-gavel fa-rotate-270"></i> ${bids}` : ''} &nbsp;&nbsp;&nbsp; -->
-                                            ${watchers !== "0" ? `<i class="bi bi-eye-fill" style="font-size: 18px;" data-toggle="tooltip" data-bs-placement="top" title="${watchers} watching"></i>` : ''}
-                                        </span>
-                                        <!-- info circle icon -->
-                                        <span>
-                                            <!-- <i class="bi bi-info-circle-fill" style="font-size: 15px;"></i> -->
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>`;
+                <div class="card h-100 d-flex align-items-stretch justify-content-center">
+                    <!-- top badge-->
+                    <!-- attributes badge-->
+                    ${cardattributes.includes("(USAB)") && year === "1991" ? `<div class="badge bg-primary text-light position-absolute" style="top: 0.5rem; right: 0.5rem">'92 USA Dream Team</div> ` : ''}
+                    ${cardattributes === "(RC)" ? `<div class="badge bg-warning text-dark position-absolute" style="top: 0.5rem; right: 0.5rem">Rookie Card </div> ` : ''}
+                    ${playerattributes === "(HOF)" && !cardattributes.includes("(USAB)") && cardattributes !== "(RC)" ? `<div class="badge bg-warning text-dark position-absolute" style="top: 0.5rem; right: 1.5rem">Hall Of Fame</div>` : ''}
+                    <!-- Product image-->
+                    <div class="text-center bg-dark"
+                        style="height: 310px; padding-bottom:10px; border-top-right-radius: 5px; border-top-left-radius: 5px;">
+                        <a href="${viewUrl}${ebayEPN}" target="_blank">
+                            <img class="card-img-top" src="${pictureUrl}" alt="..."
+                                style="max-width: 172px; max-height: 276px; padding-top: 10px; loading=" lazy"">
+                            <!-- condition badge -->
+                            <span class="badge badge-dark bg-dark" style="width: 206px; border-radius: 0;">${authority}
+                                ${grade} ${gradecondition}</span>
+                        </a>
+                    </div>
+                    <!-- Product details-->
+                    <div class="card-body w-100 align-items-center justify-content-center text-center" style="height: 120px;">
+                    <!-- Player/Athlete -->
+                    <span class="fw-bolder" style="letter-spacing: 0.25px !important; word-spacing: 0.5px; display: inline-block; text-align: left !important;">
+                        ${playerAthlete} ${playerattributes}
+                    </span>
+                    <br>
+                    <!-- Set -->
+                    <span class="fw-bold" style="font-size: 12px; letter-spacing: 0.25px !important; word-spacing: 0.5px;">
+                        <span style="display: inline-block; text-align: left !important;">
+                            ${set} #${cardnumber} ${cardattributes}
+                        </span>
+                    </span>
+                </div>
+                    <hr>
+                    <!-- Product price -->
+                    <div class="w-100 d-flex align-items-center justify-content-between" style="padding-bottom: 10px;">
+                        <span></span>
+                        <span class="fw-bold">${currentPrice} <br>
+                            <span style="font-size: 12px; font-weight: 400 !important;"> or Best Offer</span><br>
+                            ${listingtype === "FixedPrice" ? `<span
+                                style="color: green; font-weight: 500; font-size: 12px;">Free Standard
+                                Shipping</span>` : ''}
+                        </span>
+                        </span><a href="${viewUrl}${ebayEPN}" target="_blank"><i class="fab fa-ebay"
+                                style="font-size: 35px;"></i></span></a>
+                        <span></span>
+                    </div>
+                    <div class="card-footer w-100 d-flex align-items-center justify-content-between" style="height: 25px;">
+                        <!-- watch bid auction icon -->
+                        <span>
+                            <!-- ${bids !== "0" ? `<i class="fa fa-gavel fa-rotate-270"></i> ${bids}` : ''} &nbsp;&nbsp;&nbsp; -->
+                            ${watchers !== "0" ? `<i class="bi bi-eye-fill" style="font-size: 18px;"
+                                data-toggle="tooltip" data-bs-placement="top" title="${watchers} watching"></i>` :
+                        ''}
+                        </span>
+                        <!-- info circle icon -->
+                        <span>
+                            <!-- <i class="bi bi-info-circle-fill" style="font-size: 15px;"></i> -->
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>`;
 
             } else if (condition === "Ungraded") {
                 resultElement.innerHTML = `
                 <div class="col mb-2">
-                            <div class="card h-100 d-flex align-items-center justify-content-center">
-                                <!-- badge-->
-                                <!-- attributes badge-->
-                                ${cardattributes.includes("(USAB)") && year === "1991" ? `<div class="badge bg-primary text-light position-absolute" style="top: 0.5rem; right: 0.5rem">'92 USA Dream Team</div> ` : ''}
-                                ${cardattributes === "(RC)" ? `<div class="badge bg-warning text-dark position-absolute" style="top: 0.5rem; right: 0.5rem">Rookie Card </div> ` : ''}
-                                ${playerattributes === "(HOF)" && !cardattributes.includes("(USAB)") && cardattributes !== "(RC)" ? `<div class="badge bg-warning text-dark position-absolute" style="top: 0.5rem; right: 1.5rem">Hall Of Fame</div>` : ''}
-                                <!-- Product image-->
-                                <div class="text-center bg-dark" style="padding-bottom:10px; border-top-right-radius: 5px; border-top-left-radius: 5px;">
-                                    <a href="${viewUrl}${ebayEPN}" target="_blank">
-                                        <img class="card-img-top" src="${pictureUrl}" alt="..." style="max-width: 206px; max-height: 276px; padding-top: 10px;" loading="lazy">
-                                        <!-- condition badge -->
-                                        <span class="badge badge-dark bg-dark" style="width: 206px; border-radius: 0;">RAW ${conditionrange}</span>
-                                    </a>
-                                </div>
-                                <!-- Product details-->
-                                <div class="card-body w-100">
-                                    <div class="text-center">
-                                        <!-- Player/Athlete -->
-                                        <span class="fw-bolder" style="letter-spacing: 0.25px !important; word-spacing: 0.5px;">${playerAthlete} ${playerattributes}</span><br>
-                                    </div>
-                                    <div class="w-100 h-100 d-flex justify-content-center align-items-center">
-                                        <!-- Set -->
-                                        <span class="fw-bold" style="font-size: 12px; letter-spacing: 0.25px !important; word-spacing: 0.5px;">${set} #${cardnumber} ${cardattributes}</span><br>
-                                    </div>
-                                    <hr>
-                                    <div class="w-100 h-100 d-flex align-items-center justify-content-between">
-                                        <!-- Product price -->
-                                        <span></span>
-                                        <span class="fw-bold">${currentPrice} <br>
-                                        <span style="font-size: 12px; font-weight: 400 !important;"> or Best Offer</span><br>
-                                            ${listingtype === "FixedPrice" ? `<span style="color: green; font-weight: 500; font-size: 12px;">Free Standard Shipping</span>` : ''}
-                                        </span>
-                                        </span><a href="${viewUrl}${ebayEPN}" target="_blank"><i class="fab fa-ebay" style="font-size: 35px;"></i></span></a>
-                                        <span></span>
-                                    </div>
-                                    <hr>
-                                    <div class="w-100 d-flex align-items-center justify-content-between" style="height: 10px;">
-                                        <!-- watch bid auction icon -->
-                                        <span>
-                                            <!-- ${bids !== "0" ? `<i class="fa fa-gavel fa-rotate-270"></i> ${bids}` : ''} &nbsp;&nbsp;&nbsp; -->
-                                            ${watchers !== "0" ? `<i class="bi bi-eye-fill" style="font-size: 18px;" data-toggle="tooltip" data-bs-placement="top" title="${watchers} watching"></i>` : ''}
-                                        </span>
-                                        <!-- info circle icon -->
-                                        <span>
-                                            <!-- <i class="bi bi-info-circle-fill" style="font-size: 15px;"></i> -->
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>`;
+                <div class="card h-100 d-flex align-items-stretch justify-content-center">
+                <!-- attributes badge-->
+                ${cardattributes.includes("(USAB)") && year === "1991" ? `<div class="badge bg-primary text-light position-absolute" style="top: 0.5rem; right: 0.5rem">'92 USA Dream Team</div> ` : ''}
+                ${cardattributes === "(RC)" ? `<div class="badge bg-warning text-dark position-absolute" style="top: 0.5rem; right: 0.5rem">Rookie Card </div> ` : ''}
+                ${playerattributes === "(HOF)" && !cardattributes.includes("(USAB)") && cardattributes !== "(RC)" ? `<div class="badge bg-warning text-dark position-absolute" style="top: 0.5rem; right: 1.5rem">Hall Of Fame</div>` : ''}
+                    <!-- Product image-->
+                    <div class="text-center bg-dark"
+                        style="height: 310px; padding-bottom:10px; border-top-right-radius: 5px; border-top-left-radius: 5px;">
+                        <a href="${viewUrl}${ebayEPN}" target="_blank">
+                            <img class="card-img-top" src="${pictureUrl}" alt="..."
+                                style="max-width: 206px; max-height: 276px; padding-top: 10px; loading=" lazy"">
+                            <!-- condition badge -->
+                            <span class="badge badge-dark bg-dark" style="width: 206px; border-radius: 0;">${authority}
+                                ${grade} ${gradecondition}</span>
+                        </a>
+                    </div>
+                    <!-- Product details-->
+                    <div class="card-body w-100 align-items-center justify-content-center text-center" style="height: 120px;">
+                    <!-- Player/Athlete -->
+                    <span class="fw-bolder" style="letter-spacing: 0.25px !important; word-spacing: 0.5px; display: inline-block; text-align: left !important;">
+                        ${playerAthlete} ${playerattributes}
+                    </span>
+                    <br>
+                    <!-- Set -->
+                    <span class="fw-bold" style="font-size: 12px; letter-spacing: 0.25px !important; word-spacing: 0.5px;">
+                        <span style="display: inline-block; text-align: left !important;">
+                            ${set} #${cardnumber} ${cardattributes}
+                        </span>
+                    </span>
+                </div>
+                <hr>
+                    <!-- Product price -->
+                    <div class="w-100 d-flex align-items-center justify-content-between" style="padding-bottom: 10px;">
+                        <span></span>
+                        <span class="fw-bold">${currentPrice} <br>
+                            <span style="font-size: 12px; font-weight: 400 !important;"> or Best Offer</span><br>
+                            ${listingtype === "FixedPrice" ? `<span
+                                style="color: green; font-weight: 500; font-size: 12px;">Free Standard
+                                Shipping</span>` : ''}
+                        </span>
+                        </span><a href="${viewUrl}${ebayEPN}" target="_blank"><i class="fab fa-ebay"
+                                style="font-size: 35px;"></i></span></a>
+                        <span></span>
+                    </div>
+                    <div class="card-footer w-100 d-flex align-items-center justify-content-between" style="height: 30px;">
+                        <!-- watch bid auction icon -->
+                        <span>
+                            <!-- ${bids !== "0" ? `<i class="fa fa-gavel fa-rotate-270"></i> ${bids}` : ''} &nbsp;&nbsp;&nbsp; -->
+                            ${watchers !== "0" ? `<i class="bi bi-eye-fill" style="font-size: 18px;"
+                                data-toggle="tooltip" data-bs-placement="top" title="${watchers} watching"></i>` :
+                        ''}
+                        </span>
+                        <!-- info circle icon -->
+                        <span>
+                            <i class="bi bi-info-circle-fill" style="font-size: 15px;"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>`;
             }
 
             resultsContainer.appendChild(resultElement);
