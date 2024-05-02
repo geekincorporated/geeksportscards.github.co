@@ -248,7 +248,7 @@ function displayItems(items, startIndex, endIndex) {
                                 style="font-size: 35px;"></i></span></a>
                         <span></span>
                     </div>
-                    <div class="card-footer w-100 d-flex align-items-center justify-content-between" style="height: 25px;">
+                    <div class="card-footer w-100 d-flex align-items-center justify-content-between" style="height: 30px;">
                         <!-- watch bid auction icon -->
                         <span>
                             <!-- ${bids !== "0" ? `<i class="fa fa-gavel fa-rotate-270"></i> ${bids}` : ''} &nbsp;&nbsp;&nbsp; -->
@@ -313,7 +313,7 @@ function displayItems(items, startIndex, endIndex) {
                                 style="font-size: 35px;"></i></span></a>
                         <span></span>
                     </div>
-                    <div class="card-footer w-100 d-flex align-items-center justify-content-between" style="height: 25px;">
+                    <div class="card-footer w-100 d-flex align-items-center justify-content-between" style="height: 30px;">
                         <!-- watch bid auction icon -->
                         <span>
                             <!-- ${bids !== "0" ? `<i class="fa fa-gavel fa-rotate-270"></i> ${bids}` : ''} &nbsp;&nbsp;&nbsp; -->
