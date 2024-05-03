@@ -210,15 +210,14 @@ function displayItems(items, startIndex, endIndex) {
                         Complete Set
                     </div>
                     <!-- Product image-->
-                    <div class="text-center bg-dark"
-                        style="height: 310px; padding-bottom:10px; border-top-right-radius: 5px; border-top-left-radius: 5px;">
-                        <a href="${viewUrl}${ebayEPN}" target="_blank">
-                            <img class="card-img-top" src="${pictureUrl}" alt="..."
-                                style="max-width: 206px; max-height: 276px; padding-top: 10px; loading=" lazy"">
-                            <!-- condition badge -->
-                            <span class="badge badge-dark bg-dark" style="width: 206px; border-radius: 0;">${authority}
-                                ${grade} ${gradecondition}</span>
-                        </a>
+                    <div class="text-center bg-dark" style="height: 310px; padding-bottom: 10px; border-top-right-radius: 5px; border-top-left-radius: 5px; display: flex; align-items: center; justify-content: center;">
+                    <a href="${viewUrl}${ebayEPN}" target="_blank">
+                        <img class="card-img-top" src="${pictureUrl}" alt="..." style="max-width: 206px; max-height: 276px; padding-top: 10px; loading=" lazy"">
+                        <!-- condition badge -->
+                        <div>
+                        <span class="badge badge-dark bg-dark" style="width: 206px; border-radius: 0;">${authority} ${grade} ${gradecondition}</span>
+                        </div>
+                    </a>
                     </div>
                     <!-- Product details-->
                     <div class="card-body w-100 align-items-center justify-content-center text-center" style="height: 120px;">
@@ -275,15 +274,14 @@ function displayItems(items, startIndex, endIndex) {
                     ${cardattributes === "(RC)" ? `<div class="badge bg-warning text-dark position-absolute" style="top: 0.5rem; right: 0.5rem">Rookie Card </div> ` : ''}
                     ${playerattributes === "(HOF)" && !cardattributes.includes("(USAB)") && cardattributes !== "(RC)" ? `<div class="badge bg-warning text-dark position-absolute" style="top: 0.5rem; right: 1.5rem">Hall Of Fame</div>` : ''}
                     <!-- Product image-->
-                    <div class="text-center bg-dark"
-                        style="height: 310px; padding-bottom:10px; border-top-right-radius: 5px; border-top-left-radius: 5px;">
-                        <a href="${viewUrl}${ebayEPN}" target="_blank">
-                            <img class="card-img-top" src="${pictureUrl}" alt="..."
-                                style="max-width: 172px; max-height: 276px; padding-top: 10px; loading=" lazy"">
-                            <!-- condition badge -->
-                            <span class="badge badge-dark bg-dark" style="width: 206px; border-radius: 0;">${authority}
-                                ${grade} ${gradecondition}</span>
-                        </a>
+                    <div class="text-center bg-dark" style="height: 310px; padding-bottom: 10px; border-top-right-radius: 5px; border-top-left-radius: 5px; display: flex; align-items: center; justify-content: center;">
+                    <a href="${viewUrl}${ebayEPN}" target="_blank">
+                        <img class="card-img-top" src="${pictureUrl}" alt="..." style="max-width: 172px; max-height: 276px; padding-top: 10px; loading=" lazy"">
+                        <!-- condition badge -->
+                        <div>
+                        <span class="badge badge-dark bg-dark" style="width: 206px; border-radius: 0;">${authority} ${grade} ${gradecondition}</span>
+                        </div>
+                    </a>
                     </div>
                     <!-- Product details-->
                     <div class="card-body w-100 align-items-center justify-content-center text-center" style="height: 120px;">
@@ -339,15 +337,14 @@ function displayItems(items, startIndex, endIndex) {
                 ${cardattributes === "(RC)" ? `<div class="badge bg-warning text-dark position-absolute" style="top: 0.5rem; right: 0.5rem">Rookie Card </div> ` : ''}
                 ${playerattributes === "(HOF)" && !cardattributes.includes("(USAB)") && cardattributes !== "(RC)" ? `<div class="badge bg-warning text-dark position-absolute" style="top: 0.5rem; right: 1.5rem">Hall Of Fame</div>` : ''}
                     <!-- Product image-->
-                    <div class="text-center bg-dark"
-                        style="height: 310px; padding-bottom:10px; border-top-right-radius: 5px; border-top-left-radius: 5px;">
-                        <a href="${viewUrl}${ebayEPN}" target="_blank">
-                            <img class="card-img-top" src="${pictureUrl}" alt="..."
-                                style="max-width: 206px; max-height: 276px; padding-top: 10px; loading=" lazy"">
-                            <!-- condition badge -->
-                            <span class="badge badge-dark bg-dark" style="width: 206px; border-radius: 0;">${authority}
-                                ${grade} ${gradecondition}</span>
-                        </a>
+                    <div class="text-center bg-dark" style="height: 310px; padding-bottom: 10px; border-top-right-radius: 5px; border-top-left-radius: 5px; display: flex; align-items: center; justify-content: center;">
+                    <a href="${viewUrl}${ebayEPN}" target="_blank">
+                        <img class="card-img-top" src="${pictureUrl}" alt="..." style="max-width: 206px; max-height: 276px; padding-top: 10px; loading=" lazy"">
+                        <!-- condition badge -->
+                        <div>
+                        <span class="badge badge-dark bg-dark" style="width: 206px; border-radius: 0;">${authority} ${grade} ${gradecondition}</span>
+                        </div>
+                    </a>
                     </div>
                     <!-- Product details-->
                     <div class="card-body w-100 align-items-center justify-content-center text-center" style="height: 120px;">
