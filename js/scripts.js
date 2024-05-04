@@ -335,7 +335,6 @@ function displayItems(items, startIndex, endIndex) {
                 <!-- attributes badge-->
                 ${cardattributes.includes("(USAB)") && year === "1991" && cardnumber > "574" ? `<div class="badge bg-primary text-light position-absolute" style="top: 0.5rem; right: 0.5rem">'92 USA Dream Team</div>` : ''}
                 ${cardattributes.includes("(USAB)") && year === "1991" && cardnumber < "575" ? `<div class="badge bg-primary text-light position-absolute" style="top: 0.5rem; right: 0.5rem">USA Basketball Team</div>` : ''}
-                ${cardattributes.includes("(USAB)") && year === "1991" ? `<div class="badge bg-primary text-light position-absolute" style="top: 0.5rem; right: 0.5rem">'92 USA Dream Team</div> ` : ''}
                 ${cardattributes === "(RC)" ? `<div class="badge bg-warning text-dark position-absolute" style="top: 0.5rem; right: 0.5rem">Rookie Card </div> ` : ''}
                 ${playerattributes === "(HOF)" && !cardattributes.includes("(USAB)") && cardattributes !== "(RC)" ? `<div class="badge bg-warning text-dark position-absolute" style="top: 0.5rem; right: 1.5rem">Hall Of Fame</div>` : ''}
                     <!-- Product image-->
