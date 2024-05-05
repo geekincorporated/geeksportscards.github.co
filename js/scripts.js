@@ -94,6 +94,7 @@ function displayItems(items, startIndex, endIndex) {
             var bids = item["Bids"];
             var watchers = item["Watch Count"];
             var listingtype = item["Listing Type"];
+            var shippingcost = item["Shipping Cost"];
             var playerAthlete = "";
             var card = "";
             var year = "";
@@ -321,8 +322,8 @@ function displayItems(items, startIndex, endIndex) {
                 <div class="col mb-5">
                 <div class="card h-100 d-flex align-items-stretch justify-content-center">
                 <!-- attributes badge-->
-                ${cardattributes.includes("(USAB)") && year === "1991" && cardnumber > "574" ? `<div class="badge bg-primary text-light position-absolute" style="top: 0.5rem; right: 0.5rem">'92 USA Dream Team</div>` : ''}
-                ${cardattributes.includes("(USAB)") && year === "1991" && cardnumber < "575" ? `<div class="badge bg-primary text-light position-absolute" style="top: 0.5rem; right: 0.5rem">USA Basketball Team</div>` : ''}
+                ${cardattributes.includes("(USAB)") && (year === "1991" || year === "1992") && cardnumber > "574" ? `<div class="badge bg-primary text-light position-absolute" style="top: 0.5rem; right: 0.5rem">'92 USA Dream Team</div>` : ''}
+                ${cardattributes.includes("(USAB)") && (year === "1991" || year === "1992") && cardnumber < "574" ? `<div class="badge bg-primary text-light position-absolute" style="top: 0.5rem; right: 0.5rem">USA Basketball Team</div>` : ''}
                 ${cardattributes === "(RC)" ? `<div class="badge bg-warning text-dark position-absolute" style="top: 0.5rem; right: 0.5rem">Rookie Card </div> ` : ''}
                 ${playerattributes === "(HOF)" && !cardattributes.includes("(USAB)") && cardattributes !== "(RC)" ? `<div class="badge bg-warning text-dark position-absolute" style="top: 0.5rem; right: 1.5rem">Hall Of Fame</div>` : ''}
                     <!-- Product image-->
@@ -350,17 +351,20 @@ function displayItems(items, startIndex, endIndex) {
                     </span>
                 </div>
                 <hr>
-                <!-- Product price -->
-                <div class="card-body w-100 d-flex align-items-center justify-content-between" style="padding-bottom: 10px;">
-                    <span class="fw-bold">${currentPrice} ${listingtype === "FixedPrice" && shippingcost === "USD 0.00" ? `<span style="font-size: 12px; font-weight: 400 !important;"> or Best Offer</span>` : ''}
-                          ${listingtype === "FixedPrice" && shippingcost === "USD 0.00" ? `<p style="color: green; font-weight: 500; font-size: 12px;">Free Shipping</p>` : ''}
-                          ${listingtype === "FixedPrice" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Standard Shipping</p>` : ''}
-                    </span><a href="${viewUrl}${ebayEPN}" target="_blank"><i class="fab fa-ebay" style="font-size: 35px;"></i></span></a>
-                 </div>
+                    <!-- Product price -->
+                    <div class="card-body w-100 d-flex align-items-center justify-content-between" style="padding-bottom: 10px;">
+                        <span class="fw-bold">${currentPrice} ${listingtype === "FixedPrice" && shippingcost === "USD 0.00" ? `<span style="font-size: 12px; font-weight: 400 !important;"> or Best Offer</span>` : ''}
+                              ${listingtype === "FixedPrice" && shippingcost === "USD 0.00" ? `<p style="color: green; font-weight: 500; font-size: 12px;">Free Shipping</p>` : ''}
+                              ${listingtype === "FixedPrice" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Standard Shipping</p>` : ''}
+                        </span><a href="${viewUrl}${ebayEPN}" target="_blank"><i class="fab fa-ebay" style="font-size: 35px;"></i></span></a>
+                     </div>
+
+
                     <div class="card-footer w-100 d-flex align-items-center justify-content-between" style="height: 30px;">
                         <!-- watch bid auction icon -->
                         <span>
                             <!-- ${bids !== "0" ? `<i class="fa fa-gavel fa-rotate-270"></i> ${bids}` : ''} &nbsp;&nbsp;&nbsp; -->
+                            <i class="fa fa-solid fa-dollar-sign"></i>
                             ${watchers !== "0" ? `<i class="bi bi-eye-fill" style="font-size: 18px;"
                                 data-toggle="tooltip" data-bs-placement="top" title="${watchers} watching"></i>` :
                         ''}
