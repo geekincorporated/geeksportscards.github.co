@@ -235,18 +235,12 @@ function displayItems(items, startIndex, endIndex) {
                 </div>
                     <hr>
                     <!-- Product price -->
-                    <div class="w-100 d-flex align-items-center justify-content-between" style="padding-bottom: 10px;">
-                        <span></span>
-                        <span class="fw-bold">${currentPrice} <br>
-                            <span style="font-size: 12px; font-weight: 400 !important;"> or Best Offer</span><br>
-                            ${listingtype === "FixedPrice" ? `<span
-                                style="color: green; font-weight: 500; font-size: 12px;">Free Standard
-                                Shipping</span>` : ''}
-                        </span>
-                        </span><a href="${viewUrl}${ebayEPN}" target="_blank"><i class="fab fa-ebay"
-                                style="font-size: 35px;"></i></span></a>
-                        <span></span>
-                    </div>
+                    <div class="card-body w-100 d-flex align-items-center justify-content-between" style="padding-bottom: 10px;">
+                        <span class="fw-bold">${currentPrice} ${listingtype === "FixedPrice" && shippingcost === "USD 0.00" ? `<span style="font-size: 12px; font-weight: 400 !important;"> or Best Offer</span>` : ''}
+                              ${listingtype === "FixedPrice" && shippingcost === "USD 0.00" ? `<p style="color: green; font-weight: 500; font-size: 12px;">Free Shipping</p>` : ''}
+                              ${listingtype === "FixedPrice" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Standard Shipping</p>` : ''}
+                        </span><a href="${viewUrl}${ebayEPN}" target="_blank"><i class="fab fa-ebay" style="font-size: 35px;"></i></span></a>
+                     </div>
                     <div class="card-footer w-100 d-flex align-items-center justify-content-between" style="height: 30px;">
                         <!-- watch bid auction icon -->
                         <span>
@@ -299,18 +293,12 @@ function displayItems(items, startIndex, endIndex) {
                 </div>
                     <hr>
                     <!-- Product price -->
-                    <div class="w-100 d-flex align-items-center justify-content-between" style="padding-bottom: 10px;">
-                        <span></span>
-                        <span class="fw-bold">${currentPrice} <br>
-                            <span style="font-size: 12px; font-weight: 400 !important;"> or Best Offer</span><br>
-                            ${listingtype === "FixedPrice" ? `<span
-                                style="color: green; font-weight: 500; font-size: 12px;">Free Standard
-                                Shipping</span>` : ''}
-                        </span>
-                        </span><a href="${viewUrl}${ebayEPN}" target="_blank"><i class="fab fa-ebay"
-                                style="font-size: 35px;"></i></span></a>
-                        <span></span>
-                    </div>
+                    <div class="card-body w-100 d-flex align-items-center justify-content-between" style="padding-bottom: 10px;">
+                        <span class="fw-bold">${currentPrice} ${listingtype === "FixedPrice" && shippingcost === "USD 0.00" ? `<span style="font-size: 12px; font-weight: 400 !important;"> or Best Offer</span>` : ''}
+                              ${listingtype === "FixedPrice" && shippingcost === "USD 0.00" ? `<p style="color: green; font-weight: 500; font-size: 12px;">Free Shipping</p>` : ''}
+                              ${listingtype === "FixedPrice" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Standard Shipping</p>` : ''}
+                        </span><a href="${viewUrl}${ebayEPN}" target="_blank"><i class="fab fa-ebay" style="font-size: 35px;"></i></span></a>
+                     </div>
                     <div class="card-footer w-100 d-flex align-items-center justify-content-between" style="height: 30px;">
                         <!-- watch bid auction icon -->
                         <span>
@@ -362,19 +350,13 @@ function displayItems(items, startIndex, endIndex) {
                     </span>
                 </div>
                 <hr>
-                    <!-- Product price -->
-                    <div class="w-100 d-flex align-items-center justify-content-between" style="padding-bottom: 10px;">
-                        <span></span>
-                        <span class="fw-bold">${currentPrice} <br>
-                            <span style="font-size: 12px; font-weight: 400 !important;"> or Best Offer</span><br>
-                            ${listingtype === "FixedPrice" ? `<span
-                                style="color: green; font-weight: 500; font-size: 12px;">Free Standard
-                                Shipping</span>` : ''}
-                        </span>
-                        </span><a href="${viewUrl}${ebayEPN}" target="_blank"><i class="fab fa-ebay"
-                                style="font-size: 35px;"></i></span></a>
-                        <span></span>
-                    </div>
+                <!-- Product price -->
+                <div class="card-body w-100 d-flex align-items-center justify-content-between" style="padding-bottom: 10px;">
+                    <span class="fw-bold">${currentPrice} ${listingtype === "FixedPrice" && shippingcost === "USD 0.00" ? `<span style="font-size: 12px; font-weight: 400 !important;"> or Best Offer</span>` : ''}
+                          ${listingtype === "FixedPrice" && shippingcost === "USD 0.00" ? `<p style="color: green; font-weight: 500; font-size: 12px;">Free Shipping</p>` : ''}
+                          ${listingtype === "FixedPrice" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Standard Shipping</p>` : ''}
+                    </span><a href="${viewUrl}${ebayEPN}" target="_blank"><i class="fab fa-ebay" style="font-size: 35px;"></i></span></a>
+                 </div>
                     <div class="card-footer w-100 d-flex align-items-center justify-content-between" style="height: 30px;">
                         <!-- watch bid auction icon -->
                         <span>
