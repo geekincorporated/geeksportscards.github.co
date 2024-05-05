@@ -364,7 +364,7 @@ function displayItems(items, startIndex, endIndex) {
                         <!-- watch bid auction icon -->
                         <span>
                             <!-- ${bids !== "0" ? `<i class="fa fa-gavel fa-rotate-270"></i> ${bids}` : ''} &nbsp;&nbsp;&nbsp; -->
-                            <i class="fa fa-solid fa-dollar-sign"></i>
+                            <!-- <i class="fa fa-solid fa-dollar-sign"></i> -->
                             ${watchers !== "0" ? `<i class="bi bi-eye-fill" style="font-size: 18px;"
                                 data-toggle="tooltip" data-bs-placement="top" title="${watchers} watching"></i>` :
                         ''}
