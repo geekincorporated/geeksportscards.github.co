@@ -95,6 +95,7 @@ function displayItems(items, startIndex, endIndex) {
             var watchers = item["Watch Count"];
             var listingtype = item["Listing Type"];
             var shippingcost = item["Shipping Cost"];
+            var bestofferenabled = item["Best Offer Enabled"];
             var playerAthlete = "";
             var card = "";
             var year = "";
@@ -237,7 +238,7 @@ function displayItems(items, startIndex, endIndex) {
                     <hr>
                     <!-- Product price -->
                     <div class="card-body w-100 d-flex align-items-center justify-content-between" style="padding-bottom: 10px;">
-                        <span class="fw-bold">${currentPrice} ${listingtype === "FixedPrice" && shippingcost === "USD 0.00" ? `<span style="font-size: 12px; font-weight: 400 !important;"> or Best Offer</span>` : ''}
+                    <span class="fw-bold">${currentPrice} ${bestofferenabled === "true" ? `<span style="font-size: 12px; font-weight: 400 !important;"> or Best Offer</span>` : ''}
                               ${listingtype === "FixedPrice" && shippingcost === "USD 0.00" ? `<p style="color: green; font-weight: 500; font-size: 12px;">Free Shipping</p>` : ''}
                               ${listingtype === "FixedPrice" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Standard Shipping</p>` : ''}
                         </span><a href="${viewUrl}${ebayEPN}" target="_blank"><i class="fab fa-ebay" style="font-size: 35px;"></i></span></a>
@@ -295,7 +296,7 @@ function displayItems(items, startIndex, endIndex) {
                     <hr>
                     <!-- Product price -->
                     <div class="card-body w-100 d-flex align-items-center justify-content-between" style="padding-bottom: 10px;">
-                        <span class="fw-bold">${currentPrice} ${listingtype === "FixedPrice" && shippingcost === "USD 0.00" ? `<span style="font-size: 12px; font-weight: 400 !important;"> or Best Offer</span>` : ''}
+                    <span class="fw-bold">${currentPrice} ${bestofferenabled === "true" ? `<span style="font-size: 12px; font-weight: 400 !important;"> or Best Offer</span>` : ''}
                               ${listingtype === "FixedPrice" && shippingcost === "USD 0.00" ? `<p style="color: green; font-weight: 500; font-size: 12px;">Free Shipping</p>` : ''}
                               ${listingtype === "FixedPrice" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Standard Shipping</p>` : ''}
                         </span><a href="${viewUrl}${ebayEPN}" target="_blank"><i class="fab fa-ebay" style="font-size: 35px;"></i></span></a>
@@ -353,7 +354,7 @@ function displayItems(items, startIndex, endIndex) {
                 <hr>
                     <!-- Product price -->
                     <div class="card-body w-100 d-flex align-items-center justify-content-between" style="padding-bottom: 10px;">
-                        <span class="fw-bold">${currentPrice} ${listingtype === "FixedPrice" && shippingcost === "USD 0.00" ? `<span style="font-size: 12px; font-weight: 400 !important;"> or Best Offer</span>` : ''}
+                        <span class="fw-bold">${currentPrice} ${bestofferenabled === "true" ? `<span style="font-size: 12px; font-weight: 400 !important;"> or Best Offer</span>` : ''}
                               ${listingtype === "FixedPrice" && shippingcost === "USD 0.00" ? `<p style="color: green; font-weight: 500; font-size: 12px;">Free Shipping</p>` : ''}
                               ${listingtype === "FixedPrice" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Standard Shipping</p>` : ''}
                         </span><a href="${viewUrl}${ebayEPN}" target="_blank"><i class="fab fa-ebay" style="font-size: 35px;"></i></span></a>
@@ -405,6 +406,18 @@ function checkEnter(event) {
     if (event.keyCode === 13) {
         search();
     }
+}
+
+function resetSearch() {
+    // Clear the search input
+    document.getElementById('searchInput').value = '';
+
+    // Set the "All" condition radio button to checked
+    document.getElementById('conditionAny').checked = true;
+
+    // Reload the page with default settings
+    currentPage = 1;
+    loadPage(currentPage);
 }
 
 function search() {
