@@ -6,35 +6,88 @@
 // This file is intentionally blank
 // Use this file to add JavaScript to your project
 
-
-
-// Function to show/hide the "Go to Top" button based on scroll position
-window.onscroll = function () { scrollFunction() };
-
-function scrollFunction() {
-    var goToTopBtn = document.getElementById("goToTopBtn");
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        goToTopBtn.style.display = "block";
-    } else {
-        goToTopBtn.style.display = "none";
-    }
-}
-
-// Function to scroll to the top when the "Go to Top" button is clicked
-function goToTop() {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-}
-
-
-
-
 // Attach event listeners to radio buttons 
 
 document.querySelectorAll('input[name="condition"]').forEach(function (radio) {
     radio.addEventListener('change', function () {
         search();
     });
+});
+
+// Function to clear input field
+const clearInput = () => {
+    document.getElementById('searchInput').value = '';
+};
+
+// Function to handle Enter key press
+const checkEnter = event => {
+    if (event.key === 'Enter') {
+        search();
+    }
+};
+
+const resetSearch = () => {
+    // Clear the search input
+    document.getElementById('searchInput').value = '';
+
+    // Set the "Any" condition radio button to checked
+    document.getElementById('conditionAny').checked = true;
+
+    // Reload the page with default settings
+    currentPage = 1;
+    loadPage(currentPage);
+};
+
+const search = () => {
+    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+    const selectedCondition = document.querySelector('input[name="condition"]:checked').value;
+
+    if (searchTerm.trim() === '') {
+        currentPage = 1;
+        loadPage(currentPage);
+        return;
+    }
+
+    const filteredData = allItems.filter(item => {
+        const nameMatches = item.Title.toLowerCase().includes(searchTerm);
+        const descriptionMatches = item["Item Specifics"].some(specific =>
+            specific.Name.toLowerCase().includes(searchTerm) || specific.Values.some(value => value.toLowerCase().includes(searchTerm))
+        );
+        const conditionMatches = selectedCondition === "Any" || item["Condition Display Name"].toLowerCase() === selectedCondition.toLowerCase();
+
+        return (nameMatches || descriptionMatches) && conditionMatches;
+    });
+
+    totalItems = filteredData.length;
+    displayItems(filteredData, 0, totalItems);
+};
+
+// Function to show filter and perform search
+const showFilter = () => {
+    const resultsfilterContainer = document.getElementById('resultsfilterContainer');
+    resultsfilterContainer.style.display = 'block';
+    search();
+};
+
+// Show/hide the "Go to Top" button based on scroll position
+window.addEventListener('scroll', () => {
+    const goToTopBtn = document.getElementById("goToTopBtn");
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        goToTopBtn.style.display = "block";
+    } else {
+        goToTopBtn.style.display = "none";
+    }
+});
+
+// Scroll to the top when the "Go to Top" button is clicked
+const goToTop = () => {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+};
+
+// Initialize tooltips
+$(document).ready(() => {
+    $('[data-toggle="tooltip"]').tooltip();
 });
 
 
@@ -387,79 +440,4 @@ function displayItems(items, startIndex, endIndex) {
         }
     });
 }
-
-
-// Function to clear input field
-function clearInput() {
-    document.getElementById('searchInput').value = '';
-}
-
-// JavaScript for handling dropdown menu items
-document.querySelectorAll('.dropdown-menu a').forEach(item => {
-    item.addEventListener('click', event => {
-        event.preventDefault();
-        var searchConcept = item.getAttribute('href').substring(1);
-        document.getElementById('search_concept').innerText = searchConcept;
-        document.getElementById('search_param').value = searchConcept;
-    });
-});
-
-// Function to handle Enter key press
-function checkEnter(event) {
-    if (event.keyCode === 13) {
-        search();
-    }
-}
-
-function resetSearch() {
-    // Clear the search input
-    document.getElementById('searchInput').value = '';
-
-    // Set the "All" condition radio button to checked
-    document.getElementById('conditionAny').checked = true;
-
-    // Reload the page with default settings
-    currentPage = 1;
-    loadPage(currentPage);
-}
-
-function search() {
-    var searchTerm = document.getElementById('searchInput').value.toLowerCase();
-    var selectedCondition = document.querySelector('input[name="condition"]:checked').value;
-
-    if (searchTerm.trim() === '') {
-        currentPage = 1;
-        loadPage(currentPage);
-        return;
-    }
-
-    var filteredData = allItems.filter(function (item) {
-        // Check if item name or description matches search term
-        var nameMatches = item.Title.toLowerCase().includes(searchTerm);
-        var descriptionMatches = item["Item Specifics"].some(specific =>
-            specific.Name.toLowerCase().includes(searchTerm) || specific.Values.some(value => value.toLowerCase().includes(searchTerm))
-        );
-
-        // Check if condition matches selected condition
-        var conditionMatches = selectedCondition === "Any" || item["Condition Display Name"].toLowerCase() === selectedCondition.toLowerCase();
-
-
-        return (nameMatches || descriptionMatches) && conditionMatches;
-    });
-
-    totalItems = filteredData.length;
-    displayItems(filteredData, 0, totalItems);
-}
-
-// Function to show filter and perform search
-function showFilter() {
-    var resultsfilterContainer = document.getElementById('resultsfilterContainer');
-    resultsfilterContainer.style.display = 'block';
-    search();
-}
-
-$(function () {
-    $('[data-toggle="tooltip"]').tooltip();
-});
-
 
