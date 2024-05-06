@@ -247,6 +247,7 @@ function displayItems(items, startIndex, endIndex) {
                         <!-- watch bid auction icon -->
                         <span>
                             <!-- ${bids !== "0" ? `<i class="fa fa-gavel fa-rotate-270"></i> ${bids}` : ''} &nbsp;&nbsp;&nbsp; -->
+                            <!-- <img src="assets/img/dollar-circle.svg" style="height: 25px; padding-bottom: 5px;"> &nbsp;&nbsp;&nbsp; -->
                             ${watchers !== "0" ? `<i class="bi bi-eye-fill" style="font-size: 18px;"
                                 data-toggle="tooltip" data-bs-placement="top" title="${watchers} watching"></i>` :
                         ''}
@@ -305,6 +306,7 @@ function displayItems(items, startIndex, endIndex) {
                         <!-- watch bid auction icon -->
                         <span>
                             <!-- ${bids !== "0" ? `<i class="fa fa-gavel fa-rotate-270"></i> ${bids}` : ''} &nbsp;&nbsp;&nbsp; -->
+                            <!-- <img src="assets/img/dollar-circle.svg" style="height: 25px; padding-bottom: 5px;"> &nbsp;&nbsp;&nbsp; -->
                             ${watchers !== "0" ? `<i class="bi bi-eye-fill" style="font-size: 18px;"
                                 data-toggle="tooltip" data-bs-placement="top" title="${watchers} watching"></i>` :
                         ''}
@@ -365,7 +367,8 @@ function displayItems(items, startIndex, endIndex) {
                         <!-- watch bid auction icon -->
                         <span>
                             <!-- ${bids !== "0" ? `<i class="fa fa-gavel fa-rotate-270"></i> ${bids}` : ''} &nbsp;&nbsp;&nbsp; -->
-                            <!-- <i class="fa fa-solid fa-dollar-sign"></i> -->
+                            <!-- <img src="assets/img/dollar-circle.svg" style="height: 25px; padding-bottom: 5px;"> &nbsp;&nbsp;&nbsp; -->
+                            <!-- <i class="fa fa-solid fa-dollar-sffign"></i> -->
                             ${watchers !== "0" ? `<i class="bi bi-eye-fill" style="font-size: 18px;"
                                 data-toggle="tooltip" data-bs-placement="top" title="${watchers} watching"></i>` :
                         ''}
