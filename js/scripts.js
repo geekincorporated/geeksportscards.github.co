@@ -307,7 +307,7 @@ function displayItems(items, startIndex, endIndex) {
                         </span>
                         <!-- info circle icon -->
                         <span>
-                            <i class="bi bi-info-circle-fill" style="font-size: 15px;"></i>
+                        <!-- <i class="bi bi-info-circle-fill" style="font-size: 15px;"></i> -->
                         </span>
                     </div>
                 </div>
@@ -366,7 +366,7 @@ function displayItems(items, startIndex, endIndex) {
                         </span>
                         <!-- info circle icon -->
                         <span>
-                            <i class="bi bi-info-circle-fill" style="font-size: 15px;"></i>
+                        <!-- <i class="bi bi-info-circle-fill" style="font-size: 15px;"></i> -->
                         </span>
                     </div>
                 </div>
@@ -428,7 +428,7 @@ function displayItems(items, startIndex, endIndex) {
                         </span>
                         <!-- info circle icon -->
                         <span>
-                            <i class="bi bi-info-circle-fill" style="font-size: 15px;"></i>
+                        <!-- <i class="bi bi-info-circle-fill" style="font-size: 15px;"></i> -->
                         </span>
                     </div>
                 </div>
