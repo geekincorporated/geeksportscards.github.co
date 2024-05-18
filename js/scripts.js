@@ -419,7 +419,7 @@ function displayItems(items, startIndex, endIndex) {
                     <div class="card-footer w-100 d-flex align-items-center justify-content-between" style="height: 30px;">
                         <!-- watch bid auction icon -->
                         <span>
-                            <!-- ${bids !== "0" ? `<i class="fa fa-gavel fa-rotate-270"></i> ${bids}` : ''} &nbsp;&nbsp;&nbsp; -->
+                            ${bids !== "0" ? `<i class="fa fa-gavel fa-rotate-270"></i> ${bids}` : ''} &nbsp;&nbsp;&nbsp;
                             <!-- <img src="assets/img/dollar-circle.svg" style="height: 25px; padding-bottom: 5px;"> &nbsp;&nbsp;&nbsp; -->
                             <!-- <i class="fa fa-solid fa-dollar-sffign"></i> -->
                             ${watchers !== "0" ? `<i class="bi bi-eye-fill" style="font-size: 18px;"
