@@ -381,7 +381,7 @@ ${watchers !== "0" ? `${watchers}  watching` :''}
 <div class="col mb-5" style="width: 225px;">
 <div class="card h-100 d-flex align-items-stretch justify-content-center">
 <!-- auction badge-->
-<div class="badge bg-danger text-light position-absolute" style="top: 0.5rem; right: 0.25rem; border: 2px solid white;">EBAY AUCTION</div>
+<div class="badge bg-danger text-light position-absolute" style="top: 0.25rem; right: 0.25rem;">EBAY AUCTION</div>
 <!-- Product image-->
 <div class="text-center bg-dark" style="height: 310px; width: 225px; padding-bottom: 10px; border-top-right-radius: 5px; border-top-left-radius: 5px; display: flex; align-items: center; justify-content: center;">
 <a href="${viewUrl}${ebayEPN}" target="_blank">
