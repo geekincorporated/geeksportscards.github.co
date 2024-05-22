@@ -328,8 +328,6 @@ data-toggle="tooltip" data-bs-placement="top" title="${watchers} watching"></i>`
 </div>
 </a>
 </div>
-
-
 <!-- Product details-->
 <div class="card-body w-100 align-items-center justify-content-left text-left" style="height: 100px;">
 <!-- Player -->
@@ -347,9 +345,6 @@ ${set} #${cardnumber}
 ${attributes.join('  ')}
 </span>
 </div>
-
-
-
 <hr>
 <!-- Product price -->
 <div class="card-body w-100 d-flex align-items-center justify-content-between" style="padding-bottom: 10px;">
@@ -397,9 +392,6 @@ ${watchers !== "0" ? `${watchers}  watching` :''}
 </div>
 </a>
 </div>
-
-
-
 <!-- Product details-->
 <div class="card-body w-100 align-items-center justify-content-left text-left" style="height: 100px;">
 <!-- Player -->
@@ -417,9 +409,6 @@ ${set} #${cardnumber}
 ${attributes.join('  ')}
 </span>
 </div>
-
-
-
 <hr>
 <!-- Product price -->
 <div class="card-body w-100 d-flex align-items-center justify-content-between" style="padding-bottom: 10px;">
@@ -433,7 +422,7 @@ ${currentPrice}
 <!-- watch bid auction icon -->
 <span style="font-size: 12px;">
 0d 10h 00m &nbsp;&nbsp;&nbsp;
-${bids !== "0" ? `${bids}  bid` : ''} &nbsp;&nbsp;&nbsp;
+<!-- ${bids !== "0" ? `${bids}  bid` : ''} &nbsp;&nbsp;&nbsp; -->
 ${watchers !== "0" ? `${watchers}  watching` :''}
 </span>
 <!-- info circle icon -->
@@ -444,8 +433,6 @@ ${watchers !== "0" ? `${watchers}  watching` :''}
 </div>
 </div>
 </div>`;
-
-
 
 } else if (condition === "Ungraded" && listingtype === "FixedPrice") {
     var attributes = []; // Array to store all attribute values
@@ -566,7 +553,7 @@ ${currentPrice}
 <!-- time bids watchers -->
 <span style="font-size: 12px;">
 0d 10h 00m &nbsp;&nbsp;&nbsp;
-${bids !== "0" ? `${bids}  bid` : ''} &nbsp;&nbsp;&nbsp;
+<!-- ${bids !== "0" ? `${bids}  bid` : ''} &nbsp;&nbsp;&nbsp; -->
 ${watchers !== "0" ? `${watchers}  watching` :''}
 </span>
 <!-- info circle icon -->
