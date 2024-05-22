@@ -421,8 +421,8 @@ ${currentPrice}
 <div class="card-footer w-100 d-flex align-items-center justify-content-between" style="height: 30px;">
 <!-- watch bid auction icon -->
 <span style="font-size: 12px;">
-0d 10h 00m &nbsp;&nbsp;&nbsp;
-<!-- ${bids !== "0" ? `${bids}  bid` : ''} &nbsp;&nbsp;&nbsp; -->
+<!-- 0d 10h 00m &nbsp;&nbsp;&nbsp; -->
+${bids !== "0" ? `${bids}  bid` : ''} &nbsp;&nbsp;&nbsp;
 ${watchers !== "0" ? `${watchers}  watching` :''}
 </span>
 <!-- info circle icon -->
@@ -552,8 +552,8 @@ ${currentPrice}
 <div class="card-footer w-100 d-flex align-items-center justify-content-between" style="height: 30px;">
 <!-- time bids watchers -->
 <span style="font-size: 12px;">
-0d 10h 00m &nbsp;&nbsp;&nbsp;
-<!-- ${bids !== "0" ? `${bids}  bid` : ''} &nbsp;&nbsp;&nbsp; -->
+<!-- 0d 10h 00m &nbsp;&nbsp;&nbsp; -->
+${bids !== "0" ? `${bids}  bid` : ''} &nbsp;&nbsp;&nbsp;
 ${watchers !== "0" ? `${watchers}  watching` :''}
 </span>
 <!-- info circle icon -->
