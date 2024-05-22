@@ -92,7 +92,7 @@ $('[data-toggle="tooltip"]').tooltip();
 
 var allItems = [];
 var currentPage = 1;
-var itemsPerPage = 12;
+var itemsPerPage = 10;
 var totalItems = 0;
 
 window.onload = function () {
@@ -147,13 +147,11 @@ var watchers = item["Watch Count"];
 var listingtype = item["Listing Type"];
 var shippingcost = item["Shipping Cost"];
 var bestofferenabled = item["Best Offer Enabled"];
-var playerAthlete = "";
 var card = "";
 var year = "";
 var set = "";
 var cardnumber = "";
-var cardattributes = "";
-var playerattributes = "";
+var attributes = "";
 var authority = "";
 var grade = "";
 var gradecondition = "";
@@ -194,21 +192,6 @@ break;
 }
 }
 
-var itemSpecifics = item["Item Specifics"];
-for (var i = 0; i < itemSpecifics.length; i++) {
-if (itemSpecifics[i].Name === "Card Attributes") {
-cardattributes = itemSpecifics[i].Values[0]; // Get the value
-break;
-}
-}
-
-var itemSpecifics = item["Item Specifics"];
-for (var i = 0; i < itemSpecifics.length; i++) {
-if (itemSpecifics[i].Name === "Player Attributes") {
-playerattributes = itemSpecifics[i].Values[0]; // Get the value
-break;
-}
-}
 
 var itemSpecifics = item["Item Specifics"];
 for (var i = 0; i < itemSpecifics.length; i++) {
@@ -253,8 +236,16 @@ break;
 var resultElement = document.createElement('div');
 
 if (Category === "Trading Card Sets") {
-resultElement.innerHTML = `
-<div class="col mb-5">
+    var attributes = []; // Array to store all attribute values
+    // Iterate through itemSpecifics to find Attributes
+    for (var i = 0; i < itemSpecifics.length; i++) {
+    if (itemSpecifics[i].Name === "Attributes") {
+    attributes = itemSpecifics[i].Values; // Get all values for Attributes
+    break;
+    }
+    }
+    resultElement.innerHTML = `
+<div class="col mb-5" style="width: 225px;">
 <div class="card h-100 d-flex align-items-stretch justify-content-center">
 <!-- top badge-->
 <div class="badge bg-primary text-white position-absolute" style="top: 0.5rem; right: 1.5rem">
@@ -271,18 +262,21 @@ Complete Set
 </a>
 </div>
 <!-- Product details-->
-<div class="card-body w-100 align-items-center justify-content-center text-center" style="height: 120px;">
-<!-- Player/Athlete -->
-<span class="fw-bolder" style="letter-spacing: 0.25px !important; word-spacing: 0.5px; display: inline-block; text-align: left !important;">
-${playerAthlete} ${playerattributes}
+<div class="card-body w-100 align-items-center justify-content-left text-left" style="height: 100px;">
+<!-- Player -->
+<span class="fw-bold" style="font-size: 14px; letter-spacing: 0.25px !important; word-spacing: 0.5px; display: inline-block; text-align: left !important;">
+${playerAthlete}
 </span>
 <br>
-<!-- Set -->
-<span class="fw-bold" style="font-size: 12px; letter-spacing: 0.25px !important; word-spacing: 0.5px;">
-<span style="display: inline-block; text-align: left !important;">
-${set} #${cardnumber} ${cardattributes}
+<!-- Card # Player -->
+<span class="fw-bold" style="font-size: 14px;">
+${set} #${cardnumber} 
 </span>
-</span>
+<br>
+<!-- Attributes -->
+<!-- <span style="font-size: 12px; letter-spacing: 0.25px !important; word-spacing: 0.5px;">
+${attributes.join('  ')}
+</span> -->
 </div>
 <hr>
 <!-- Product price -->
@@ -311,16 +305,21 @@ data-toggle="tooltip" data-bs-placement="top" title="${watchers} watching"></i>`
 </div>`;
 
 } else if (condition === "Graded" && listingtype === "FixedPrice") {
-resultElement.innerHTML = `
-<div class="col mb-5">
+    var attributes = []; // Array to store all attribute values
+    // Iterate through itemSpecifics to find Attributes
+    for (var i = 0; i < itemSpecifics.length; i++) {
+    if (itemSpecifics[i].Name === "Attributes") {
+    attributes = itemSpecifics[i].Values; // Get all values for Attributes
+    break;
+    }
+    }
+    resultElement.innerHTML = `
+<div class="col mb-5" style="width: 225px;">
 <div class="card h-100 d-flex align-items-stretch justify-content-center">
 <!-- top badge-->
 <!-- attributes badge-->
-${cardattributes.includes("(USAB)") && year === "1991" ? `<div class="badge bg-primary text-light position-absolute" style="top: 0.5rem; right: 0.5rem">'92 USA Dream Team</div> ` : ''}
-${cardattributes === "(RC)" ? `<div class="badge bg-warning text-dark position-absolute" style="top: 0.5rem; right: 0.5rem">Rookie Card </div> ` : ''}
-${playerattributes === "(HOF)" && !cardattributes.includes("(USAB)") && cardattributes !== "(RC)" ? `<div class="badge bg-warning text-dark position-absolute" style="top: 0.5rem; right: 1.5rem">Hall Of Fame</div>` : ''}
 <!-- Product image-->
-<div class="text-center bg-dark" style="height: 310px; padding-bottom: 10px; border-top-right-radius: 5px; border-top-left-radius: 5px; display: flex; align-items: center; justify-content: center;">
+<div class="text-center bg-dark" style="height: 310px;  width: 225px; padding-bottom: 10px; border-top-right-radius: 5px; border-top-left-radius: 5px; display: flex; align-items: center; justify-content: center;">
 <a href="${viewUrl}${ebayEPN}" target="_blank">
 <img class="card-img-top" src="${pictureUrl}" alt="${card}" style="max-width: 172px; max-height: 276px; padding-top: 10px; loading=" lazy"">
 <!-- condition badge -->
@@ -329,20 +328,28 @@ ${playerattributes === "(HOF)" && !cardattributes.includes("(USAB)") && cardattr
 </div>
 </a>
 </div>
+
+
 <!-- Product details-->
-<div class="card-body w-100 align-items-center justify-content-center text-center" style="height: 120px;">
-<!-- Player/Athlete -->
-<span class="fw-bolder" style="letter-spacing: 0.25px !important; word-spacing: 0.5px; display: inline-block; text-align: left !important;">
-${playerAthlete} ${playerattributes}
+<div class="card-body w-100 align-items-center justify-content-left text-left" style="height: 100px;">
+<!-- Player -->
+<span class="fw-bold" style="font-size: 14px; letter-spacing: 0.25px !important; word-spacing: 0.5px; display: inline-block; text-align: left !important;">
+${playerAthlete}
 </span>
 <br>
-<!-- Set -->
-<span class="fw-bold" style="font-size: 12px; letter-spacing: 0.25px !important; word-spacing: 0.5px;">
-<span style="display: inline-block; text-align: left !important;">
-${set} #${cardnumber} ${cardattributes}
+<!-- Card # Player -->
+<span class="fw-bold" style="font-size: 14px;">
+${set} #${cardnumber} 
 </span>
+<br>
+<!-- Attributes -->
+<span style="font-size: 12px; letter-spacing: 0.25px !important; word-spacing: 0.5px;">
+${attributes.join('  ')}
 </span>
 </div>
+
+
+
 <hr>
 <!-- Product price -->
 <div class="card-body w-100 d-flex align-items-center justify-content-between" style="padding-bottom: 10px;">
@@ -354,12 +361,8 @@ ${listingtype !== "FixedPrice" && shippingcost !== "USD 0.00" ? `<p style="font-
 </div>
 <div class="card-footer w-100 d-flex align-items-center justify-content-between" style="height: 30px;">
 <!-- watch bid auction icon -->
-<span>
-${bids !== "0" ? `<i class="fa fa-gavel fa-rotate-270"></i> ${bids}` : ''} &nbsp;&nbsp;&nbsp;
-<!-- <img src="assets/img/dollar-circle.svg" style="height: 25px; padding-bottom: 5px;"> &nbsp;&nbsp;&nbsp; -->
-${watchers !== "0" ? `<i class="bi bi-eye-fill" style="font-size: 18px;"
-data-toggle="tooltip" data-bs-placement="top" title="${watchers} watching"></i>` :
-''}
+<span style="font-size: 12px;">
+${watchers !== "0" ? `${watchers}  watching` :''}
 </span>
 <!-- info circle icon -->
 <span>
@@ -371,35 +374,52 @@ data-toggle="tooltip" data-bs-placement="top" title="${watchers} watching"></i>`
 </div>`;
 
 } else if (condition === "Graded" && listingtype === "Auction") {
-resultElement.innerHTML = `
-<div class="col mb-5">
+    var attributes = []; // Array to store all attribute values
+    // Iterate through itemSpecifics to find Attributes
+    for (var i = 0; i < itemSpecifics.length; i++) {
+    if (itemSpecifics[i].Name === "Attributes") {
+    attributes = itemSpecifics[i].Values; // Get all values for Attributes
+    break;
+    }
+    }
+    resultElement.innerHTML = `
+<div class="col mb-5" style="width: 225px;">
 <div class="card h-100 d-flex align-items-stretch justify-content-center">
 <!-- auction badge-->
 <div class="badge bg-danger text-light position-absolute" style="top: 0.5rem; right: 0.25rem; border: 2px solid white;">EBAY AUCTION</div>
 <!-- Product image-->
-<div class="text-center bg-dark" style="height: 310px; padding-bottom: 10px; border-top-right-radius: 5px; border-top-left-radius: 5px; display: flex; align-items: center; justify-content: center;">
+<div class="text-center bg-dark" style="height: 310px; width: 225px; padding-bottom: 10px; border-top-right-radius: 5px; border-top-left-radius: 5px; display: flex; align-items: center; justify-content: center;">
 <a href="${viewUrl}${ebayEPN}" target="_blank">
 <img class="card-img-top" src="${pictureUrl}" alt="${card}" style="max-width: 172px; max-height: 276px; padding-top: 10px; loading=" lazy"">
 <!-- condition badge -->
 <div>
-<span class="badge badge-dark bg-dark" style="width: 206px; border-radius: 0;">${gradecondition}</span>
+<span class="badge badge-dark bg-dark" style="width: 206px; border-radius: 0;">${authority} ${grade} ${gradecondition}</span>
 </div>
 </a>
 </div>
+
+
+
 <!-- Product details-->
-<div class="card-body w-100 align-items-center justify-content-center text-center" style="height: 120px;">
-<!-- Player/Athlete -->
-<span class="fw-bolder" style="letter-spacing: 0.25px !important; word-spacing: 0.5px; display: inline-block; text-align: left !important;">
-${playerAthlete} ${playerattributes}
+<div class="card-body w-100 align-items-center justify-content-left text-left" style="height: 100px;">
+<!-- Player -->
+<span class="fw-bold" style="font-size: 14px; letter-spacing: 0.25px !important; word-spacing: 0.5px; display: inline-block; text-align: left !important;">
+${playerAthlete}
 </span>
 <br>
-<!-- Set -->
-<span class="fw-bold" style="font-size: 12px; letter-spacing: 0.25px !important; word-spacing: 0.5px;">
-<span style="display: inline-block; text-align: left !important;">
-${set} #${cardnumber} ${cardattributes}
+<!-- Card # Player -->
+<span class="fw-bold" style="font-size: 14px;">
+${set} #${cardnumber} 
 </span>
+<br>
+<!-- Attributes -->
+<span style="font-size: 12px; letter-spacing: 0.25px !important; word-spacing: 0.5px;">
+${attributes.join('  ')}
 </span>
 </div>
+
+
+
 <hr>
 <!-- Product price -->
 <div class="card-body w-100 d-flex align-items-center justify-content-between" style="padding-bottom: 10px;">
@@ -411,13 +431,10 @@ ${currentPrice}
 </div>
 <div class="card-footer w-100 d-flex align-items-center justify-content-between" style="height: 30px;">
 <!-- watch bid auction icon -->
-<span>
-${bids !== "0" ? `<i class="fa fa-gavel fa-rotate-270"></i> ${bids}` : ''} &nbsp;&nbsp;&nbsp;
-<!-- <img src="assets/img/dollar-circle.svg" style="height: 25px; padding-bottom: 5px;"> &nbsp;&nbsp;&nbsp; -->
-<!-- <i class="fa fa-solid fa-dollar-sffign"></i> -->
-${watchers !== "0" ? `<i class="bi bi-eye-fill" style="font-size: 18px;"
-data-toggle="tooltip" data-bs-placement="top" title="${watchers} watching"></i>` :
-''}
+<span style="font-size: 12px;">
+0d 10h 00m &nbsp;&nbsp;&nbsp;
+${bids !== "0" ? `${bids}  bid` : ''} &nbsp;&nbsp;&nbsp;
+${watchers !== "0" ? `${watchers}  watching` :''}
 </span>
 <!-- info circle icon -->
 <span>
@@ -428,17 +445,23 @@ data-toggle="tooltip" data-bs-placement="top" title="${watchers} watching"></i>`
 </div>
 </div>`;
 
+
+
 } else if (condition === "Ungraded" && listingtype === "FixedPrice") {
-resultElement.innerHTML = `
-<div class="col mb-5">
+    var attributes = []; // Array to store all attribute values
+    // Iterate through itemSpecifics to find Attributes
+    for (var i = 0; i < itemSpecifics.length; i++) {
+    if (itemSpecifics[i].Name === "Attributes") {
+    attributes = itemSpecifics[i].Values; // Get all values for Attributes
+    break;
+    }
+    }
+    resultElement.innerHTML = `
+<div class="col mb-5" style="width: 225px;">
 <div class="card h-100 d-flex align-items-stretch justify-content-center">
 <!-- attributes badge-->
-${cardattributes.includes("(USAB)") && (year === "1991" || year === "1992") && cardnumber > "574" ? `<div class="badge bg-primary text-light position-absolute" style="top: 0.5rem; right: 0.5rem">'92 USA Dream Team</div>` : ''}
-${cardattributes.includes("(USAB)") && (year === "1991" || year === "1992") && cardnumber < "574" ? `<div class="badge bg-primary text-light position-absolute" style="top: 0.5rem; right: 0.5rem">USA Basketball Team</div>` : ''}
-${cardattributes === "(RC)" ? `<div class="badge bg-warning text-dark position-absolute" style="top: 0.5rem; right: 0.5rem">Rookie Card </div> ` : ''}
-${playerattributes === "(HOF)" && !cardattributes.includes("(USAB)") && cardattributes !== "(RC)" ? `<div class="badge bg-warning text-dark position-absolute" style="top: 0.5rem; right: 1.5rem">Hall Of Fame</div>` : ''}
 <!-- Product image-->
-<div class="text-center bg-dark" style="height: 310px; padding-bottom: 10px; border-top-right-radius: 5px; border-top-left-radius: 5px; display: flex; align-items: center; justify-content: center;">
+<div class="text-center bg-dark" style="height: 310px; width: 225px; padding-bottom: 10px; border-top-right-radius: 5px; border-top-left-radius: 5px; display: flex; align-items: center; justify-content: center;">
 <a href="${viewUrl}${ebayEPN}" target="_blank">
 <img class="card-img-top" src="${pictureUrl}" alt="${card}" style="max-width: 206px; max-height: 276px; padding-top: 10px; loading=" lazy"">
 <!-- condition badge -->
@@ -448,17 +471,20 @@ ${playerattributes === "(HOF)" && !cardattributes.includes("(USAB)") && cardattr
 </a>
 </div>
 <!-- Product details-->
-<div class="card-body w-100 align-items-center justify-content-center text-center" style="height: 120px;">
-<!-- Player/Athlete -->
-<span class="fw-bolder" style="letter-spacing: 0.25px !important; word-spacing: 0.5px; display: inline-block; text-align: left !important;">
-${playerAthlete} ${playerattributes}
+<div class="card-body w-100 align-items-center justify-content-left text-left" style="height: 100px;">
+<!-- Player -->
+<span class="fw-bold" style="font-size: 14px; letter-spacing: 0.25px !important; word-spacing: 0.5px; display: inline-block; text-align: left !important;">
+${playerAthlete}
 </span>
 <br>
-<!-- Set -->
-<span class="fw-bold" style="font-size: 12px; letter-spacing: 0.25px !important; word-spacing: 0.5px;">
-<span style="display: inline-block; text-align: left !important;">
-${set} #${cardnumber} ${cardattributes}
+<!-- Card # Player -->
+<span class="fw-bold" style="font-size: 14px;">
+${set} #${cardnumber} 
 </span>
+<br>
+<!-- Attributes -->
+<span style="font-size: 12px; letter-spacing: 0.25px !important; word-spacing: 0.5px;">
+${attributes.join('  ')}
 </span>
 </div>
 <hr>
@@ -472,13 +498,8 @@ ${listingtype !== "FixedPrice" && shippingcost !== "USD 0.00" ? `<p style="font-
 </div>
 <div class="card-footer w-100 d-flex align-items-center justify-content-between" style="height: 30px;">
 <!-- watch bid auction icon -->
-<span>
-${bids !== "0" ? `<i class="fa fa-gavel fa-rotate-270"></i> ${bids}` : ''} &nbsp;&nbsp;&nbsp;
-<!-- <img src="assets/img/dollar-circle.svg" style="height: 25px; padding-bottom: 5px;"> &nbsp;&nbsp;&nbsp; -->
-<!-- <i class="fa fa-solid fa-dollar-sffign"></i> -->
-${watchers !== "0" ? `<i class="bi bi-eye-fill" style="font-size: 18px;"
-data-toggle="tooltip" data-bs-placement="top" title="${watchers} watching"></i>` :
-''}
+<span style="font-size: 12px;">
+${watchers !== "0" ? `${watchers}  watching` :''}
 </span>
 <!-- info circle icon -->
 <span>
@@ -489,14 +510,23 @@ data-toggle="tooltip" data-bs-placement="top" title="${watchers} watching"></i>`
 </div>
 </div>`;
 
+
 } else if (condition === "Ungraded" && listingtype === "Auction") {
+var attributes = []; // Array to store all attribute values
+// Iterate through itemSpecifics to find Attributes
+for (var i = 0; i < itemSpecifics.length; i++) {
+if (itemSpecifics[i].Name === "Attributes") {
+attributes = itemSpecifics[i].Values; // Get all values for Attributes
+break;
+}
+}
 resultElement.innerHTML = `
-<div class="col mb-5">
+<div class="col mb-5" style="width: 225px;">
 <div class="card h-100 d-flex align-items-stretch justify-content-center">
 <!-- auction badge-->
-<div class="badge bg-danger text-light position-absolute" style="top: 0.5rem; right: 0.25rem; border: 2px solid white;">EBAY AUCTION</div>
+<div class="badge bg-danger text-light position-absolute" style="top: 0.25rem; right: 0.25rem;">EBAY AUCTION</div>
 <!-- Product image-->
-<div class="text-center bg-dark" style="height: 310px; padding-bottom: 10px; border-top-right-radius: 5px; border-top-left-radius: 5px; display: flex; align-items: center; justify-content: center;">
+<div class="text-center bg-dark" style="height: 310px; width: 225px; padding-bottom: 10px; border-top-right-radius: 5px; border-top-left-radius: 5px; display: flex; align-items: center; justify-content: center;">
 <a href="${viewUrl}${ebayEPN}" target="_blank">
 <img class="card-img-top" src="${pictureUrl}" alt="${card}" style="max-width: 206px; max-height: 276px; padding-top: 10px; loading=" lazy"">
 <!-- condition badge -->
@@ -506,17 +536,20 @@ resultElement.innerHTML = `
 </a>
 </div>
 <!-- Product details-->
-<div class="card-body w-100 align-items-center justify-content-center text-center" style="height: 120px;">
-<!-- Player/Athlete -->
-<span class="fw-bolder" style="letter-spacing: 0.25px !important; word-spacing: 0.5px; display: inline-block; text-align: left !important;">
-${playerAthlete} ${playerattributes}
+<div class="card-body w-100 align-items-center justify-content-left text-left" style="height: 100px;">
+<!-- Player -->
+<span class="fw-bold" style="font-size: 14px; letter-spacing: 0.25px !important; word-spacing: 0.5px; display: inline-block; text-align: left !important;">
+${playerAthlete}
 </span>
 <br>
-<!-- Set -->
-<span class="fw-bold" style="font-size: 12px; letter-spacing: 0.25px !important; word-spacing: 0.5px;">
-<span style="display: inline-block; text-align: left !important;">
-${set} #${cardnumber} ${cardattributes}
+<!-- Card # Player -->
+<span class="fw-bold" style="font-size: 14px;">
+${set} #${cardnumber} 
 </span>
+<br>
+<!-- Attributes -->
+<span style="font-size: 12px; letter-spacing: 0.25px !important; word-spacing: 0.5px;">
+${attributes.join('  ')}
 </span>
 </div>
 <hr>
@@ -526,23 +559,20 @@ ${set} #${cardnumber} ${cardattributes}
 ${currentPrice} 
 <span style="font-size: 12px; font-weight: 400 !important;"> Current Bid</span>
 <p style="font-weight: 500; font-size: 12px;">Combined Shipping</p>
-</span><a href="${viewUrl}${ebayEPN}" target="_blank"><i class="fab fa-ebay" style="font-size: 35px;"></i></span></a>
+</span>
+<a href="${viewUrl}${ebayEPN}" target="_blank"><i class="fab fa-ebay" style="font-size: 35px;"></i></span></a>
 </div>
 <div class="card-footer w-100 d-flex align-items-center justify-content-between" style="height: 30px;">
-<!-- watch bid auction icon -->
-<span>
-${bids !== "0" ? `<i class="fa fa-gavel fa-rotate-270"></i> ${bids}` : ''} &nbsp;&nbsp;&nbsp;
-<!-- <img src="assets/img/dollar-circle.svg" style="height: 25px; padding-bottom: 5px;"> &nbsp;&nbsp;&nbsp; -->
-<!-- <i class="fa fa-solid fa-dollar-sffign"></i> -->
-${watchers !== "0" ? `<i class="bi bi-eye-fill" style="font-size: 18px;"
-data-toggle="tooltip" data-bs-placement="top" title="${watchers} watching"></i>` :
-''}
+<!-- time bids watchers -->
+<span style="font-size: 12px;">
+0d 10h 00m &nbsp;&nbsp;&nbsp;
+${bids !== "0" ? `${bids}  bid` : ''} &nbsp;&nbsp;&nbsp;
+${watchers !== "0" ? `${watchers}  watching` :''}
 </span>
 <!-- info circle icon -->
 <span>
 <!-- <i class="bi bi-info-circle-fill" style="font-size: 15px;"></i> -->
 </span>
-</div>
 </div>
 </div>
 </div>`;
