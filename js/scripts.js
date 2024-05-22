@@ -147,6 +147,7 @@ var watchers = item["Watch Count"];
 var listingtype = item["Listing Type"];
 var shippingcost = item["Shipping Cost"];
 var bestofferenabled = item["Best Offer Enabled"];
+var endtime = item["End Time"];
 var card = "";
 var year = "";
 var set = "";
@@ -155,7 +156,6 @@ var attributes = "";
 var authority = "";
 var grade = "";
 var gradecondition = "";
-var conditionrange = "";
 var ebayEPN = "?mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339025312&customid=&toolid=10001&mkevt=1";
 
 // Find the value in item specifics
@@ -219,32 +219,39 @@ break;
 
 var itemSpecifics = item["Item Specifics"];
 for (var i = 0; i < itemSpecifics.length; i++) {
-if (itemSpecifics[i].Name === "Condition Range") {
-conditionrange = itemSpecifics[i].Values[0]; // Get the value
-break;
-}
-}
-
-var itemSpecifics = item["Item Specifics"];
-for (var i = 0; i < itemSpecifics.length; i++) {
 if (itemSpecifics[i].Name === "Year") {
 year = itemSpecifics[i].Values[0]; // Get the value
 break;
 }
 }
 
+function formatEndTime(endTime) {
+const endDate = new Date(endTime);
+const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+const day = daysOfWeek[endDate.getDay()];
+
+let hours = endDate.getHours();
+const minutes = String(endDate.getMinutes()).padStart(2, '0');
+const ampm = hours >= 12 ? 'PM' : 'AM';
+hours = hours % 12;
+hours = hours ? hours : 12;
+const formattedTime = `${hours}:${minutes} ${ampm}`;
+return `${day} ${formattedTime}`;
+}       
+var formattedEndTime = formatEndTime(endtime);
+
 var resultElement = document.createElement('div');
 
 if (Category === "Trading Card Sets") {
-    var attributes = []; // Array to store all attribute values
-    // Iterate through itemSpecifics to find Attributes
-    for (var i = 0; i < itemSpecifics.length; i++) {
-    if (itemSpecifics[i].Name === "Attributes") {
-    attributes = itemSpecifics[i].Values; // Get all values for Attributes
-    break;
-    }
-    }
-    resultElement.innerHTML = `
+var attributes = []; // Array to store all attribute values
+// Iterate through itemSpecifics to find Attributes
+for (var i = 0; i < itemSpecifics.length; i++) {
+if (itemSpecifics[i].Name === "Attributes") {
+attributes = itemSpecifics[i].Values; // Get all values for Attributes
+break;
+}
+}
+resultElement.innerHTML = `
 <div class="col mb-5" style="width: 225px;">
 <div class="card h-100 d-flex align-items-stretch justify-content-center">
 <!-- top badge-->
@@ -305,15 +312,15 @@ data-toggle="tooltip" data-bs-placement="top" title="${watchers} watching"></i>`
 </div>`;
 
 } else if (condition === "Graded" && listingtype === "FixedPrice") {
-    var attributes = []; // Array to store all attribute values
-    // Iterate through itemSpecifics to find Attributes
-    for (var i = 0; i < itemSpecifics.length; i++) {
-    if (itemSpecifics[i].Name === "Attributes") {
-    attributes = itemSpecifics[i].Values; // Get all values for Attributes
-    break;
-    }
-    }
-    resultElement.innerHTML = `
+var attributes = []; // Array to store all attribute values
+// Iterate through itemSpecifics to find Attributes
+for (var i = 0; i < itemSpecifics.length; i++) {
+if (itemSpecifics[i].Name === "Attributes") {
+attributes = itemSpecifics[i].Values; // Get all values for Attributes
+break;
+}
+}
+resultElement.innerHTML = `
 <div class="col mb-5" style="width: 225px;">
 <div class="card h-100 d-flex align-items-stretch justify-content-center">
 <!-- top badge-->
@@ -369,15 +376,15 @@ ${watchers !== "0" ? `${watchers}  watching` :''}
 </div>`;
 
 } else if (condition === "Graded" && listingtype === "Auction") {
-    var attributes = []; // Array to store all attribute values
-    // Iterate through itemSpecifics to find Attributes
-    for (var i = 0; i < itemSpecifics.length; i++) {
-    if (itemSpecifics[i].Name === "Attributes") {
-    attributes = itemSpecifics[i].Values; // Get all values for Attributes
-    break;
-    }
-    }
-    resultElement.innerHTML = `
+var attributes = []; // Array to store all attribute values
+// Iterate through itemSpecifics to find Attributes
+for (var i = 0; i < itemSpecifics.length; i++) {
+if (itemSpecifics[i].Name === "Attributes") {
+attributes = itemSpecifics[i].Values; // Get all values for Attributes
+break;
+}
+}
+resultElement.innerHTML = `
 <div class="col mb-5" style="width: 225px;">
 <div class="card h-100 d-flex align-items-stretch justify-content-center">
 <!-- auction badge-->
@@ -421,7 +428,7 @@ ${currentPrice}
 <div class="card-footer w-100 d-flex align-items-center justify-content-between" style="height: 30px;">
 <!-- watch bid auction icon -->
 <span style="font-size: 12px;">
-<!-- 0d 10h 00m &nbsp;&nbsp;&nbsp; -->
+${formattedEndTime} &nbsp;&nbsp;
 ${bids !== "0" ? `${bids}  bid` : ''} &nbsp;&nbsp;&nbsp;
 ${watchers !== "0" ? `${watchers}  watching` :''}
 </span>
@@ -435,15 +442,15 @@ ${watchers !== "0" ? `${watchers}  watching` :''}
 </div>`;
 
 } else if (condition === "Ungraded" && listingtype === "FixedPrice") {
-    var attributes = []; // Array to store all attribute values
-    // Iterate through itemSpecifics to find Attributes
-    for (var i = 0; i < itemSpecifics.length; i++) {
-    if (itemSpecifics[i].Name === "Attributes") {
-    attributes = itemSpecifics[i].Values; // Get all values for Attributes
-    break;
-    }
-    }
-    resultElement.innerHTML = `
+var attributes = []; // Array to store all attribute values
+// Iterate through itemSpecifics to find Attributes
+for (var i = 0; i < itemSpecifics.length; i++) {
+if (itemSpecifics[i].Name === "Attributes") {
+attributes = itemSpecifics[i].Values; // Get all values for Attributes
+break;
+}
+}
+resultElement.innerHTML = `
 <div class="col mb-5" style="width: 225px;">
 <div class="card h-100 d-flex align-items-stretch justify-content-center">
 <!-- attributes badge-->
@@ -496,7 +503,6 @@ ${watchers !== "0" ? `${watchers}  watching` :''}
 </div>
 </div>
 </div>`;
-
 
 } else if (condition === "Ungraded" && listingtype === "Auction") {
 var attributes = []; // Array to store all attribute values
@@ -552,7 +558,7 @@ ${currentPrice}
 <div class="card-footer w-100 d-flex align-items-center justify-content-between" style="height: 30px;">
 <!-- time bids watchers -->
 <span style="font-size: 12px;">
-<!-- 0d 10h 00m &nbsp;&nbsp;&nbsp; -->
+${formattedEndTime} &nbsp;&nbsp;
 ${bids !== "0" ? `${bids}  bid` : ''} &nbsp;&nbsp;&nbsp;
 ${watchers !== "0" ? `${watchers}  watching` :''}
 </span>
