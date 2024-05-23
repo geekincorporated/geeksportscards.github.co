@@ -226,18 +226,25 @@ break;
 }
 
 function formatEndTime(endTime) {
-const endDate = new Date(endTime);
-const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-const day = daysOfWeek[endDate.getDay()];
+    const endDate = new Date(endTime);
+    const now = new Date();
 
-let hours = endDate.getHours();
-const minutes = String(endDate.getMinutes()).padStart(2, '0');
-const ampm = hours >= 12 ? 'PM' : 'AM';
-hours = hours % 12;
-hours = hours ? hours : 12;
-const formattedTime = `${hours}:${minutes} ${ampm}`;
-return `${day} ${formattedTime}`;
-}       
+    // Check if endDate is today
+    const isToday = endDate.toDateString() === now.toDateString();
+
+    const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const day = isToday ? `<span style='color: red'>Today</span>` : daysOfWeek[endDate.getDay()];
+
+    let hours = endDate.getHours();
+    const minutes = String(endDate.getMinutes()).padStart(2, '0');
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    const formattedTime = `<span style='color: ${isToday ? "red" : "black"}'>${hours}:${minutes} ${ampm}</span>`;
+
+    return `${day} ${formattedTime}`;
+}
+
 var formattedEndTime = formatEndTime(endtime);
 
 var resultElement = document.createElement('div');
@@ -251,6 +258,7 @@ attributes = itemSpecifics[i].Values; // Get all values for Attributes
 break;
 }
 }
+
 resultElement.innerHTML = `
 <div class="col mb-5" style="width: 225px;">
 <div class="card h-100 d-flex align-items-stretch justify-content-center">
