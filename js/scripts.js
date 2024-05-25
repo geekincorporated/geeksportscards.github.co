@@ -231,9 +231,16 @@ function formatEndTime(endTime) {
 
     // Check if endDate is today
     const isToday = endDate.toDateString() === now.toDateString();
+    
+    // Check if endDate has passed
+    const hasEnded = endDate < now;
 
-    const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    const day = isToday ? `<span style='color: red'>Today</span>` : daysOfWeek[endDate.getDay()];
+    if (hasEnded) {
+        return "<span style='color: gray'>Auction Ended</span>";
+    }
+
+    const daysOfWeek = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+    const day = isToday ? "<span style='color: red'>Today</span>" : daysOfWeek[endDate.getDay()];
 
     let hours = endDate.getHours();
     const minutes = String(endDate.getMinutes()).padStart(2, '0');
