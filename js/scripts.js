@@ -8,7 +8,7 @@
 
 // Attach event listeners to radio buttons 
 
-document.querySelectorAll('input[name="condition"]').forEach(function (radio) {
+document.querySelectorAll('input[name="condition"], input[name="listingType"]').forEach(function (radio) {
 radio.addEventListener('change', function () {
 search();
 });
@@ -33,6 +33,9 @@ document.getElementById('searchInput').value = '';
 // Set the "Any" condition radio button to checked
 document.getElementById('conditionAny').checked = true;
 
+// Set the "Any" listing type radio button to checked
+document.getElementById('listingTypeAny').checked = true;
+
 // Reload the page with default settings
 currentPage = 1;
 loadPage(currentPage);
@@ -41,6 +44,7 @@ loadPage(currentPage);
 const search = () => {
 const searchTerm = document.getElementById('searchInput').value.toLowerCase();
 const selectedCondition = document.querySelector('input[name="condition"]:checked').value;
+const selectedListingType = document.querySelector('input[name="listingType"]:checked').value;
 
 if (searchTerm.trim() === '') {
 currentPage = 1;
@@ -54,8 +58,9 @@ const descriptionMatches = item["Item Specifics"].some(specific =>
 specific.Name.toLowerCase().includes(searchTerm) || specific.Values.some(value => value.toLowerCase().includes(searchTerm))
 );
 const conditionMatches = selectedCondition === "Any" || item["Condition Display Name"].toLowerCase() === selectedCondition.toLowerCase();
+const listingTypeMatches = selectedListingType === "Any" || item["Listing Type"].toLowerCase() === selectedListingType.toLowerCase();
 
-return (nameMatches || descriptionMatches) && conditionMatches;
+return (nameMatches || descriptionMatches) && conditionMatches && listingTypeMatches;
 });
 
 totalItems = filteredData.length;
@@ -68,6 +73,7 @@ const resultsfilterContainer = document.getElementById('resultsfilterContainer')
 resultsfilterContainer.style.display = 'block';
 search();
 };
+
 
 // Show/hide the "Go to Top" button based on scroll position
 window.addEventListener('scroll', () => {
