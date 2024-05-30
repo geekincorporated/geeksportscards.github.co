@@ -92,7 +92,7 @@ $('[data-toggle="tooltip"]').tooltip();
 
 var allItems = [];
 var currentPage = 1;
-var itemsPerPage = 10;
+var itemsPerPage = 12;
 var totalItems = 0;
 
 window.onload = function () {
@@ -225,34 +225,48 @@ break;
 }
 }
 
-function formatEndTime(endTime) {
-    const endDate = new Date(endTime);
-    const now = new Date();
+function formatEndTime(endTime, bids = 0, watchers = 0) {
+const endDate = new Date(endTime);
+const now = new Date();
 
-    // Check if endDate is today
-    const isToday = endDate.toDateString() === now.toDateString();
-    
-    // Check if endDate has passed
-    const hasEnded = endDate < now;
+// Calculate the time difference
+const timeDiff = endDate - now;
 
-    if (hasEnded) {
-        return "<span style='color: gray'>Auction Ended</span>";
-    }
-
-    const daysOfWeek = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
-    const day = isToday ? "<span style='color: red'>Today</span>" : daysOfWeek[endDate.getDay()];
-
-    let hours = endDate.getHours();
-    const minutes = String(endDate.getMinutes()).padStart(2, '0');
-    const ampm = hours >= 12 ? 'PM' : 'AM';
-    hours = hours % 12;
-    hours = hours ? hours : 12; // the hour '0' should be '12'
-    const formattedTime = `<span style='color: ${isToday ? "red" : "black"}'>${hours}:${minutes} ${ampm}</span>`;
-
-    return `${day} ${formattedTime}`;
+// Check if the auction has ended
+const hasEnded = timeDiff <= 0;
+if (hasEnded) {
+return "<span style='color: gray; font-size: 12px;'>Auction Ended</span>";
 }
 
-var formattedEndTime = formatEndTime(endtime);
+// Calculate the time left
+const daysLeft = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+const hoursLeft = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+// Format the end date
+const daysOfWeek = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+const dayOfWeek = daysOfWeek[endDate.getDay()];
+
+let hours = endDate.getHours();
+const minutes = String(endDate.getMinutes()).padStart(2, '0');
+const ampm = hours >= 12 ? 'PM' : 'AM';
+hours = hours % 12;
+hours = hours ? hours : 12; // the hour '0' should be '12'
+
+const formattedEndDate = `${dayOfWeek} ${hours}:${minutes} ${ampm}`;
+
+// Build the final output
+const timeLeftStr = `${daysLeft}d ${hoursLeft}h ( ${formattedEndDate} )`;
+const bidsStr = bids !== 0 ? `${bids} bid${bids > 1 ? 's' : ''}` : '0 bids';
+const watchersStr = watchers !== 0 ? `${watchers} watching` : '0 watching';
+
+return `
+<span style="font-size: 11px;">
+${timeLeftStr} · ${bidsStr} · ${watchersStr}
+</span>
+`;
+}
+
+var formattedEndTime = formatEndTime(endtime, bids, watchers);
 
 var resultElement = document.createElement('div');
 
@@ -267,7 +281,7 @@ break;
 }
 
 resultElement.innerHTML = `
-<div class="col mb-5" style="width: 225px;">
+<div class="col mb-5" style="width: 240px;">
 <div class="card h-100 d-flex align-items-stretch justify-content-center">
 <!-- top badge-->
 <div class="badge bg-primary text-white position-absolute" style="top: 0.5rem; right: 1.5rem">
@@ -308,7 +322,7 @@ ${listingtype === "FixedPrice" && shippingcost === "USD 0.00" ? `<p style="color
 ${listingtype === "FixedPrice" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Standard Shipping</p>` : ''}
 </span><a href="${viewUrl}${ebayEPN}" target="_blank"><i class="fab fa-ebay" style="font-size: 35px;"></i></span></a>
 </div>
-<div class="card-footer w-100 d-flex align-items-center justify-content-between" style="height: 30px;">
+<div class="card-footer w-100 d-flex align-items-center justify-content-between" style="height: 30px; font-size: 11px;">
 <!-- watch bid auction icon -->
 <span>
 <!-- ${bids !== "0" ? `<i class="fa fa-gavel fa-rotate-270"></i> ${bids}` : ''} &nbsp;&nbsp;&nbsp; -->
@@ -336,12 +350,12 @@ break;
 }
 }
 resultElement.innerHTML = `
-<div class="col mb-5" style="width: 225px;">
+<div class="col mb-5" style="width: 240px;">
 <div class="card h-100 d-flex align-items-stretch justify-content-center">
 <!-- top badge-->
 <!-- attributes badge-->
 <!-- Product image-->
-<div class="text-center bg-dark" style="height: 310px;  width: 225px; padding-bottom: 10px; border-top-right-radius: 5px; border-top-left-radius: 5px; display: flex; align-items: center; justify-content: center;">
+<div class="text-center bg-dark" style="height: 310px;  width: 240px; padding-bottom: 10px; border-top-right-radius: 5px; border-top-left-radius: 5px; display: flex; align-items: center; justify-content: center;">
 <a href="${viewUrl}${ebayEPN}" target="_blank">
 <img class="card-img-top" src="${pictureUrl}" alt="${card}" style="max-width: 172px; max-height: 276px; padding-top: 10px; loading=" lazy"">
 <!-- condition badge -->
@@ -378,7 +392,7 @@ ${listingtype !== "FixedPrice" && shippingcost !== "USD 0.00" ? `<p style="font-
 </div>
 <div class="card-footer w-100 d-flex align-items-center justify-content-between" style="height: 30px;">
 <!-- watch bid auction icon -->
-<span style="font-size: 12px;">
+<span style="font-size: 11px;">
 ${watchers !== "0" ? `${watchers}  watching` :''}
 </span>
 <!-- info circle icon -->
@@ -400,12 +414,12 @@ break;
 }
 }
 resultElement.innerHTML = `
-<div class="col mb-5" style="width: 225px;">
+<div class="col mb-5" style="width: 240px;">
 <div class="card h-100 d-flex align-items-stretch justify-content-center">
 <!-- auction badge-->
 <div class="badge bg-danger text-light position-absolute" style="top: 0.25rem; right: 0.25rem;">EBAY AUCTION</div>
 <!-- Product image-->
-<div class="text-center bg-dark" style="height: 310px; width: 225px; padding-bottom: 10px; border-top-right-radius: 5px; border-top-left-radius: 5px; display: flex; align-items: center; justify-content: center;">
+<div class="text-center bg-dark" style="height: 310px; width: 240px; padding-bottom: 10px; border-top-right-radius: 5px; border-top-left-radius: 5px; display: flex; align-items: center; justify-content: center;">
 <a href="${viewUrl}${ebayEPN}" target="_blank">
 <img class="card-img-top" src="${pictureUrl}" alt="${card}" style="max-width: 172px; max-height: 276px; padding-top: 10px; loading=" lazy"">
 <!-- condition badge -->
@@ -440,13 +454,10 @@ ${currentPrice}
 <p style="font-weight: 500; font-size: 12px;">Combined Shipping</p>
 </span><a href="${viewUrl}${ebayEPN}" target="_blank"><i class="fab fa-ebay" style="font-size: 35px;"></i></span></a>
 </div>
+
 <div class="card-footer w-100 d-flex align-items-center justify-content-between" style="height: 30px;">
-<!-- watch bid auction icon -->
-<span style="font-size: 12px;">
-${formattedEndTime} &nbsp;&nbsp;
-${bids !== "0" ? `${bids}  bid` : ''} &nbsp;&nbsp;&nbsp;
-${watchers !== "0" ? `${watchers}  watching` :''}
-</span>
+<!-- time bids watchers -->
+${formattedEndTime}
 <!-- info circle icon -->
 <span>
 <!-- <i class="bi bi-info-circle-fill" style="font-size: 15px;"></i> -->
@@ -466,11 +477,11 @@ break;
 }
 }
 resultElement.innerHTML = `
-<div class="col mb-5" style="width: 225px;">
+<div class="col mb-5" style="width: 240px;">
 <div class="card h-100 d-flex align-items-stretch justify-content-center">
 <!-- attributes badge-->
 <!-- Product image-->
-<div class="text-center bg-dark" style="height: 310px; width: 225px; padding-bottom: 10px; border-top-right-radius: 5px; border-top-left-radius: 5px; display: flex; align-items: center; justify-content: center;">
+<div class="text-center bg-dark" style="height: 310px; width: 240px; padding-bottom: 10px; border-top-right-radius: 5px; border-top-left-radius: 5px; display: flex; align-items: center; justify-content: center;">
 <a href="${viewUrl}${ebayEPN}" target="_blank">
 <img class="card-img-top" src="${pictureUrl}" alt="${card}" style="max-width: 206px; max-height: 276px; padding-top: 10px; loading=" lazy"">
 <!-- condition badge -->
@@ -507,7 +518,7 @@ ${listingtype !== "FixedPrice" && shippingcost !== "USD 0.00" ? `<p style="font-
 </div>
 <div class="card-footer w-100 d-flex align-items-center justify-content-between" style="height: 30px;">
 <!-- watch bid auction icon -->
-<span style="font-size: 12px;">
+<span style="font-size: 11px;">
 ${watchers !== "0" ? `${watchers}  watching` :''}
 </span>
 <!-- info circle icon -->
@@ -528,15 +539,16 @@ attributes = itemSpecifics[i].Values; // Get all values for Attributes
 break;
 }
 }
+
 resultElement.innerHTML = `
-<div class="col mb-5" style="width: 225px;">
+<div class="col mb-5" style="width: 240px;">
 <div class="card h-100 d-flex align-items-stretch justify-content-center">
 <!-- auction badge-->
 <div class="badge bg-danger text-light position-absolute" style="top: 0.25rem; right: 0.25rem;">EBAY AUCTION</div>
 <!-- Product image-->
-<div class="text-center bg-dark" style="height: 310px; width: 225px; padding-bottom: 10px; border-top-right-radius: 5px; border-top-left-radius: 5px; display: flex; align-items: center; justify-content: center;">
+<div class="text-center bg-dark" style="height: 310px; width: 240px; padding-bottom: 10px; border-top-right-radius: 5px; border-top-left-radius: 5px; display: flex; align-items: center; justify-content: center;">
 <a href="${viewUrl}${ebayEPN}" target="_blank">
-<img class="card-img-top" src="${pictureUrl}" alt="${card}" style="max-width: 206px; max-height: 276px; padding-top: 10px; loading=" lazy"">
+<img class="card-img-top" src="${pictureUrl}" alt="${card}" style="max-width: 206px; max-height: 276px; padding-top: 10px;" loading="lazy">
 <!-- condition badge -->
 <div>
 <span class="badge badge-dark bg-dark" style="width: 206px; border-radius: 0;">${gradecondition}</span>
@@ -552,31 +564,29 @@ ${playerAthlete}
 <br>
 <!-- Card # Player -->
 <span class="fw-bold" style="font-size: 14px;">
-${set} #${cardnumber} 
+${set} #${cardnumber}
 </span>
 <br>
 <!-- Attributes -->
 <span style="font-size: 12px; letter-spacing: 0.25px !important; word-spacing: 0.5px;">
-${attributes.join('  ')}
+${attributes.join(' ')}
 </span>
 </div>
 <hr>
 <!-- Product price -->
 <div class="card-body w-100 d-flex align-items-center justify-content-between" style="padding-bottom: 10px;">
 <span class="fw-bold">
-${currentPrice} 
+${currentPrice}
 <span style="font-size: 12px; font-weight: 400 !important;"> Current Bid</span>
 <p style="font-weight: 500; font-size: 12px;">Combined Shipping</p>
 </span>
-<a href="${viewUrl}${ebayEPN}" target="_blank"><i class="fab fa-ebay" style="font-size: 35px;"></i></span></a>
+<a href="${viewUrl}${ebayEPN}" target="_blank"><i class="fab fa-ebay" style="font-size: 35px;"></i></a>
 </div>
+
+
 <div class="card-footer w-100 d-flex align-items-center justify-content-between" style="height: 30px;">
 <!-- time bids watchers -->
-<span style="font-size: 12px;">
-${formattedEndTime} &nbsp;&nbsp;
-${bids !== "0" ? `${bids}  bid` : ''} &nbsp;&nbsp;&nbsp;
-${watchers !== "0" ? `${watchers}  watching` :''}
-</span>
+${formattedEndTime}
 <!-- info circle icon -->
 <span>
 <!-- <i class="bi bi-info-circle-fill" style="font-size: 15px;"></i> -->
