@@ -7,7 +7,9 @@
 <title>GEEK SPORTS CARDS - GEEKSPORTSCARDS-DOT-COM</title>
 <meta content="GEEKSPORTSCARDS-DOT-COM" name="author" />
 <meta content="Sports Cards Collectables and Memorabilia " name="description" />
-<meta content="geeksportscards-dot-com Sports Trading Cards NBA MLB NHL NFL Fleer Hoops 1986 1986-87 1987 1987-88 1988 1988-89 1989 1989-90 1990 1990-91 Set LOT Basketball Football Baseball Hockey Premier Sticker Insert Draft Rookie Card RC HOF Hall Of Fame NM Near-Mint NM-MT Near Mint-Mint MT Mint EX-MT Excellent-Mint GEM-MT Gem-Mint Condition Slab Graded PSA BSG CSG CGC eBay Auction Buy It Now Memorabilia Collectables autographs" name="keywords" />
+<meta
+content="geeksportscards-dot-com Sports Trading Cards NBA MLB NHL NFL Fleer Hoops 1986 1986-87 1987 1987-88 1988 1988-89 1989 1989-90 1990 1990-91 Set LOT Basketball Football Baseball Hockey Premier Sticker Insert Draft Rookie Card RC HOF Hall Of Fame NM Near-Mint NM-MT Near Mint-Mint MT Mint EX-MT Excellent-Mint GEM-MT Gem-Mint Condition Slab Graded PSA BSG CSG CGC eBay Auction Buy It Now Memorabilia Collectables autographs"
+name="keywords" />
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Bootstrap icons-->
@@ -33,29 +35,31 @@ position: fixed;
 bottom: 20px;
 right: 30px;
 z-index: 99;
-font-size: 14px;
+font-size: 12px;
 border: none;
 outline: none;
 background-color: white;
 color: black;
 cursor: pointer;
-padding: 5px;
+padding: 2px;
 }
+
 #goToTopBtn:hover {
 background-color: #d9b310;
 }
+
 /* Just for styling the popover content */
 .custom-popover-content {
 padding: 10px;
 }
 </style>
 </head>
+
 <body>
 <!-- Navigation-->
-<nav class="navbar navbar-expand-lg navbar-light gsc-bg-dark">
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
 <div class="container px-4 px-lg-5">
-<span class="gsc-navbar-brand1">GEEK<span class="gsc-navbar-brand2">SPORTS</span><span
-class="gsc-navbar-brand1"></span>CARDS</span>
+<!-- <span class="gsc-navbar-brand1">GEEK<span class="gsc-navbar-brand2">SPORTS</span><span class="gsc-navbar-brand1"></span>CARDS</span> -->
 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -96,14 +100,13 @@ info@geeksportscards.com
 </div>
 </nav>
 <!-- Black Header-->
-<!-- <header class="bg-dark py-5">
+<header class="gsc-bg-dark py-5">
 <div class="container px-4 px-lg-5 my-5">
 <div class="text-center text-white">
-<h1 class="display-4 fw-bolder">Shop in style</h1>
-<p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
+<img src="assets/img/gsc_logo.png">
 </div>
 </div>
-</header> -->
+</header>
 <!-- Red Header-->
 <!-- <header class="gsc-bg-red py-5">
 <div class="container px-4 px-lg-5 my-5">
@@ -117,24 +120,11 @@ info@geeksportscards.com
 <section class="py-5">
 <div class="container px-4 px-lg-5 mt-5">
 <div class="search-container w-80">
-<input id="searchInput" type="text" placeholder="search player, brand, year, card name or number" onclick="clearInput()" onkeydown="checkEnter(event)">
+<input id="searchInput" type="text" placeholder="search player, brand, year, card name or number"
+onclick="clearInput()" onkeydown="checkEnter(event)">
 <button onclick="search(); showFilter()">Search</button>
 </div>
 <div class="search-container" id="resultsfilterContainer" style="margin-bottom: 20px;">
-<!-- Add radio buttons for filtering condition -->
-<label class="radio-label" style="margin-right: 10px;">
-<input type="radio" name="condition" value="Any" id="conditionAny" checked> ALL
-</label>
-<label class="radio-label" style="margin-right: 10px;">
-<input type="radio" name="condition" value="Ungraded"> RAW
-</label>
-<label class="radio-label" style="margin-right: 10px;">
-<input type="radio" name="condition" value="Graded"> GRADED
-</label>
-<br><br>
-</div>
-<div style="margin-bottom: 10px; margin-top: 5px;" id="totalItems"></div>
-<div id="resultsfilterContainer" style="margin-bottom: 5px;">
 <!-- Add hidden radio button for default listing type -->
 <input type="radio" name="listingType" value="Any" id="listingTypeAny" checked style="display: none;">
 <!-- Add radio buttons for filtering listing type -->
@@ -143,6 +133,19 @@ info@geeksportscards.com
 </label>
 <label class="radio-label" style="margin-right: 10px;">
 <input type="radio" name="listingType" value="FixedPrice"> BUY IT NOW
+</label>
+<br><br>
+</div>
+<div style="margin-bottom: 10px; margin-top: 5px;" id="totalItems"></div>
+<div id="resultsfilterContainer" style="margin-bottom: 5px;">
+<label class="radio-label" style="margin-right: 10px;">
+<input type="radio" name="condition" value="Any" id="conditionAny" checked> ALL
+</label>
+<label class="radio-label" style="margin-right: 10px;">
+<input type="radio" name="condition" value="Ungraded"> RAW
+</label>
+<label class="radio-label" style="margin-right: 10px;">
+<input type="radio" name="condition" value="Graded"> GRADED
 </label>
 </div>
 <div style="margin-bottom: 10px; margin-top: 30px;">
@@ -184,12 +187,14 @@ Denver, Colorado & Las Vegas, Nevada
 <!-- END ABOUT US -->
 <!-- QUICK LINKS -->
 <div class="col-md-4 pt-5 pb-3 pl-5">
-<h2 class="fs-4 text-light border-bottom pb-3 border-light">SITE LINKS</h2>
+<h2 class="fs-4 text-light border-bottom pb-3 border-light">LINKS</h2>
 <div class="row">
 <div class="col-sm-6">
 <ul class="list-unstyled before-arrow">
 <li>
-<a class="text-decoration-none gsc-footer-text" href="https://www.ebay.com/usr/geeksportscards-dot-com" target="_blank"> eBay Store</a>
+<a class="text-decoration-none gsc-footer-text"
+href="https://www.ebay.com/usr/geeksportscards-dot-com" target="_blank"> eBay
+Store</a>
 </li>
 </ul>
 </div>
@@ -232,7 +237,10 @@ target="_blank"><i class="fa fa-envelope fa-lg fa-fw"></i></a>
 <p class="text-center text-light" style="font-size: 12px;">Copyright © 2024 Geek Sports Cards
 </p>
 <p class="text-center text-light" style="font-size: 12px;">A Geek Incorporated Company</p>
-<p class="text-center" style="font-size: 12px;"><span style="color: #d9b310 ">Disclosure:</span><span class="text-light"> links from this site to affiliate platforms or marketplace can result in this site earning a commission. Affiliations include, but are not limited to, the eBay Partner Network.</span></p>
+<p class="text-center" style="font-size: 12px;"><span
+style="color: #d9b310 ">Disclosure:</span><span class="text-light"> links from this site
+to affiliate platforms or marketplace can result in this site earning a commission.
+Affiliations include, but are not limited to, the eBay Partner Network.</span></p>
 </div>
 </div>
 </div>
@@ -245,10 +253,13 @@ target="_blank"><i class="fa fa-envelope fa-lg fa-fw"></i></a>
 <i class="fas fa-arrow-up"></i>
 </button>
 <!-- Bootstrap core JS-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+crossorigin="anonymous"></script>
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- Core theme JS-->
 <script src="js/scripts.js"></script>
 </body>
+
 </html>
