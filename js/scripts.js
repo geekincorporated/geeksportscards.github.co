@@ -322,26 +322,25 @@ ${attributes.join('  ')}
 </div>
 <hr>
 <!-- Product price -->
-<div class="card-body w-100 d-flex align-items-center justify-content-between" style="padding-bottom: 10px;">
-<span class="fw-bold">${currentPrice} ${bestofferenabled === "true" ? `<span style="font-size: 12px; font-weight: 400 !important;"> or Best Offer</span>` : ''}
+<div class="card-body w-100 d-flex align-items-center justify-content-center" style="height: 60px;">
+<div style="width: 100%; text-align: center;">
+<dd>${currentPrice}${bestofferenabled === "true" ? `<span style="font-size: 12px; font-weight: 400 !important;"> or Best Offer</span>` : ''}</dd>
+<dd>
 ${listingtype === "FixedPrice" && shippingcost === "USD 0.00" ? `<p style="color: green; font-weight: 500; font-size: 12px;">Free Shipping</p>` : ''}
 ${listingtype === "FixedPrice" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Standard Shipping</p>` : ''}
-</span><a href="${viewUrl}${ebayEPN}" target="_blank"><i class="fab fa-ebay" style="font-size: 35px;"></i></span></a>
+${listingtype !== "FixedPrice" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Combined Shipping</p>` : ''}
+</dd>
 </div>
-<div class="card-footer w-100 d-flex align-items-center justify-content-between" style="height: 30px; font-size: 11px;">
-<!-- watch bid auction icon -->
-<span>
-<!-- ${bids !== "0" ? `<i class="fa fa-gavel fa-rotate-270"></i> ${bids}` : ''} &nbsp;&nbsp;&nbsp; -->
-<!-- <img src="assets/img/dollar-circle.svg" style="height: 25px; padding-bottom: 5px;"> &nbsp;&nbsp;&nbsp; -->
-${watchers !== "0" ? `<i class="bi bi-eye-fill" style="font-size: 18px;"
-data-toggle="tooltip" data-bs-placement="top" title="${watchers} watching"></i>` :
-''}
-</span>
-<!-- info circle icon -->
-<span>
-<!-- <i class="bi bi-info-circle-fill" style="font-size: 15px;"></i> -->
+</div>
+<!-- watch count -->
+<div class="card-footer w-100 d-flex align-items-center justify-content-center" style="height: 30px;">
+<span style="font-size: 11px;">
+${watchers}  watching
 </span>
 </div>
+<!-- buynow button -->
+<div class="card-footer w-100 d-flex align-items-center justify-content-center bg-success text-light" style="height: 30px;">
+<a href="${viewUrl}${ebayEPN}" target="_blank" style="text-decoration: none; color: inherit; font-size: 12px; font-weight: 700;">BUY NOW</a>
 </div>
 </div>
 </div>`;
@@ -389,23 +388,25 @@ ${attributes.join('  ')}
 </div>
 <hr>
 <!-- Product price -->
-<div class="card-body w-100 d-flex align-items-center justify-content-between" style="padding-bottom: 10px;">
-<span class="fw-bold">${currentPrice} ${bestofferenabled === "true" ? `<span style="font-size: 12px; font-weight: 400 !important;"> or Best Offer</span>` : ''}
+<div class="card-body w-100 d-flex align-items-center justify-content-center" style="height: 60px;">
+<div style="width: 100%; text-align: center;">
+<dd>${currentPrice}${bestofferenabled === "true" ? `<span style="font-size: 12px; font-weight: 400 !important;"> or Best Offer</span>` : ''}</dd>
+<dd>
 ${listingtype === "FixedPrice" && shippingcost === "USD 0.00" ? `<p style="color: green; font-weight: 500; font-size: 12px;">Free Shipping</p>` : ''}
 ${listingtype === "FixedPrice" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Standard Shipping</p>` : ''}
 ${listingtype !== "FixedPrice" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Combined Shipping</p>` : ''}
-</span><a href="${viewUrl}${ebayEPN}" target="_blank"><i class="fab fa-ebay" style="font-size: 35px;"></i></span></a>
+</dd>
 </div>
-<div class="card-footer w-100 d-flex align-items-center justify-content-between" style="height: 30px;">
-<!-- watch bid auction icon -->
+</div>
+<!-- watch count -->
+<div class="card-footer w-100 d-flex align-items-center justify-content-center" style="height: 30px;">
 <span style="font-size: 11px;">
-${watchers !== "0" ? `${watchers}  watching` :''}
-</span>
-<!-- info circle icon -->
-<span>
-<!-- <i class="bi bi-info-circle-fill" style="font-size: 15px;"></i> -->
+${watchers}  watching
 </span>
 </div>
+<!-- buynow button -->
+<div class="card-footer w-100 d-flex align-items-center justify-content-center bg-success text-light" style="height: 30px;">
+<a href="${viewUrl}${ebayEPN}" target="_blank" style="text-decoration: none; color: inherit; font-size: 12px; font-weight: 700;">BUY NOW</a>
 </div>
 </div>
 </div>`;
@@ -453,22 +454,24 @@ ${attributes.join('  ')}
 </div>
 <hr>
 <!-- Product price -->
-<div class="card-body w-100 d-flex align-items-center justify-content-between" style="padding-bottom: 10px;">
-<span class="fw-bold">
-${currentPrice} 
-<span style="font-size: 12px; font-weight: 400 !important;"> Current Bid</span>
-<p style="font-weight: 500; font-size: 12px;">Combined Shipping</p>
-</span><a href="${viewUrl}${ebayEPN}" target="_blank"><i class="fab fa-ebay" style="font-size: 35px;"></i></span></a>
+<div class="card-body w-100 d-flex align-items-center justify-content-center" style="height: 60px;">
+<div style="width: 100%; text-align: center;">
+<dd>${currentPrice}${bestofferenabled === "true" ? `<span style="font-size: 12px; font-weight: 400 !important;"> or Best Offer</span>` : ''}</dd>
+<dd>
+${listingtype === "FixedPrice" && shippingcost === "USD 0.00" ? `<p style="color: green; font-weight: 500; font-size: 12px;">Free Shipping</p>` : ''}
+${listingtype === "FixedPrice" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Standard Shipping</p>` : ''}
+${listingtype !== "FixedPrice" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Combined Shipping</p>` : ''}
+</dd>
 </div>
-
+</div>
+<!-- bid/watch count -->
 <div class="card-footer w-100 d-flex align-items-center justify-content-between" style="height: 30px;">
 <!-- time bids watchers -->
 ${formattedEndTime}
-<!-- info circle icon -->
-<span>
-<!-- <i class="bi bi-info-circle-fill" style="font-size: 15px;"></i> -->
-</span>
 </div>
+<!-- bid button -->
+<div class="card-footer w-100 d-flex align-items-center justify-content-center bg-primary text-light" style="height: 30px;">
+<a href="${viewUrl}${ebayEPN}" target="_blank" style="text-decoration: none; color: inherit; font-size: 12px; font-weight: 700;">PLACE BID</a>
 </div>
 </div>
 </div>`;
@@ -515,22 +518,25 @@ ${attributes.join('  ')}
 </div>
 <hr>
 <!-- Product price -->
-<div class="card-body w-100 d-flex align-items-center justify-content-between" style="padding-bottom: 10px;">
-<span class="fw-bold">${currentPrice} ${bestofferenabled === "true" ? `<span style="font-size: 12px; font-weight: 400 !important;"> or Best Offer</span>` : ''}
+<div class="card-body w-100 d-flex align-items-center justify-content-center" style="height: 60px;">
+<div style="width: 100%; text-align: center;">
+<dd>${currentPrice}${bestofferenabled === "true" ? `<span style="font-size: 12px; font-weight: 400 !important;"> or Best Offer</span>` : ''}</dd>
+<dd>
 ${listingtype === "FixedPrice" && shippingcost === "USD 0.00" ? `<p style="color: green; font-weight: 500; font-size: 12px;">Free Shipping</p>` : ''}
 ${listingtype === "FixedPrice" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Standard Shipping</p>` : ''}
 ${listingtype !== "FixedPrice" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Combined Shipping</p>` : ''}
-</span><a href="${viewUrl}${ebayEPN}" target="_blank"><i class="fab fa-ebay" style="font-size: 35px;"></i></span></a>
+</dd>
 </div>
-<div class="card-footer w-100 d-flex align-items-center justify-content-between" style="height: 30px;">
-<!-- watch bid auction icon -->
+</div>
+<!-- watch count -->
+<div class="card-footer w-100 d-flex align-items-center justify-content-center" style="height: 30px;">
 <span style="font-size: 11px;">
-${watchers !== "0" ? `${watchers}  watching` :''}
+${watchers}  watching
 </span>
-<!-- info circle icon -->
-<span>
-<!-- <i class="bi bi-info-circle-fill" style="font-size: 15px;"></i> -->
-</span>
+</div>
+<!-- buynow button -->
+<div class="card-footer w-100 d-flex align-items-center justify-content-center bg-success text-light" style="height: 30px;">
+<a href="${viewUrl}${ebayEPN}" target="_blank" style="text-decoration: none; color: inherit; font-size: 12px; font-weight: 700;">BUY NOW</a>
 </div>
 </div>
 </div>
@@ -553,12 +559,9 @@ resultElement.innerHTML = `
 <div class="badge bg-danger text-light position-absolute" style="top: 0.25rem; right: 0.25rem;">EBAY AUCTION</div>
 <!-- Product image-->
 <div class="text-center bg-dark" style="height: 310px; width: 240px; padding-bottom: 10px; border-top-right-radius: 5px; border-top-left-radius: 5px; display: flex; align-items: center; justify-content: center;">
-<a href="${viewUrl}${ebayEPN}" target="_blank">
-<img class="card-img-top" src="${pictureUrl}" alt="${card}" style="max-width: 206px; max-height: 276px; padding-top: 10px;" loading="lazy">
+<a href="${viewUrl}${ebayEPN}" target="_blank"><img class="card-img-top" src="${pictureUrl}" alt="${card}" style="max-width: 206px; max-height: 276px; padding-top: 10px;" loading="lazy">
 <!-- condition badge -->
-<div>
-<span class="badge badge-dark bg-dark" style="width: 206px; border-radius: 0;">${gradecondition}</span>
-</div>
+<div><span class="badge badge-dark bg-dark" style="width: 206px; border-radius: 0;">${gradecondition}</span></div>
 </a>
 </div>
 <!-- Product details-->
@@ -580,23 +583,24 @@ ${attributes.join(' ')}
 </div>
 <hr>
 <!-- Product price -->
-<div class="card-body w-100 d-flex align-items-center justify-content-between" style="padding-bottom: 10px;">
-<span class="fw-bold">
-${currentPrice}
-<span style="font-size: 12px; font-weight: 400 !important;"> Current Bid</span>
-<p style="font-weight: 500; font-size: 12px;">Combined Shipping</p>
-</span>
-<a href="${viewUrl}${ebayEPN}" target="_blank"><i class="fab fa-ebay" style="font-size: 35px;"></i></a>
+<div class="card-body w-100 d-flex align-items-center justify-content-center" style="height: 60px;">
+<div style="width: 100%; text-align: center;">
+<dd>${currentPrice}${bestofferenabled === "true" ? `<span style="font-size: 12px; font-weight: 400 !important;"> or Best Offer</span>` : ''}</dd>
+<dd>
+${listingtype === "FixedPrice" && shippingcost === "USD 0.00" ? `<p style="color: green; font-weight: 500; font-size: 12px;">Free Shipping</p>` : ''}
+${listingtype === "FixedPrice" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Standard Shipping</p>` : ''}
+${listingtype !== "FixedPrice" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Combined Shipping</p>` : ''}
+</dd>
 </div>
-
-
+</div>
+<!-- bid/watch count -->
 <div class="card-footer w-100 d-flex align-items-center justify-content-between" style="height: 30px;">
 <!-- time bids watchers -->
 ${formattedEndTime}
-<!-- info circle icon -->
-<span>
-<!-- <i class="bi bi-info-circle-fill" style="font-size: 15px;"></i> -->
-</span>
+</div>
+<!-- bid button -->
+<div class="card-footer w-100 d-flex align-items-center justify-content-center bg-primary text-light" style="height: 30px;">
+<a href="${viewUrl}${ebayEPN}" target="_blank" style="text-decoration: none; color: inherit; font-size: 12px; font-weight: 700;">PLACE BID</a>
 </div>
 </div>
 </div>`;
