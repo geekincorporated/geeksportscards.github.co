@@ -10,6 +10,10 @@
 
 document.querySelectorAll('input[name="condition"], input[name="listingType"]').forEach(function (radio) {
 radio.addEventListener('change', function () {
+if (this.value === "Any") {
+// Reset other checkboxes in the same group when "Any" is selected
+resetCheckboxes(this.name);
+}
 search();
 });
 });
@@ -39,6 +43,14 @@ document.getElementById('listingTypeAny').checked = true;
 // Reload the page with default settings
 currentPage = 1;
 loadPage(currentPage);
+};
+
+const resetCheckboxes = (groupName) => {
+document.querySelectorAll(`input[name="${groupName}"]`).forEach(function (checkbox) {
+if (checkbox.value !== "Any") {
+checkbox.checked = false;
+}
+});
 };
 
 const search = () => {
@@ -73,6 +85,7 @@ const resultsfilterContainer = document.getElementById('resultsfilterContainer')
 resultsfilterContainer.style.display = 'block';
 search();
 };
+
 
 
 // Show/hide the "Go to Top" button based on scroll position
@@ -340,7 +353,8 @@ ${watchers}  watching
 </div>
 <!-- buynow button -->
 <div class="card-footer w-100 d-flex align-items-center justify-content-center bg-success text-light" style="height: 30px;">
-<a href="${viewUrl}${ebayEPN}" target="_blank" style="text-decoration: none; color: inherit; font-size: 12px; font-weight: 700;">BUY NOW</a>
+${bestofferenabled === "true" ? `<a href="${viewUrl}${ebayEPN}" target="_blank" style="text-decoration: none; color: inherit; font-size: 12px; font-weight: 700;">MAKE OFFER / BUY NOW</a>` : ''}
+${bestofferenabled === "false" ? `<a href="${viewUrl}${ebayEPN}" target="_blank" style="text-decoration: none; color: inherit; font-size: 12px; font-weight: 700;">BUY NOW</a>` : ''}
 </div>
 </div>
 </div>`;
@@ -406,7 +420,8 @@ ${watchers}  watching
 </div>
 <!-- buynow button -->
 <div class="card-footer w-100 d-flex align-items-center justify-content-center bg-success text-light" style="height: 30px;">
-<a href="${viewUrl}${ebayEPN}" target="_blank" style="text-decoration: none; color: inherit; font-size: 12px; font-weight: 700;">BUY NOW</a>
+${bestofferenabled === "true" ? `<a href="${viewUrl}${ebayEPN}" target="_blank" style="text-decoration: none; color: inherit; font-size: 12px; font-weight: 700;">MAKE OFFER / BUY NOW</a>` : ''}
+${bestofferenabled === "false" ? `<a href="${viewUrl}${ebayEPN}" target="_blank" style="text-decoration: none; color: inherit; font-size: 12px; font-weight: 700;">BUY NOW</a>` : ''}
 </div>
 </div>
 </div>`;
@@ -536,8 +551,8 @@ ${watchers}  watching
 </div>
 <!-- buynow button -->
 <div class="card-footer w-100 d-flex align-items-center justify-content-center bg-success text-light" style="height: 30px;">
-<a href="${viewUrl}${ebayEPN}" target="_blank" style="text-decoration: none; color: inherit; font-size: 12px; font-weight: 700;">BUY NOW</a>
-</div>
+${bestofferenabled === "true" ? `<a href="${viewUrl}${ebayEPN}" target="_blank" style="text-decoration: none; color: inherit; font-size: 12px; font-weight: 700;">MAKE OFFER / BUY NOW</a>` : ''}
+${bestofferenabled === "false" ? `<a href="${viewUrl}${ebayEPN}" target="_blank" style="text-decoration: none; color: inherit; font-size: 12px; font-weight: 700;">BUY NOW</a>` : ''}
 </div>
 </div>
 </div>`;
