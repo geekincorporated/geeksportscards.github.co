@@ -262,7 +262,7 @@ const daysLeft = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
 const hoursLeft = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 
 // Format the end date
-const daysOfWeek = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const dayOfWeek = daysOfWeek[endDate.getDay()];
 
 let hours = endDate.getHours();
