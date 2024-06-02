@@ -245,47 +245,55 @@ break;
 }
 
 function formatEndTime(endTime, bids = 0, watchers = 0) {
-const endDate = new Date(endTime);
-const now = new Date();
+    const endDate = new Date(endTime);
+    const now = new Date();
 
-// Calculate the time difference
-const timeDiff = endDate - now;
+    // Calculate the time difference
+    const timeDiff = endDate - now;
 
-// Check if the auction has ended
-const hasEnded = timeDiff <= 0;
-if (hasEnded) {
-return "<span style='color: gray; font-size: 12px;'>Auction Ended</span>";
-}
+    // Check if the auction has ended
+    const hasEnded = timeDiff <= 0;
+    if (hasEnded) {
+        return "<span style='color: gray; font-size: 12px;'>Auction Ended</span>";
+    }
 
-// Calculate the time left
-const daysLeft = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-const hoursLeft = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    // Calculate the time left
+    const daysLeft = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+    const hoursLeft = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 
-// Format the end date
-const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-const dayOfWeek = daysOfWeek[endDate.getDay()];
+    // Format the end date
+    const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const dayOfWeek = daysOfWeek[endDate.getDay()];
 
-let hours = endDate.getHours();
-const minutes = String(endDate.getMinutes()).padStart(2, '0');
-const ampm = hours >= 12 ? 'PM' : 'AM';
-hours = hours % 12;
-hours = hours ? hours : 12; // the hour '0' should be '12'
+    let hours = endDate.getHours();
+    const minutes = String(endDate.getMinutes()).padStart(2, '0');
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
 
-const formattedEndDate = `${dayOfWeek} ${hours}:${minutes} ${ampm}`;
+    const formattedEndDate = `${hours}:${minutes} ${ampm}`;
 
-// Build the final output
-const timeLeftStr = `${daysLeft}d ${hoursLeft}h ( ${formattedEndDate} )`;
-const bidsStr = bids !== 0 ? `${bids} bid${bids > 1 ? 's' : ''}` : '0 bids';
-const watchersStr = watchers !== 0 ? `${watchers} watching` : '0 watching';
+    // Check if endDate is today
+    const isToday = endDate.toDateString() === now.toDateString();
 
-return `
-<span style="font-size: 11px;">
-${timeLeftStr} · ${bidsStr} · ${watchersStr}
-</span>
-`;
+    // Build the final output
+    const timeLeftStr = `${daysLeft}d ${hoursLeft}h ( ${isToday ? formattedEndDate : dayOfWeek + ' ' + formattedEndDate} )`;
+    const bidsStr = bids !== 0 ? `${bids} bid${bids > 1 ? 's' : ''}` : '0 bids';
+    const watchersStr = watchers !== 0 ? `${watchers} watching` : '0 watching';
+
+    const timeLeftStyle = isToday ? 'color: red;' : '';
+
+    return `
+    <span style="font-size: 11px; ${timeLeftStyle}">
+    ${timeLeftStr} · ${bidsStr} · ${watchersStr}
+    </span>
+    `;
 }
 
 var formattedEndTime = formatEndTime(endtime, bids, watchers);
+
+
+
 
 var resultElement = document.createElement('div');
 
