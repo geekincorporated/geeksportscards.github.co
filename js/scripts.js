@@ -118,7 +118,20 @@ window.onload = function () {
 loadJSON(function (data) {
 allItems = Object.values(data);
 allItems.sort(function (a, b) {
-return b["Watch Count"] - a["Watch Count"]; // Sort by Watch Count in descending order
+// First sort by Bids in descending order
+const bidsDifference = b.Bids - a.Bids;
+if (bidsDifference !== 0) {
+return bidsDifference;
+}
+// If Bids are equal, sort by Watch Count in descending order
+const watchCountDifference = b["Watch Count"] - a["Watch Count"];
+if (watchCountDifference !== 0) {
+return watchCountDifference;
+}
+// If both Bids and Watch Count are equal, sort by End Time in ascending order
+const endTimeA = new Date(a["End Time"]).getTime();
+const endTimeB = new Date(b["End Time"]).getTime();
+return endTimeA - endTimeB;
 });
 totalItems = allItems.length;
 loadPage(currentPage);
@@ -155,7 +168,7 @@ var totalItemsDiv = document.getElementById('totalItems');
 totalItemsDiv.innerHTML = `Showing ${startIndex + 1} - ${endIndex} of ${totalItems} items`;
 
 items.forEach(function (item) {
-if (item["Listing Type"] === "FixedPrice" || item["Listing Type"] === "Auction") {
+if (item["Listing Type"] === "FixedPriceItem" || item["Listing Type"] === "Chinese") {
 var viewUrl = item["View URL"];
 var currentPrice = item["Current Price"].replace('USD', '$').trim();
 var pictureUrl = item["Picture URLs"][0];
@@ -347,9 +360,9 @@ ${attributes.join('  ')}
 <div style="width: 100%; text-align: center;">
 <dd>${currentPrice}${bestofferenabled === "true" ? `<span style="font-size: 12px; font-weight: 400 !important;"> or Best Offer</span>` : ''}</dd>
 <dd>
-${listingtype === "FixedPrice" && shippingcost === "USD 0.00" ? `<p style="color: green; font-weight: 500; font-size: 12px;">Free Shipping</p>` : ''}
-${listingtype === "FixedPrice" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Standard Shipping</p>` : ''}
-${listingtype !== "FixedPrice" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Combined Shipping</p>` : ''}
+${listingtype === "FixedPriceItem" && shippingcost === "USD 0.00" ? `<p style="color: green; font-weight: 500; font-size: 12px;">Free Shipping</p>` : ''}
+${listingtype === "FixedPriceItem" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Standard Shipping</p>` : ''}
+${listingtype !== "FixedPriceItem" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Combined Shipping</p>` : ''}
 </dd>
 </div>
 </div>
@@ -367,7 +380,7 @@ ${bestofferenabled === "false" ? `<a href="${viewUrl}${ebayEPN}" target="_blank"
 </div>
 </div>`;
 
-} else if (condition === "Graded" && listingtype === "FixedPrice") {
+} else if (condition === "Graded" && listingtype === "FixedPriceItem") {
 var attributes = []; // Array to store all attribute values
 // Iterate through itemSpecifics to find Attributes
 for (var i = 0; i < itemSpecifics.length; i++) {
@@ -414,9 +427,9 @@ ${attributes.join('  ')}
 <div style="width: 100%; text-align: center;">
 <dd>${currentPrice}${bestofferenabled === "true" ? `<span style="font-size: 12px; font-weight: 400 !important;"> or Best Offer</span>` : ''}</dd>
 <dd>
-${listingtype === "FixedPrice" && shippingcost === "USD 0.00" ? `<p style="color: green; font-weight: 500; font-size: 12px;">Free Shipping</p>` : ''}
-${listingtype === "FixedPrice" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Standard Shipping</p>` : ''}
-${listingtype !== "FixedPrice" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Combined Shipping</p>` : ''}
+${listingtype === "FixedPriceItem" && shippingcost === "USD 0.00" ? `<p style="color: green; font-weight: 500; font-size: 12px;">Free Shipping</p>` : ''}
+${listingtype === "FixedPriceItem" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Standard Shipping</p>` : ''}
+${listingtype !== "FixedPriceItem" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Combined Shipping</p>` : ''}
 </dd>
 </div>
 </div>
@@ -434,7 +447,7 @@ ${bestofferenabled === "false" ? `<a href="${viewUrl}${ebayEPN}" target="_blank"
 </div>
 </div>`;
 
-} else if (condition === "Graded" && listingtype === "Auction") {
+} else if (condition === "Graded" && listingtype === "Chinese") {
 var attributes = []; // Array to store all attribute values
 // Iterate through itemSpecifics to find Attributes
 for (var i = 0; i < itemSpecifics.length; i++) {
@@ -481,9 +494,9 @@ ${attributes.join('  ')}
 <div style="width: 100%; text-align: center;">
 <dd>${currentPrice}${bestofferenabled === "true" ? `<span style="font-size: 12px; font-weight: 400 !important;"> or Best Offer</span>` : ''}</dd>
 <dd>
-${listingtype === "FixedPrice" && shippingcost === "USD 0.00" ? `<p style="color: green; font-weight: 500; font-size: 12px;">Free Shipping</p>` : ''}
-${listingtype === "FixedPrice" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Standard Shipping</p>` : ''}
-${listingtype !== "FixedPrice" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Combined Shipping</p>` : ''}
+${listingtype === "FixedPriceItem" && shippingcost === "USD 0.00" ? `<p style="color: green; font-weight: 500; font-size: 12px;">Free Shipping</p>` : ''}
+${listingtype === "FixedPriceItem" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Standard Shipping</p>` : ''}
+${listingtype !== "FixedPriceItem" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Combined Shipping</p>` : ''}
 </dd>
 </div>
 </div>
@@ -499,7 +512,7 @@ ${formattedEndTime}
 </div>
 </div>`;
 
-} else if (condition === "Ungraded" && listingtype === "FixedPrice") {
+} else if (condition === "Ungraded" && listingtype === "FixedPriceItem") {
 var attributes = []; // Array to store all attribute values
 // Iterate through itemSpecifics to find Attributes
 for (var i = 0; i < itemSpecifics.length; i++) {
@@ -545,9 +558,9 @@ ${attributes.join('  ')}
 <div style="width: 100%; text-align: center;">
 <dd>${currentPrice}${bestofferenabled === "true" ? `<span style="font-size: 12px; font-weight: 400 !important;"> or Best Offer</span>` : ''}</dd>
 <dd>
-${listingtype === "FixedPrice" && shippingcost === "USD 0.00" ? `<p style="color: green; font-weight: 500; font-size: 12px;">Free Shipping</p>` : ''}
-${listingtype === "FixedPrice" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Standard Shipping</p>` : ''}
-${listingtype !== "FixedPrice" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Combined Shipping</p>` : ''}
+${listingtype === "FixedPriceItem" && shippingcost === "USD 0.00" ? `<p style="color: green; font-weight: 500; font-size: 12px;">Free Shipping</p>` : ''}
+${listingtype === "FixedPriceItem" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Standard Shipping</p>` : ''}
+${listingtype !== "FixedPriceItem" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Combined Shipping</p>` : ''}
 </dd>
 </div>
 </div>
@@ -565,7 +578,7 @@ ${bestofferenabled === "false" ? `<a href="${viewUrl}${ebayEPN}" target="_blank"
 </div>
 </div>`;
 
-} else if (condition === "Ungraded" && listingtype === "Auction") {
+} else if (condition === "Ungraded" && listingtype === "Chinese") {
 var attributes = []; // Array to store all attribute values
 // Iterate through itemSpecifics to find Attributes
 for (var i = 0; i < itemSpecifics.length; i++) {
@@ -610,9 +623,9 @@ ${attributes.join(' ')}
 <div style="width: 100%; text-align: center;">
 <dd>${currentPrice}${bestofferenabled === "true" ? `<span style="font-size: 12px; font-weight: 400 !important;"> or Best Offer</span>` : ''}</dd>
 <dd>
-${listingtype === "FixedPrice" && shippingcost === "USD 0.00" ? `<p style="color: green; font-weight: 500; font-size: 12px;">Free Shipping</p>` : ''}
-${listingtype === "FixedPrice" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Standard Shipping</p>` : ''}
-${listingtype !== "FixedPrice" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Combined Shipping</p>` : ''}
+${listingtype === "FixedPriceItem" && shippingcost === "USD 0.00" ? `<p style="color: green; font-weight: 500; font-size: 12px;">Free Shipping</p>` : ''}
+${listingtype === "FixedPriceItem" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Standard Shipping</p>` : ''}
+${listingtype !== "FixedPriceItem" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Combined Shipping</p>` : ''}
 </dd>
 </div>
 </div>
