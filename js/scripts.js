@@ -174,6 +174,7 @@ var currentPrice = item["Current Price"].replace('USD', '$').trim();
 var pictureUrl = item["Picture URLs"][0];
 var condition = item["Condition Display Name"];
 var Category = item["Category"];
+var categoryID = item["CategoryID"];
 var bids = item["Bids"];
 var watchers = item["Watch Count"];
 var listingtype = item["Listing Type"];
@@ -305,12 +306,9 @@ function formatEndTime(endTime, bids = 0, watchers = 0) {
 
 var formattedEndTime = formatEndTime(endtime, bids, watchers);
 
-
-
-
 var resultElement = document.createElement('div');
 
-if (Category === "Trading Card Sets") {
+if (categoryID === "261330") {
 var attributes = []; // Array to store all attribute values
 // Iterate through itemSpecifics to find Attributes
 for (var i = 0; i < itemSpecifics.length; i++) {
