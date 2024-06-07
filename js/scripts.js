@@ -189,6 +189,7 @@ var attributes = "";
 var authority = "";
 var grade = "";
 var gradecondition = "";
+var team = "";
 var ebayEPN = "?mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339025312&customid=&toolid=10001&mkevt=1";
 
 // Find the value in item specifics
@@ -258,50 +259,58 @@ break;
 }
 }
 
+var itemSpecifics = item["Item Specifics"];
+for (var i = 0; i < itemSpecifics.length; i++) {
+if (itemSpecifics[i].Name === "Team") {
+team = itemSpecifics[i].Values[0]; // Get the value
+break;
+}
+}
+
 function formatEndTime(endTime, bids = 0, watchers = 0) {
-    const endDate = new Date(endTime);
-    const now = new Date();
+const endDate = new Date(endTime);
+const now = new Date();
 
-    // Calculate the time difference
-    const timeDiff = endDate - now;
+// Calculate the time difference
+const timeDiff = endDate - now;
 
-    // Check if the auction has ended
-    const hasEnded = timeDiff <= 0;
-    if (hasEnded) {
-        return "<span style='color: gray; font-size: 12px;'>Auction Ended</span>";
-    }
+// Check if the auction has ended
+const hasEnded = timeDiff <= 0;
+if (hasEnded) {
+return "<span style='color: gray; font-size: 12px;'>Auction Ended</span>";
+}
 
-    // Calculate the time left
-    const daysLeft = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-    const hoursLeft = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+// Calculate the time left
+const daysLeft = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+const hoursLeft = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 
-    // Format the end date
-    const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-    const dayOfWeek = daysOfWeek[endDate.getDay()];
+// Format the end date
+const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const dayOfWeek = daysOfWeek[endDate.getDay()];
 
-    let hours = endDate.getHours();
-    const minutes = String(endDate.getMinutes()).padStart(2, '0');
-    const ampm = hours >= 12 ? 'PM' : 'AM';
-    hours = hours % 12;
-    hours = hours ? hours : 12; // the hour '0' should be '12'
+let hours = endDate.getHours();
+const minutes = String(endDate.getMinutes()).padStart(2, '0');
+const ampm = hours >= 12 ? 'PM' : 'AM';
+hours = hours % 12;
+hours = hours ? hours : 12; // the hour '0' should be '12'
 
-    const formattedEndDate = `${hours}:${minutes} ${ampm}`;
+const formattedEndDate = `${hours}:${minutes} ${ampm}`;
 
-    // Check if endDate is today
-    const isToday = endDate.toDateString() === now.toDateString();
+// Check if endDate is today
+const isToday = endDate.toDateString() === now.toDateString();
 
-    // Build the final output
-    const timeLeftStr = `${daysLeft}d ${hoursLeft}h ( ${isToday ? formattedEndDate : dayOfWeek + ' ' + formattedEndDate} )`;
-    const bidsStr = bids !== 0 ? `${bids} bid${bids > 1 ? 's' : ''}` : '0 bids';
-    const watchersStr = watchers !== 0 ? `${watchers} watching` : '0 watching';
+// Build the final output
+const timeLeftStr = `${daysLeft}d ${hoursLeft}h ( ${isToday ? formattedEndDate : dayOfWeek + ' ' + formattedEndDate} )`;
+const bidsStr = bids !== 0 ? `${bids} bid${bids > 1 ? 's' : ''}` : '0 bids';
+const watchersStr = watchers !== 0 ? `${watchers} watching` : '0 watching';
 
-    const timeLeftStyle = isToday ? 'color: red;' : '';
+const timeLeftStyle = isToday ? 'color: red;' : '';
 
-    return `
-    <span style="font-size: 11px; ${timeLeftStyle}">
-    ${timeLeftStr} · ${bidsStr} · ${watchersStr}
-    </span>
-    `;
+return `
+<span style="font-size: 11px; ${timeLeftStyle}">
+${timeLeftStr} · ${bidsStr} · ${watchersStr}
+</span>
+`;
 }
 
 var formattedEndTime = formatEndTime(endtime, bids, watchers);
@@ -335,23 +344,25 @@ Complete Set
 </div>
 </a>
 </div>
+
+
 <!-- Product details-->
-<div class="card-body w-100 align-items-center justify-content-left text-left" style="height: 100px;">
+<div class="card-body w-100 align-items-center justify-content-left text-left" style="height: 110px;">
 <!-- Player -->
-<span class="fw-bold" style="font-size: 14px; letter-spacing: 0.25px !important; word-spacing: 0.5px; display: inline-block; text-align: left !important;">
-${playerAthlete}
-</span>
+<span class="fw-bold" style="font-size: 14px; letter-spacing: 0.25px !important; word-spacing: 0.5px; display: inline-block; text-align: left !important;">${playerAthlete}</span>
 <br>
 <!-- Card # Player -->
-<span class="fw-bold" style="font-size: 14px;">
-${set} #${cardnumber} 
-</span>
+<span style="font-size: 12px;">${set} #${cardnumber}</span>
+<br>
+<!-- Team -->
+<span style="font-size: 12px; font-weight: 500;">Team:</span><span style="font-size: 12px;"> ${team}</span>
 <br>
 <!-- Attributes -->
-<!-- <span style="font-size: 12px; letter-spacing: 0.25px !important; word-spacing: 0.5px;">
-${attributes.join('  ')}
-</span> -->
+${attributes.length > 0 ? `<span style="font-size: 12px; font-weight: 500;">Attributes:</span><span style="font-size: 12px;"> ${attributes.join(' ')}</span>` : ''}
 </div>
+
+
+
 <hr>
 <!-- Product price -->
 <div class="card-body w-100 d-flex align-items-center justify-content-center" style="height: 60px;">
@@ -402,23 +413,25 @@ resultElement.innerHTML = `
 </div>
 </a>
 </div>
+
+
 <!-- Product details-->
-<div class="card-body w-100 align-items-center justify-content-left text-left" style="height: 100px;">
+<div class="card-body w-100 align-items-center justify-content-left text-left" style="height: 110px;">
 <!-- Player -->
-<span class="fw-bold" style="font-size: 14px; letter-spacing: 0.25px !important; word-spacing: 0.5px; display: inline-block; text-align: left !important;">
-${playerAthlete}
-</span>
+<span class="fw-bold" style="font-size: 14px; letter-spacing: 0.25px !important; word-spacing: 0.5px; display: inline-block; text-align: left !important;">${playerAthlete}</span>
 <br>
 <!-- Card # Player -->
-<span class="fw-bold" style="font-size: 14px;">
-${set} #${cardnumber} 
-</span>
+<span style="font-size: 12px;">${set} #${cardnumber}</span>
+<br>
+<!-- Team -->
+<span style="font-size: 12px; font-weight: 500;">Team:</span><span style="font-size: 12px;"> ${team}</span>
 <br>
 <!-- Attributes -->
-<span style="font-size: 12px; letter-spacing: 0.25px !important; word-spacing: 0.5px;">
-${attributes.join('  ')}
-</span>
+${attributes.length > 0 ? `<span style="font-size: 12px; font-weight: 500;">Attributes:</span><span style="font-size: 12px;"> ${attributes.join(' ')}</span>` : ''}
 </div>
+
+
+
 <hr>
 <!-- Product price -->
 <div class="card-body w-100 d-flex align-items-center justify-content-center" style="height: 60px;">
@@ -469,23 +482,26 @@ resultElement.innerHTML = `
 </div>
 </a>
 </div>
+
+
 <!-- Product details-->
-<div class="card-body w-100 align-items-center justify-content-left text-left" style="height: 100px;">
+<div class="card-body w-100 align-items-center justify-content-left text-left" style="height: 110px;">
 <!-- Player -->
-<span class="fw-bold" style="font-size: 14px; letter-spacing: 0.25px !important; word-spacing: 0.5px; display: inline-block; text-align: left !important;">
-${playerAthlete}
-</span>
+<span class="fw-bold" style="font-size: 14px; letter-spacing: 0.25px !important; word-spacing: 0.5px; display: inline-block; text-align: left !important;">${playerAthlete}</span>
 <br>
 <!-- Card # Player -->
-<span class="fw-bold" style="font-size: 14px;">
-${set} #${cardnumber} 
-</span>
+<span style="font-size: 12px;">${set} #${cardnumber}</span>
+<br>
+<!-- Team -->
+<span style="font-size: 12px; font-weight: 500;">Team:</span><span style="font-size: 12px;"> ${team}</span>
 <br>
 <!-- Attributes -->
-<span style="font-size: 12px; letter-spacing: 0.25px !important; word-spacing: 0.5px;">
-${attributes.join('  ')}
-</span>
+${attributes.length > 0 ? `<span style="font-size: 12px; font-weight: 500;">Attributes:</span><span style="font-size: 12px;"> ${attributes.join(' ')}</span>` : ''}
 </div>
+
+
+
+
 <hr>
 <!-- Product price -->
 <div class="card-body w-100 d-flex align-items-center justify-content-center" style="height: 60px;">
@@ -533,23 +549,26 @@ resultElement.innerHTML = `
 </div>
 </a>
 </div>
+
+
+
 <!-- Product details-->
-<div class="card-body w-100 align-items-center justify-content-left text-left" style="height: 100px;">
+<div class="card-body w-100 align-items-center justify-content-left text-left" style="height: 110px;">
 <!-- Player -->
-<span class="fw-bold" style="font-size: 14px; letter-spacing: 0.25px !important; word-spacing: 0.5px; display: inline-block; text-align: left !important;">
-${playerAthlete}
-</span>
+<span class="fw-bold" style="font-size: 14px; letter-spacing: 0.25px !important; word-spacing: 0.5px; display: inline-block; text-align: left !important;">${playerAthlete}</span>
 <br>
 <!-- Card # Player -->
-<span class="fw-bold" style="font-size: 14px;">
-${set} #${cardnumber} 
-</span>
+<span style="font-size: 12px;">${set} #${cardnumber}</span>
+<br>
+<!-- Team -->
+<span style="font-size: 12px; font-weight: 500;">Team:</span><span style="font-size: 12px;"> ${team}</span>
 <br>
 <!-- Attributes -->
-<span style="font-size: 12px; letter-spacing: 0.25px !important; word-spacing: 0.5px;">
-${attributes.join('  ')}
-</span>
+${attributes.length > 0 ? `<span style="font-size: 12px; font-weight: 500;">Attributes:</span><span style="font-size: 12px;"> ${attributes.join(' ')}</span>` : ''}
 </div>
+
+
+
 <hr>
 <!-- Product price -->
 <div class="card-body w-100 d-flex align-items-center justify-content-center" style="height: 60px;">
@@ -598,23 +617,25 @@ resultElement.innerHTML = `
 <div><span class="badge badge-dark bg-dark" style="width: 206px; border-radius: 0;">${gradecondition}</span></div>
 </a>
 </div>
+
 <!-- Product details-->
-<div class="card-body w-100 align-items-center justify-content-left text-left" style="height: 100px;">
+<div class="card-body w-100 align-items-center justify-content-left text-left" style="height: 110px;">
 <!-- Player -->
-<span class="fw-bold" style="font-size: 14px; letter-spacing: 0.25px !important; word-spacing: 0.5px; display: inline-block; text-align: left !important;">
-${playerAthlete}
-</span>
+<span class="fw-bold" style="font-size: 14px; letter-spacing: 0.25px !important; word-spacing: 0.5px; display: inline-block; text-align: left !important;">${playerAthlete}</span>
 <br>
 <!-- Card # Player -->
-<span class="fw-bold" style="font-size: 14px;">
-${set} #${cardnumber}
-</span>
+<span style="font-size: 12px;">${set} #${cardnumber}</span>
+<br>
+<!-- Team -->
+<span style="font-size: 12px; font-weight: 500;">Team:</span><span style="font-size: 12px;"> ${team}</span>
 <br>
 <!-- Attributes -->
-<span style="font-size: 12px; letter-spacing: 0.25px !important; word-spacing: 0.5px;">
-${attributes.join(' ')}
-</span>
+${attributes.length > 0 ? `<span style="font-size: 12px; font-weight: 500;">Attributes:</span><span style="font-size: 12px;"> ${attributes.join(' ')}</span>` : ''}
 </div>
+
+
+
+
 <hr>
 <!-- Product price -->
 <div class="card-body w-100 d-flex align-items-center justify-content-center" style="height: 60px;">
