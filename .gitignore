@@ -2,6 +2,7 @@
 *.sh
 *.bat
 *.py
+*.log
 
 # ignore directories
 config/

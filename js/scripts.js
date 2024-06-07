@@ -344,10 +344,8 @@ Complete Set
 </div>
 </a>
 </div>
-
-
 <!-- Product details-->
-<div class="card-body w-100 align-items-center justify-content-left text-left" style="height: 110px;">
+<div class="card-body w-100 align-items-center justify-content-left text-left" style="height: 115px;">
 <!-- Player -->
 <span class="fw-bold" style="font-size: 14px; letter-spacing: 0.25px !important; word-spacing: 0.5px; display: inline-block; text-align: left !important;">${playerAthlete}</span>
 <br>
@@ -360,9 +358,6 @@ Complete Set
 <!-- Attributes -->
 ${attributes.length > 0 ? `<span style="font-size: 12px; font-weight: 500;">Attributes:</span><span style="font-size: 12px;"> ${attributes.join(' ')}</span>` : ''}
 </div>
-
-
-
 <hr>
 <!-- Product price -->
 <div class="card-body w-100 d-flex align-items-center justify-content-center" style="height: 60px;">
@@ -413,10 +408,8 @@ resultElement.innerHTML = `
 </div>
 </a>
 </div>
-
-
 <!-- Product details-->
-<div class="card-body w-100 align-items-center justify-content-left text-left" style="height: 110px;">
+<div class="card-body w-100 align-items-center justify-content-left text-left" style="height: 115px;">
 <!-- Player -->
 <span class="fw-bold" style="font-size: 14px; letter-spacing: 0.25px !important; word-spacing: 0.5px; display: inline-block; text-align: left !important;">${playerAthlete}</span>
 <br>
@@ -429,9 +422,6 @@ resultElement.innerHTML = `
 <!-- Attributes -->
 ${attributes.length > 0 ? `<span style="font-size: 12px; font-weight: 500;">Attributes:</span><span style="font-size: 12px;"> ${attributes.join(' ')}</span>` : ''}
 </div>
-
-
-
 <hr>
 <!-- Product price -->
 <div class="card-body w-100 d-flex align-items-center justify-content-center" style="height: 60px;">
@@ -482,10 +472,8 @@ resultElement.innerHTML = `
 </div>
 </a>
 </div>
-
-
 <!-- Product details-->
-<div class="card-body w-100 align-items-center justify-content-left text-left" style="height: 110px;">
+<div class="card-body w-100 align-items-center justify-content-left text-left" style="height: 115px;">
 <!-- Player -->
 <span class="fw-bold" style="font-size: 14px; letter-spacing: 0.25px !important; word-spacing: 0.5px; display: inline-block; text-align: left !important;">${playerAthlete}</span>
 <br>
@@ -498,10 +486,6 @@ resultElement.innerHTML = `
 <!-- Attributes -->
 ${attributes.length > 0 ? `<span style="font-size: 12px; font-weight: 500;">Attributes:</span><span style="font-size: 12px;"> ${attributes.join(' ')}</span>` : ''}
 </div>
-
-
-
-
 <hr>
 <!-- Product price -->
 <div class="card-body w-100 d-flex align-items-center justify-content-center" style="height: 60px;">
@@ -549,11 +533,8 @@ resultElement.innerHTML = `
 </div>
 </a>
 </div>
-
-
-
 <!-- Product details-->
-<div class="card-body w-100 align-items-center justify-content-left text-left" style="height: 110px;">
+<div class="card-body w-100 align-items-center justify-content-left text-left" style="height: 115px;">
 <!-- Player -->
 <span class="fw-bold" style="font-size: 14px; letter-spacing: 0.25px !important; word-spacing: 0.5px; display: inline-block; text-align: left !important;">${playerAthlete}</span>
 <br>
@@ -566,9 +547,6 @@ resultElement.innerHTML = `
 <!-- Attributes -->
 ${attributes.length > 0 ? `<span style="font-size: 12px; font-weight: 500;">Attributes:</span><span style="font-size: 12px;"> ${attributes.join(' ')}</span>` : ''}
 </div>
-
-
-
 <hr>
 <!-- Product price -->
 <div class="card-body w-100 d-flex align-items-center justify-content-center" style="height: 60px;">
@@ -617,9 +595,8 @@ resultElement.innerHTML = `
 <div><span class="badge badge-dark bg-dark" style="width: 206px; border-radius: 0;">${gradecondition}</span></div>
 </a>
 </div>
-
 <!-- Product details-->
-<div class="card-body w-100 align-items-center justify-content-left text-left" style="height: 110px;">
+<div class="card-body w-100 align-items-center justify-content-left text-left" style="height: 115px;">
 <!-- Player -->
 <span class="fw-bold" style="font-size: 14px; letter-spacing: 0.25px !important; word-spacing: 0.5px; display: inline-block; text-align: left !important;">${playerAthlete}</span>
 <br>
@@ -632,10 +609,6 @@ resultElement.innerHTML = `
 <!-- Attributes -->
 ${attributes.length > 0 ? `<span style="font-size: 12px; font-weight: 500;">Attributes:</span><span style="font-size: 12px;"> ${attributes.join(' ')}</span>` : ''}
 </div>
-
-
-
-
 <hr>
 <!-- Product price -->
 <div class="card-body w-100 d-flex align-items-center justify-content-center" style="height: 60px;">
