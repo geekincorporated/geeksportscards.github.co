@@ -99,16 +99,20 @@ info@geeksportscards.com
 </div>
 </div>
 </nav>
-<!-- Black Header-->
-<header class="gsc-bg-dark py-5 d-none d-sm-block">
-<div class="container px-4 px-lg-5 my-5">
-<div class="text-center text-white">
+
+<!-- dark logo Header-->
+<header class="gsc-bg-dark py-5 d-none d-sm-block" style="height: 200px;">
+<div class="container h-100">
+<div class="row h-100 justify-content-center align-items-center">
+<div class="col-md-6 text-center text-white">
 <img src="assets/img/gsc_logo.png" alt="Logo" class="img-fluid">
 </div>
 </div>
+</div>
 </header>
-<!-- Red Header-->
-<!-- <header class="gsc-bg-red py-5">
+
+<!-- Red Header
+<header class="gsc-bg-red py-5">
 <div class="container px-4 px-lg-5 my-5">
 <div class="text-center text-white">
 <h1 class="display-4 fw-bolder">Shop in style</h1>
@@ -116,44 +120,66 @@ info@geeksportscards.com
 </div>
 </div>
 </header> -->
+
 <!-- Main Section-->
 <section class="py-5">
 <div class="container px-4 px-lg-5 mt-5">
-<div class="search-container w-80">
-<input id="searchInput" type="text" placeholder="search player, brand, year, card name or number"
-onclick="clearInput()" onkeydown="checkEnter(event)">
+
+<!-- Search-->
+<div class="search-container w-80 d-flex align-items-center" style="font-size: 13px;">
+<select id="searchCategory" class="form-control" style="height: 35px; width: 130px; font-size: 13px; appearance: none; border: 1px solid #ced4da; border-right: none; border-top-right-radius: 0; border-bottom-right-radius: 0; outline: none; box-shadow: none; padding-right: 40px; background-color: #f2f2f2; background-image: url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' width=\'24\' height=\'24\' fill=\'none\' stroke=\'%23333\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'><path d=\'M6 9l6 6 6-6\' /></svg>'); background-repeat: no-repeat; background-position: calc(100% - 10px) center;">
+<option value="Any" style="font-weight: 600;">CATEGORY</option>
+<option value="Basketball">BASKETBALL</option>
+
+<!-- <option value="Football">FOOTBALL</option>
+<option value="Baseball">BASEBALL</option>
+<option value="Hockey">HOCKEY</option>
+<option value="Non-Sport">NON-SPORT</option> -->
+
+</select>
+<input id="searchInput" type="text" placeholder="Search player, brand, year, card name or number" style="width: 400px; border-radius: 0; outline: none;" onclick="clearInput()" onkeydown="checkEnter(event)">
 <button onclick="search(); showFilter()">Search</button>
 </div>
-<div class="search-container" id="resultsfilterContainer" style="margin-bottom: 20px;">
+
+<!-- listing format filter -->
+<div class="search-container" id="resultsfilterContainer" style="margin-bottom: 20px; font-size: 13px;">
 <!-- Add hidden radio button for default listing type -->
 <input type="radio" name="listingType" value="Any" id="listingTypeAny" checked style="display: none;">
 <!-- Add radio buttons for filtering listing type -->
 <label class="radio-label" style="margin-right: 10px;">
-<input type="radio" name="listingType" value="Chinese"> AUCTION
+<input type="radio" name="listingType" value="Chinese" style="vertical-align: middle; transform: scale(1.3);">&nbsp; AUCTION
 </label>
 <label class="radio-label" style="margin-right: 10px;">
-<input type="radio" name="listingType" value="FixedPriceItem"> BUY IT NOW
+<input type="radio" name="listingType" value="FixedPriceItem" style="vertical-align: middle; transform: scale(1.3);"> &nbsp; BUY IT NOW
 </label>
-<br><br>
+<br>
 </div>
-<div style="margin-bottom: 10px; margin-top: 5px;" id="totalItems"></div>
-<div id="resultsfilterContainer" style="margin-bottom: 5px;">
-<label class="radio-label" style="margin-right: 10px;">
-<input type="radio" name="condition" value="Any" id="conditionAny" checked> ALL
-</label>
-<label class="radio-label" style="margin-right: 10px;">
-<input type="radio" name="condition" value="Ungraded"> RAW
-</label>
-<label class="radio-label" style="margin-right: 10px;">
-<input type="radio" name="condition" value="Graded"> GRADED
-</label>
-</div>
-<div style="margin-bottom: 10px; margin-top: 30px;">
-<!-- Key-->
-<span>
 
-</span>
+<!-- Total Items Count -->
+<div style="margin-bottom: 10px; margin-top: 5px;" id="totalItems"></div>
+
+<!-- Condition / Attribute filter -->
+<div id="resultsfilterContainer" style="margin-bottom: 5px; font-size: 13px;">
+<label class="radio-label" style="margin-right: 10px;">
+<input type="radio" name="condition" value="Any" id="conditionAny" style="vertical-align: middle; transform: scale(1.3);" checked> &nbsp; ALL
+</label>
+<label class="radio-label" style="margin-right: 10px;">
+<input type="radio" name="condition" value="Ungraded" style="vertical-align: middle; transform: scale(1.3);"> &nbsp; RAW
+</label>
+<label class="radio-label" style="margin-right: 10px;">
+<input type="radio" name="condition" value="Graded" style="vertical-align: middle; transform: scale(1.3);"> &nbsp; GRADED
+</label>
+<label class="radio-label" style="margin-right: 10px;">
+<input type="radio" name="attribute" value="RC" style="vertical-align: middle; transform: scale(1.3);"> &nbsp; ROOKIE CARDS
+</label>
+<label class="radio-label" style="margin-right: 10px;">
+<input type="radio" name="attribute" value="HOF" style="vertical-align: middle; transform: scale(1.3);"> &nbsp; HALL OF FAME
+</label>
+
 </div>
+
+<br>
+
 <div class="row gx-4 gx-lg-4 row-cols-1 row-cols-md-2 row-cols-xl-4 justify-content-center" id="results">
 </div>
 </div>

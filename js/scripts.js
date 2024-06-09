@@ -53,16 +53,22 @@ checkbox.checked = false;
 });
 };
 
+document.addEventListener('DOMContentLoaded', (event) => {
+document.querySelectorAll('input[name="attribute"]').forEach(radio => {
+radio.addEventListener('change', search);
+});
+
+document.querySelectorAll('input[name="condition"]').forEach(radio => {
+radio.addEventListener('change', search);
+});
+});
+
 const search = () => {
 const searchTerm = document.getElementById('searchInput').value.toLowerCase();
 const selectedCondition = document.querySelector('input[name="condition"]:checked').value;
 const selectedListingType = document.querySelector('input[name="listingType"]:checked').value;
-
-if (searchTerm.trim() === '') {
-currentPage = 1;
-loadPage(currentPage);
-return;
-}
+const selectedCategory = document.getElementById('searchCategory').value.toLowerCase();
+const selectedAttribute = document.querySelector('input[name="attribute"]:checked') ? document.querySelector('input[name="attribute"]:checked').value : "Any";
 
 const filteredData = allItems.filter(item => {
 const nameMatches = item.Title.toLowerCase().includes(searchTerm);
@@ -71,8 +77,18 @@ specific.Name.toLowerCase().includes(searchTerm) || specific.Values.some(value =
 );
 const conditionMatches = selectedCondition === "Any" || item["Condition Display Name"].toLowerCase() === selectedCondition.toLowerCase();
 const listingTypeMatches = selectedListingType === "Any" || item["Listing Type"].toLowerCase() === selectedListingType.toLowerCase();
+const sportMatches = selectedCategory === 'any' || selectedCategory === 'sport' ||
+item["Item Specifics"].some(specific =>
+specific.Name.toLowerCase() === 'sport' && specific.Values.some(value => value.toLowerCase() === selectedCategory)
+);
+const attributeMatches = selectedAttribute === "Any" || item["Item Specifics"].some(specific => {
+if (specific.Name.toLowerCase() === 'attributes') {
+return specific.Values.some(value => value.toLowerCase() === selectedAttribute.toLowerCase());
+}
+return false;
+});
 
-return (nameMatches || descriptionMatches) && conditionMatches && listingTypeMatches;
+return (nameMatches || descriptionMatches) && conditionMatches && listingTypeMatches && sportMatches && attributeMatches;
 });
 
 totalItems = filteredData.length;
@@ -85,8 +101,6 @@ const resultsfilterContainer = document.getElementById('resultsfilterContainer')
 resultsfilterContainer.style.display = 'block';
 search();
 };
-
-
 
 // Show/hide the "Go to Top" button based on scroll position
 window.addEventListener('scroll', () => {
@@ -317,49 +331,35 @@ var formattedEndTime = formatEndTime(endtime, bids, watchers);
 
 var resultElement = document.createElement('div');
 
-if (categoryID === "261330") {
-var attributes = []; // Array to store all attribute values
-// Iterate through itemSpecifics to find Attributes
+var attributes = [];
 for (var i = 0; i < itemSpecifics.length; i++) {
 if (itemSpecifics[i].Name === "Attributes") {
-attributes = itemSpecifics[i].Values; // Get all values for Attributes
+attributes = itemSpecifics[i].Values;
 break;
 }
 }
 
-resultElement.innerHTML = `
-<div class="col mb-5" style="width: 240px;">
-<div class="card h-100 d-flex align-items-stretch justify-content-center">
-<!-- top badge-->
-<div class="badge bg-primary text-white position-absolute" style="top: 0.5rem; right: 1.5rem">
-Complete Set
-</div>
-<!-- Product image-->
+var productImage = `
 <div class="text-center bg-dark" style="height: 310px; padding-bottom: 10px; border-top-right-radius: 5px; border-top-left-radius: 5px; display: flex; align-items: center; justify-content: center;">
 <a href="${viewUrl}${ebayEPN}" target="_blank">
-<img class="card-img-top" src="${pictureUrl}" alt="${card}" style="max-width: 206px; max-height: 276px; padding-top: 10px;" loading="lazy">
-<!-- condition badge -->
-<div>
-<span class="badge badge-dark bg-dark" style="width: 206px; border-radius: 0;">${authority} ${grade} ${gradecondition}</span>
-</div>
+<img class="card-img-top" src="${pictureUrl}" alt="${card}" style="max-width: ${condition === 'Graded' ? '172px' : '206px'}; max-height: 276px; padding-top: 10px;" loading="lazy">
+<div><span class="badge badge-dark bg-dark" style="width: 206px; border-radius: 0;">${authority} ${grade} ${gradecondition}</span></div>
 </a>
-</div>
-<!-- Product details-->
+</div>`;
+
+var productDetails = `
 <div class="card-body w-100 align-items-center justify-content-left text-left" style="height: 115px;">
-<!-- Player -->
 <span class="fw-bold" style="font-size: 14px; letter-spacing: 0.25px !important; word-spacing: 0.5px; display: inline-block; text-align: left !important;">${playerAthlete}</span>
 <br>
-<!-- Card # Player -->
 <span style="font-size: 12px;">${set} #${cardnumber}</span>
 <br>
-<!-- Team -->
 <span style="font-size: 12px; font-weight: 500;">Team:</span><span style="font-size: 12px;"> ${team}</span>
 <br>
-<!-- Attributes -->
 ${attributes.length > 0 ? `<span style="font-size: 12px; font-weight: 500;">Attributes:</span><span style="font-size: 12px;"> ${attributes.join(' ')}</span>` : ''}
 </div>
-<hr>
-<!-- Product price -->
+<hr>`;
+
+var productPrice = `
 <div class="card-body w-100 d-flex align-items-center justify-content-center" style="height: 60px;">
 <div style="width: 100%; text-align: center;">
 <dd>${currentPrice}${bestofferenabled === "true" ? `<span style="font-size: 12px; font-weight: 400 !important;"> or Best Offer</span>` : ''}</dd>
@@ -368,273 +368,54 @@ ${listingtype === "FixedPriceItem" && shippingcost === "USD 0.00" ? `<p style="c
 ${listingtype === "FixedPriceItem" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Standard Shipping</p>` : ''}
 ${listingtype !== "FixedPriceItem" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Combined Shipping</p>` : ''}
 </dd>
-</div>
-</div>
-<!-- watch count -->
-<div class="card-footer w-100 d-flex align-items-center justify-content-center" style="height: 30px;">
-<span style="font-size: 11px;">
-${watchers}  watching
-</span>
-</div>
-<!-- buynow button -->
-<div class="card-footer w-100 d-flex align-items-center justify-content-center bg-success text-light" style="height: 30px;">
-${bestofferenabled === "true" ? `<a href="${viewUrl}${ebayEPN}" target="_blank" style="text-decoration: none; color: inherit; font-size: 12px; font-weight: 700;">MAKE OFFER / BUY NOW</a>` : ''}
-${bestofferenabled === "false" ? `<a href="${viewUrl}${ebayEPN}" target="_blank" style="text-decoration: none; color: inherit; font-size: 12px; font-weight: 700;">BUY NOW</a>` : ''}
-</div>
 </div>
 </div>`;
 
-} else if (condition === "Graded" && listingtype === "FixedPriceItem") {
-var attributes = []; // Array to store all attribute values
-// Iterate through itemSpecifics to find Attributes
-for (var i = 0; i < itemSpecifics.length; i++) {
-if (itemSpecifics[i].Name === "Attributes") {
-attributes = itemSpecifics[i].Values; // Get all values for Attributes
-break;
-}
-}
-resultElement.innerHTML = `
-<div class="col mb-5" style="width: 240px;">
-<div class="card h-100 d-flex align-items-stretch justify-content-center">
-<!-- top badge-->
-<!-- attributes badge-->
-<!-- Product image-->
-<div class="text-center bg-dark" style="height: 310px;  width: 240px; padding-bottom: 10px; border-top-right-radius: 5px; border-top-left-radius: 5px; display: flex; align-items: center; justify-content: center;">
-<a href="${viewUrl}${ebayEPN}" target="_blank">
-<img class="card-img-top" src="${pictureUrl}" alt="${card}" style="max-width: 172px; max-height: 276px; padding-top: 10px;" loading="lazy">
-<!-- condition badge -->
-<div>
-<span class="badge badge-dark bg-dark" style="width: 206px; border-radius: 0;">${authority} ${grade} ${gradecondition}</span>
-</div>
-</a>
-</div>
-<!-- Product details-->
-<div class="card-body w-100 align-items-center justify-content-left text-left" style="height: 115px;">
-<!-- Player -->
-<span class="fw-bold" style="font-size: 14px; letter-spacing: 0.25px !important; word-spacing: 0.5px; display: inline-block; text-align: left !important;">${playerAthlete}</span>
-<br>
-<!-- Card # Player -->
-<span style="font-size: 12px;">${set} #${cardnumber}</span>
-<br>
-<!-- Team -->
-<span style="font-size: 12px; font-weight: 500;">Team:</span><span style="font-size: 12px;"> ${team}</span>
-<br>
-<!-- Attributes -->
-${attributes.length > 0 ? `<span style="font-size: 12px; font-weight: 500;">Attributes:</span><span style="font-size: 12px;"> ${attributes.join(' ')}</span>` : ''}
-</div>
-<hr>
-<!-- Product price -->
-<div class="card-body w-100 d-flex align-items-center justify-content-center" style="height: 60px;">
-<div style="width: 100%; text-align: center;">
-<dd>${currentPrice}${bestofferenabled === "true" ? `<span style="font-size: 12px; font-weight: 400 !important;"> or Best Offer</span>` : ''}</dd>
-<dd>
-${listingtype === "FixedPriceItem" && shippingcost === "USD 0.00" ? `<p style="color: green; font-weight: 500; font-size: 12px;">Free Shipping</p>` : ''}
-${listingtype === "FixedPriceItem" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Standard Shipping</p>` : ''}
-${listingtype !== "FixedPriceItem" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Combined Shipping</p>` : ''}
-</dd>
-</div>
-</div>
-<!-- watch count -->
+var watchCount = listingtype !== "Chinese" ? `
 <div class="card-footer w-100 d-flex align-items-center justify-content-center" style="height: 30px;">
-<span style="font-size: 11px;">
-${watchers}  watching
-</span>
-</div>
-<!-- buynow button -->
+<span style="font-size: 11px;">${watchers} watching</span>
+</div>` : '';
+
+var buyNowButton = `
 <div class="card-footer w-100 d-flex align-items-center justify-content-center bg-success text-light" style="height: 30px;">
-${bestofferenabled === "true" ? `<a href="${viewUrl}${ebayEPN}" target="_blank" style="text-decoration: none; color: inherit; font-size: 12px; font-weight: 700;">MAKE OFFER / BUY NOW</a>` : ''}
-${bestofferenabled === "false" ? `<a href="${viewUrl}${ebayEPN}" target="_blank" style="text-decoration: none; color: inherit; font-size: 12px; font-weight: 700;">BUY NOW</a>` : ''}
-</div>
-</div>
+<a href="${viewUrl}${ebayEPN}" target="_blank" style="text-decoration: none; color: inherit; font-size: 12px; font-weight: 700;">${bestofferenabled === "true" ? 'MAKE OFFER / BUY NOW' : 'BUY NOW'}</a>
 </div>`;
 
-} else if (condition === "Graded" && listingtype === "Chinese") {
-var attributes = []; // Array to store all attribute values
-// Iterate through itemSpecifics to find Attributes
-for (var i = 0; i < itemSpecifics.length; i++) {
-if (itemSpecifics[i].Name === "Attributes") {
-attributes = itemSpecifics[i].Values; // Get all values for Attributes
-break;
-}
-}
+if (categoryID === "261330") {
 resultElement.innerHTML = `
 <div class="col mb-5" style="width: 240px;">
 <div class="card h-100 d-flex align-items-stretch justify-content-center">
-<!-- auction badge-->
-<div class="badge bg-danger text-light position-absolute" style="top: 0.25rem; right: 0.25rem;">EBAY AUCTION</div>
-<!-- Product image-->
-<div class="text-center bg-dark" style="height: 310px; width: 240px; padding-bottom: 10px; border-top-right-radius: 5px; border-top-left-radius: 5px; display: flex; align-items: center; justify-content: center;">
-<a href="${viewUrl}${ebayEPN}" target="_blank">
-<img class="card-img-top" src="${pictureUrl}" alt="${card}" style="max-width: 172px; max-height: 276px; padding-top: 10px;" loading="lazy">
-<!-- condition badge -->
-<div>
-<span class="badge badge-dark bg-dark" style="width: 206px; border-radius: 0;">${authority} ${grade} ${gradecondition}</span>
+<div class="badge bg-primary text-white position-absolute" style="top: 0.5rem; right: 1.5rem">Complete Set</div>
+${productImage}
+${productDetails}
+${productPrice}
+${watchCount}
+${buyNowButton}
 </div>
-</a>
-</div>
-<!-- Product details-->
-<div class="card-body w-100 align-items-center justify-content-left text-left" style="height: 115px;">
-<!-- Player -->
-<span class="fw-bold" style="font-size: 14px; letter-spacing: 0.25px !important; word-spacing: 0.5px; display: inline-block; text-align: left !important;">${playerAthlete}</span>
-<br>
-<!-- Card # Player -->
-<span style="font-size: 12px;">${set} #${cardnumber}</span>
-<br>
-<!-- Team -->
-<span style="font-size: 12px; font-weight: 500;">Team:</span><span style="font-size: 12px;"> ${team}</span>
-<br>
-<!-- Attributes -->
-${attributes.length > 0 ? `<span style="font-size: 12px; font-weight: 500;">Attributes:</span><span style="font-size: 12px;"> ${attributes.join(' ')}</span>` : ''}
-</div>
-<hr>
-<!-- Product price -->
-<div class="card-body w-100 d-flex align-items-center justify-content-center" style="height: 60px;">
-<div style="width: 100%; text-align: center;">
-<dd>${currentPrice}${bestofferenabled === "true" ? `<span style="font-size: 12px; font-weight: 400 !important;"> or Best Offer</span>` : ''}</dd>
-<dd>
-${listingtype === "FixedPriceItem" && shippingcost === "USD 0.00" ? `<p style="color: green; font-weight: 500; font-size: 12px;">Free Shipping</p>` : ''}
-${listingtype === "FixedPriceItem" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Standard Shipping</p>` : ''}
-${listingtype !== "FixedPriceItem" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Combined Shipping</p>` : ''}
-</dd>
-</div>
-</div>
-<!-- bid/watch count -->
-<div class="card-footer w-100 d-flex align-items-center justify-content-between" style="height: 30px;">
-<!-- time bids watchers -->
-${formattedEndTime}
-</div>
-<!-- bid button -->
+</div>`;
+} else {
+var auctionBadge = listingtype === "Chinese" ? `<div class="badge bg-danger text-light position-absolute" style="top: 0.25rem; right: 0.25rem;">EBAY AUCTION</div>` : '';
+var bidButton = listingtype === "Chinese" ? `
 <div class="card-footer w-100 d-flex align-items-center justify-content-center bg-primary text-light" style="height: 30px;">
 <a href="${viewUrl}${ebayEPN}" target="_blank" style="text-decoration: none; color: inherit; font-size: 12px; font-weight: 700;">PLACE BID</a>
-</div>
-</div>
-</div>`;
-
-} else if (condition === "Ungraded" && listingtype === "FixedPriceItem") {
-var attributes = []; // Array to store all attribute values
-// Iterate through itemSpecifics to find Attributes
-for (var i = 0; i < itemSpecifics.length; i++) {
-if (itemSpecifics[i].Name === "Attributes") {
-attributes = itemSpecifics[i].Values; // Get all values for Attributes
-break;
-}
-}
-resultElement.innerHTML = `
-<div class="col mb-5" style="width: 240px;">
-<div class="card h-100 d-flex align-items-stretch justify-content-center">
-<!-- attributes badge-->
-<!-- Product image-->
-<div class="text-center bg-dark" style="height: 310px; width: 240px; padding-bottom: 10px; border-top-right-radius: 5px; border-top-left-radius: 5px; display: flex; align-items: center; justify-content: center;">
-<a href="${viewUrl}${ebayEPN}" target="_blank">
-<img class="card-img-top" src="${pictureUrl}" alt="${card}" style="max-width: 206px; max-height: 276px; padding-top: 10px;" loading="lazy">
-<!-- condition badge -->
-<div>
-<span class="badge badge-dark bg-dark" style="width: 206px; border-radius: 0;">${authority} ${grade} ${gradecondition}</span>
-</div>
-</a>
-</div>
-<!-- Product details-->
-<div class="card-body w-100 align-items-center justify-content-left text-left" style="height: 115px;">
-<!-- Player -->
-<span class="fw-bold" style="font-size: 14px; letter-spacing: 0.25px !important; word-spacing: 0.5px; display: inline-block; text-align: left !important;">${playerAthlete}</span>
-<br>
-<!-- Card # Player -->
-<span style="font-size: 12px;">${set} #${cardnumber}</span>
-<br>
-<!-- Team -->
-<span style="font-size: 12px; font-weight: 500;">Team:</span><span style="font-size: 12px;"> ${team}</span>
-<br>
-<!-- Attributes -->
-${attributes.length > 0 ? `<span style="font-size: 12px; font-weight: 500;">Attributes:</span><span style="font-size: 12px;"> ${attributes.join(' ')}</span>` : ''}
-</div>
-<hr>
-<!-- Product price -->
-<div class="card-body w-100 d-flex align-items-center justify-content-center" style="height: 60px;">
-<div style="width: 100%; text-align: center;">
-<dd>${currentPrice}${bestofferenabled === "true" ? `<span style="font-size: 12px; font-weight: 400 !important;"> or Best Offer</span>` : ''}</dd>
-<dd>
-${listingtype === "FixedPriceItem" && shippingcost === "USD 0.00" ? `<p style="color: green; font-weight: 500; font-size: 12px;">Free Shipping</p>` : ''}
-${listingtype === "FixedPriceItem" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Standard Shipping</p>` : ''}
-${listingtype !== "FixedPriceItem" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Combined Shipping</p>` : ''}
-</dd>
-</div>
-</div>
-<!-- watch count -->
-<div class="card-footer w-100 d-flex align-items-center justify-content-center" style="height: 30px;">
-<span style="font-size: 11px;">
-${watchers}  watching
-</span>
-</div>
-<!-- buynow button -->
-<div class="card-footer w-100 d-flex align-items-center justify-content-center bg-success text-light" style="height: 30px;">
-${bestofferenabled === "true" ? `<a href="${viewUrl}${ebayEPN}" target="_blank" style="text-decoration: none; color: inherit; font-size: 12px; font-weight: 700;">MAKE OFFER / BUY NOW</a>` : ''}
-${bestofferenabled === "false" ? `<a href="${viewUrl}${ebayEPN}" target="_blank" style="text-decoration: none; color: inherit; font-size: 12px; font-weight: 700;">BUY NOW</a>` : ''}
-</div>
-</div>
-</div>`;
-
-} else if (condition === "Ungraded" && listingtype === "Chinese") {
-var attributes = []; // Array to store all attribute values
-// Iterate through itemSpecifics to find Attributes
-for (var i = 0; i < itemSpecifics.length; i++) {
-if (itemSpecifics[i].Name === "Attributes") {
-attributes = itemSpecifics[i].Values; // Get all values for Attributes
-break;
-}
-}
+</div>` : '';
 
 resultElement.innerHTML = `
 <div class="col mb-5" style="width: 240px;">
 <div class="card h-100 d-flex align-items-stretch justify-content-center">
-<!-- auction badge-->
-<div class="badge bg-danger text-light position-absolute" style="top: 0.25rem; right: 0.25rem;">EBAY AUCTION</div>
-<!-- Product image-->
-<div class="text-center bg-dark" style="height: 310px; width: 240px; padding-bottom: 10px; border-top-right-radius: 5px; border-top-left-radius: 5px; display: flex; align-items: center; justify-content: center;">
-<a href="${viewUrl}${ebayEPN}" target="_blank"><img class="card-img-top" src="${pictureUrl}" alt="${card}" style="max-width: 206px; max-height: 276px; padding-top: 10px;" loading="lazy">
-<!-- condition badge -->
-<div><span class="badge badge-dark bg-dark" style="width: 206px; border-radius: 0;">${gradecondition}</span></div>
-</a>
-</div>
-<!-- Product details-->
-<div class="card-body w-100 align-items-center justify-content-left text-left" style="height: 115px;">
-<!-- Player -->
-<span class="fw-bold" style="font-size: 14px; letter-spacing: 0.25px !important; word-spacing: 0.5px; display: inline-block; text-align: left !important;">${playerAthlete}</span>
-<br>
-<!-- Card # Player -->
-<span style="font-size: 12px;">${set} #${cardnumber}</span>
-<br>
-<!-- Team -->
-<span style="font-size: 12px; font-weight: 500;">Team:</span><span style="font-size: 12px;"> ${team}</span>
-<br>
-<!-- Attributes -->
-${attributes.length > 0 ? `<span style="font-size: 12px; font-weight: 500;">Attributes:</span><span style="font-size: 12px;"> ${attributes.join(' ')}</span>` : ''}
-</div>
-<hr>
-<!-- Product price -->
-<div class="card-body w-100 d-flex align-items-center justify-content-center" style="height: 60px;">
-<div style="width: 100%; text-align: center;">
-<dd>${currentPrice}${bestofferenabled === "true" ? `<span style="font-size: 12px; font-weight: 400 !important;"> or Best Offer</span>` : ''}</dd>
-<dd>
-${listingtype === "FixedPriceItem" && shippingcost === "USD 0.00" ? `<p style="color: green; font-weight: 500; font-size: 12px;">Free Shipping</p>` : ''}
-${listingtype === "FixedPriceItem" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Standard Shipping</p>` : ''}
-${listingtype !== "FixedPriceItem" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Combined Shipping</p>` : ''}
-</dd>
-</div>
-</div>
-<!-- bid/watch count -->
-<div class="card-footer w-100 d-flex align-items-center justify-content-between" style="height: 30px;">
-<!-- time bids watchers -->
-${formattedEndTime}
-</div>
-<!-- bid button -->
-<div class="card-footer w-100 d-flex align-items-center justify-content-center bg-primary text-light" style="height: 30px;">
-<a href="${viewUrl}${ebayEPN}" target="_blank" style="text-decoration: none; color: inherit; font-size: 12px; font-weight: 700;">PLACE BID</a>
-</div>
+${auctionBadge}
+${productImage}
+${productDetails}
+${productPrice}
+${watchCount}
+${listingtype === "Chinese" ? `<div class="card-footer w-100 d-flex align-items-center justify-content-between" style="height: 30px;">${formattedEndTime}</div>` : ''}
+${listingtype === "Chinese" ? bidButton : buyNowButton}
 </div>
 </div>`;
 }
 
 resultsContainer.appendChild(resultElement);
+
 }
 });
 }
