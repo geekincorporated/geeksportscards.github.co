@@ -9,87 +9,92 @@
 // Attach event listeners to radio buttons 
 
 document.querySelectorAll('input[name="condition"], input[name="listingType"]').forEach(function (radio) {
-radio.addEventListener('change', function () {
-if (this.value === "Any") {
-// Reset other checkboxes in the same group when "Any" is selected
-resetCheckboxes(this.name);
-}
-search();
-});
+    radio.addEventListener('change', function () {
+        if (this.value === "Any") {
+            // Reset other checkboxes in the same group when "Any" is selected
+            resetCheckboxes(this.name);
+        }
+        search();
+    });
 });
 
 // Function to clear input field
 const clearInput = () => {
-document.getElementById('searchInput').value = '';
+    document.getElementById('searchInput').value = '';
 };
 
 // Function to handle Enter key press
 const checkEnter = event => {
-if (event.key === 'Enter') {
-search();
-}
+    if (event.key === 'Enter') {
+        search();
+    }
 };
 
 const resetSearch = () => {
-// Clear the search input
-document.getElementById('searchInput').value = '';
+    // Clear the search input
+    document.getElementById('searchInput').value = '';
 
-// Set the "Any" condition radio button to checked
-document.getElementById('conditionAny').checked = true;
+    // Set the "Any" condition radio button to checked
+    document.getElementById('conditionAny').checked = true;
 
-// Set the "Any" listing type radio button to checked
-document.getElementById('listingTypeAny').checked = true;
+    // Set the "Any" listing type radio button to checked
+    document.getElementById('listingTypeAny').checked = true;
 
-// Reload the page with default settings
-currentPage = 1;
-loadPage(currentPage);
+    // Clear all attribute checkboxes
+    document.querySelectorAll('input[name="attribute"]').forEach(checkbox => checkbox.checked = false);
+
+    // Reload the page with default settings
+    currentPage = 1;
+    loadPage(currentPage);
 };
 
 const resetCheckboxes = (groupName) => {
-document.querySelectorAll(`input[name="${groupName}"]`).forEach(function (checkbox) {
-if (checkbox.value !== "Any") {
-checkbox.checked = false;
-}
-});
+    document.querySelectorAll(`input[name="${groupName}"]`).forEach(function (checkbox) {
+        if (checkbox.value !== "Any") {
+            checkbox.checked = false;
+        }
+    });
 };
 
 document.addEventListener('DOMContentLoaded', (event) => {
-document.querySelectorAll('input[name="attribute"]').forEach(radio => {
-radio.addEventListener('change', search);
-});
+    document.querySelectorAll('input[name="attribute"]').forEach(checkbox => {
+        checkbox.addEventListener('change', search);
+    });
 
-document.querySelectorAll('input[name="condition"]').forEach(radio => {
-radio.addEventListener('change', search);
-});
+    document.querySelectorAll('input[name="condition"]').forEach(radio => {
+        radio.addEventListener('change', search);
+    });
 });
 
 const search = () => {
-const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-const selectedCondition = document.querySelector('input[name="condition"]:checked').value;
-const selectedListingType = document.querySelector('input[name="listingType"]:checked').value;
-const selectedCategory = document.getElementById('searchCategory').value.toLowerCase();
-const selectedAttribute = document.querySelector('input[name="attribute"]:checked') ? document.querySelector('input[name="attribute"]:checked').value : "Any";
+    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+    const selectedCondition = document.querySelector('input[name="condition"]:checked').value;
+    const selectedListingType = document.querySelector('input[name="listingType"]:checked').value;
+    const selectedCategory = document.getElementById('searchCategory').value.toLowerCase();
+    const selectedAttributes = Array.from(document.querySelectorAll('input[name="attribute"]:checked')).map(cb => cb.value.toLowerCase());
 
-const filteredData = allItems.filter(item => {
-const nameMatches = item.Title.toLowerCase().includes(searchTerm);
-const descriptionMatches = item["Item Specifics"].some(specific =>
-specific.Name.toLowerCase().includes(searchTerm) || specific.Values.some(value => value.toLowerCase().includes(searchTerm))
-);
-const conditionMatches = selectedCondition === "Any" || item["Condition Display Name"].toLowerCase() === selectedCondition.toLowerCase();
-const listingTypeMatches = selectedListingType === "Any" || item["Listing Type"].toLowerCase() === selectedListingType.toLowerCase();
-const sportMatches = selectedCategory === 'any' || selectedCategory === 'sport' ||
-item["Item Specifics"].some(specific =>
-specific.Name.toLowerCase() === 'sport' && specific.Values.some(value => value.toLowerCase() === selectedCategory)
-);
-const attributeMatches = selectedAttribute === "Any" || item["Item Specifics"].some(specific => {
-if (specific.Name.toLowerCase() === 'attributes') {
-return specific.Values.some(value => value.toLowerCase() === selectedAttribute.toLowerCase());
-}
-return false;
-});
+    const filteredData = allItems.filter(item => {
+        const nameMatches = item.Title && item.Title.toLowerCase().includes(searchTerm);
+        const descriptionMatches = item["Item Specifics"] && item["Item Specifics"].some(specific =>
+            specific.Name.toLowerCase().includes(searchTerm) || specific.Values.some(value => value.toLowerCase().includes(searchTerm))
+        );
+        const conditionMatches = selectedCondition === "Any" || (item["Condition Display Name"] && item["Condition Display Name"].toLowerCase() === selectedCondition.toLowerCase());
+        const listingTypeMatches = selectedListingType === "Any" || (item["Listing Type"] && item["Listing Type"].toLowerCase() === selectedListingType.toLowerCase());
+        const sportMatches = selectedCategory === 'any' || selectedCategory === 'sport' ||
+            (item["Item Specifics"] && item["Item Specifics"].some(specific =>
+                specific.Name.toLowerCase() === 'sport' && specific.Values.some(value => value.toLowerCase() === selectedCategory)
+            ));
+        const attributeMatches = selectedAttributes.length === 0 || (item["Item Specifics"] && selectedAttributes.every(attr =>
+            item["Item Specifics"].some(specific => {
+                if (specific.Name.toLowerCase() === 'attributes') {
+                    return specific.Values.some(value => value.toLowerCase() === attr);
+                }
+                return false;
+            })
+        ));
 
-return (nameMatches || descriptionMatches) && conditionMatches && listingTypeMatches && sportMatches && attributeMatches;
-});
+        return (nameMatches || descriptionMatches) && conditionMatches && listingTypeMatches && sportMatches && attributeMatches;
+    });
 
 totalItems = filteredData.length;
 displayItems(filteredData, 0, totalItems);
