@@ -214,9 +214,18 @@ var authority = "";
 var grade = "";
 var gradecondition = "";
 var team = "";
+var sport = "";
 var ebayEPN = "?mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339025312&customid=&toolid=10001&mkevt=1";
 
 // Find the value in item specifics
+
+var itemSpecifics = item["Item Specifics"];
+for (var i = 0; i < itemSpecifics.length; i++) {
+if (itemSpecifics[i].Name === "Sport") {
+sport = itemSpecifics[i].Values[0]; // Get the value
+break;
+}
+}
 
 var itemSpecifics = item["Item Specifics"];
 for (var i = 0; i < itemSpecifics.length; i++) {
@@ -291,6 +300,14 @@ break;
 }
 }
 
+var attributes = [];
+for (var i = 0; i < itemSpecifics.length; i++) {
+if (itemSpecifics[i].Name === "Attributes") {
+attributes = itemSpecifics[i].Values;
+break;
+}
+}
+
 function formatEndTime(endTime, bids = 0, watchers = 0) {
 const endDate = new Date(endTime);
 const now = new Date();
@@ -341,14 +358,6 @@ var formattedEndTime = formatEndTime(endtime, bids, watchers);
 
 var resultElement = document.createElement('div');
 
-var attributes = [];
-for (var i = 0; i < itemSpecifics.length; i++) {
-if (itemSpecifics[i].Name === "Attributes") {
-attributes = itemSpecifics[i].Values;
-break;
-}
-}
-
 var productImage = `
 <div class="text-center bg-dark" style="height: 310px; padding-bottom: 10px; border-top-right-radius: 5px; border-top-left-radius: 5px; display: flex; align-items: center; justify-content: center;">
 <a href="${viewUrl}${ebayEPN}" target="_blank">
@@ -358,7 +367,7 @@ var productImage = `
 </div>`;
 
 var productDetails = `
-<div class="card-body w-100 align-items-center justify-content-left text-left" style="height: 115px;">
+<div class="card-body w-100 align-items-center justify-content-left text-left" style="height: 130px;">
 <span class="fw-bold" style="font-size: 14px; letter-spacing: 0.25px !important; word-spacing: 0.5px; display: inline-block; text-align: left !important;">${playerAthlete}</span>
 <br>
 <span style="font-size: 12px;">${set} #${cardnumber}</span>
@@ -366,6 +375,8 @@ var productDetails = `
 <span style="font-size: 12px; font-weight: 500;">Team:</span><span style="font-size: 12px;"> ${team}</span>
 <br>
 ${attributes.length > 0 ? `<span style="font-size: 12px; font-weight: 500;">Attributes:</span><span style="font-size: 12px;"> ${attributes.join(' ')}</span>` : ''}
+<br>
+<span style="font-size: 12px; font-weight: 500;">Sport:</span><span style="font-size: 12px;"> ${sport}</span>
 </div>
 <hr>`;
 
@@ -393,7 +404,7 @@ var buyNowButton = `
 
 if (categoryID === "261330") {
 resultElement.innerHTML = `
-<div class="col mb-5" style="width: 240px;">
+<div class="col mb-5" style="width: 250px;">
 <div class="card h-100 d-flex align-items-stretch justify-content-center">
 <div class="badge bg-primary text-white position-absolute" style="top: 0.5rem; right: 1.5rem">Complete Set</div>
 ${productImage}
@@ -411,7 +422,7 @@ var bidButton = listingtype === "Chinese" ? `
 </div>` : '';
 
 resultElement.innerHTML = `
-<div class="col mb-5" style="width: 240px;">
+<div class="col mb-5" style="width: 250px;">
 <div class="card h-100 d-flex align-items-stretch justify-content-center">
 ${auctionBadge}
 ${productImage}
