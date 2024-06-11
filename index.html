@@ -144,16 +144,8 @@ info@geeksportscards.com
 <!-- listing format filter -->
 <div class="search-container" id="resultsfilterContainer" style="margin-bottom: 20px; font-size: 13px;">
 <!-- Add hidden radio button for default listing type -->
-<input type="radio" name="listingType" value="Any" id="listingTypeAny" checked style="display: none;">
-<!-- Add radio buttons for filtering listing type -->
+
 <label class="radio-label" style="margin-right: 10px;">
-<input type="radio" name="listingType" value="Chinese" style="vertical-align: middle; transform: scale(1.3);">&nbsp; AUCTION
-</label>
-<label class="radio-label" style="margin-right: 10px;">
-<input type="radio" name="listingType" value="FixedPriceItem" style="vertical-align: middle; transform: scale(1.3);"> &nbsp; BUY NOW
-</label>
-<span style="font-weight: 700;">|</span>
-<label class="radio-label" style="margin-left: 10px; margin-right: 10px;">
 <input type="radio" name="condition" value="Any" id="conditionAny" style="vertical-align: middle; transform: scale(1.3);" checked> &nbsp; ALL
 </label>
 <label class="radio-label" style="margin-right: 10px;">
@@ -161,6 +153,15 @@ info@geeksportscards.com
 </label>
 <label class="radio-label" style="margin-right: 10px;">
 <input type="radio" name="condition" value="Graded" style="vertical-align: middle; transform: scale(1.3);"> &nbsp; GRADED
+</label>
+<span style="font-weight: 700;">|</span>
+<input type="radio" name="listingType" value="Any" id="listingTypeAny" checked style="display: none;">
+<!-- Add radio buttons for filtering listing type -->
+<label class="radio-label" style="margin-right: 10px; margin-left: 10px;">
+<input type="radio" name="listingType" value="Chinese" style="vertical-align: middle; transform: scale(1.3);">&nbsp; AUCTION
+</label>
+<label class="radio-label" style="margin-right: 10px;">
+<input type="radio" name="listingType" value="FixedPriceItem" style="vertical-align: middle; transform: scale(1.3);"> &nbsp; BUY NOW
 </label>
 <br><br>
 </div>
@@ -174,12 +175,9 @@ info@geeksportscards.com
 <label class="checkbox-label" style="margin-right: 10px;">
 <input type="checkbox" name="attribute" value="HOF" style="vertical-align: middle; transform: scale(1.3);"> &nbsp; HALL OF FAME
 </label>
-
 <label class="checkbox-label" style="margin-right: 10px;">
-    <input type="checkbox" name="attribute" value="UER" style="vertical-align: middle; transform: scale(1.3);"> &nbsp; ERROR
+<input type="checkbox" name="attribute" value="UER" style="vertical-align: middle; transform: scale(1.3);"> &nbsp; ERROR
 </label>
-
-
 </div>
 <br>
 <div class="row gx-4 gx-lg-4 row-cols-1 row-cols-md-2 row-cols-xl-4 justify-content-center" id="results">
