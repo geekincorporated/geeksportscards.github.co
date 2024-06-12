@@ -367,15 +367,14 @@ var productImage = `
 </div>`;
 
 var productDetails = `
-<div class="card-body w-100 align-items-center justify-content-left text-left" style="height: 130px;">
+<div class="card-body w-100 align-items-center justify-content-left text-left" style="height: 150px;">
 <span class="fw-bold" style="font-size: 14px; letter-spacing: 0.25px !important; word-spacing: 0.5px; display: inline-block; text-align: left !important;">${playerAthlete}</span>
 <br>
 <span style="font-size: 12px;">${set} #${cardnumber}</span>
 <br>
 <span style="font-size: 12px; font-weight: 500;">Team:</span><span style="font-size: 12px;"> ${team}</span>
 <br>
-${attributes.length > 0 ? `<span style="font-size: 12px; font-weight: 500;">Attributes:</span><span style="font-size: 12px;"> ${attributes.join(' ')}</span>` : ''}
-<br>
+${attributes.length > 0 ? `<span style="font-size: 12px; font-weight: 500;">Attributes:</span><span style="font-size: 12px;"> ${attributes.join(' ')}</span> <br>` : ''}
 <span style="font-size: 12px; font-weight: 500;">Sport:</span><span style="font-size: 12px;"> ${sport}</span>
 </div>
 <hr>`;
