@@ -386,7 +386,7 @@ var productPrice = `
 <dd>
 ${listingtype === "FixedPriceItem" && shippingcost === "USD 0.00" ? `<p style="color: green; font-weight: 500; font-size: 12px;">Free Shipping</p>` : ''}
 ${listingtype === "FixedPriceItem" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Standard Shipping</p>` : ''}
-${listingtype !== "FixedPriceItem" && shippingcost === "USD 5.95" ? `<p style="font-weight: 500; font-size: 12px;">Combined Shipping</p>` : ''}
+${listingtype !== "FixedPriceItem" && shippingcost !== "USD 0.00" ? `<p style="font-weight: 500; font-size: 12px;">Combined Shipping</p>` : ''}
 </dd>
 </div>
 </div>`;

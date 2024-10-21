@@ -3,7 +3,6 @@
 *.bat
 *.py
 *.log
-get_ip.json
 
 # ignore directories
 config/
